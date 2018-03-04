@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.logistics.module.mapper.TAreaMapper" >
+  <resultMap id="BaseResultMap" type="com.logistics.module.model.TArea" >
+    <id column="C_ID" property="cId" jdbcType="VARCHAR" />
+    <result column="C_CITY" property="cCity" jdbcType="VARCHAR" />
+    <result column="C_CITYCODE" property="cCitycode" jdbcType="VARCHAR" />
+    <result column="C_DISTRICT" property="cDistrict" jdbcType="VARCHAR" />
+    <result column="C_POSTCODE" property="cPostcode" jdbcType="VARCHAR" />
+    <result column="C_PROVINCE" property="cProvince" jdbcType="VARCHAR" />
+    <result column="C_SHORTCODE" property="cShortcode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_CITY, C_CITYCODE, C_DISTRICT, C_POSTCODE, C_PROVINCE, C_SHORTCODE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.model.TAreaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_area
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_area
+    where C_ID = #{cId,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.logistics.module.model.TArea" >
+    insert into t_area (C_ID, C_CITY, C_CITYCODE, 
+      C_DISTRICT, C_POSTCODE, C_PROVINCE, 
+      C_SHORTCODE)
+    values (#{cId,jdbcType=VARCHAR}, #{cCity,jdbcType=VARCHAR}, #{cCitycode,jdbcType=VARCHAR}, 
+      #{cDistrict,jdbcType=VARCHAR}, #{cPostcode,jdbcType=VARCHAR}, #{cProvince,jdbcType=VARCHAR}, 
+      #{cShortcode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.logistics.module.model.TArea" >
+    insert into t_area
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cCity != null" >
+        C_CITY,
+      </if>
+      <if test="cCitycode != null" >
+        C_CITYCODE,
+      </if>
+      <if test="cDistrict != null" >
+        C_DISTRICT,
+      </if>
+      <if test="cPostcode != null" >
+        C_POSTCODE,
+      </if>
+      <if test="cProvince != null" >
+        C_PROVINCE,
+      </if>
+      <if test="cShortcode != null" >
+        C_SHORTCODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=VARCHAR},
+      </if>
+      <if test="cCity != null" >
+        #{cCity,jdbcType=VARCHAR},
+      </if>
+      <if test="cCitycode != null" >
+        #{cCitycode,jdbcType=VARCHAR},
+      </if>
+      <if test="cDistrict != null" >
+        #{cDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="cPostcode != null" >
+        #{cPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cProvince != null" >
+        #{cProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="cShortcode != null" >
+        #{cShortcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.logistics.module.model.TAreaExample" resultType="java.lang.Integer" >
+    select count(*) from t_area
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_area
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cCity != null" >
+        C_CITY = #{record.cCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cCitycode != null" >
+        C_CITYCODE = #{record.cCitycode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cDistrict != null" >
+        C_DISTRICT = #{record.cDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cPostcode != null" >
+        C_POSTCODE = #{record.cPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cProvince != null" >
+        C_PROVINCE = #{record.cProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cShortcode != null" >
+        C_SHORTCODE = #{record.cShortcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_area
+    set C_ID = #{record.cId,jdbcType=VARCHAR},
+      C_CITY = #{record.cCity,jdbcType=VARCHAR},
+      C_CITYCODE = #{record.cCitycode,jdbcType=VARCHAR},
+      C_DISTRICT = #{record.cDistrict,jdbcType=VARCHAR},
+      C_POSTCODE = #{record.cPostcode,jdbcType=VARCHAR},
+      C_PROVINCE = #{record.cProvince,jdbcType=VARCHAR},
+      C_SHORTCODE = #{record.cShortcode,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logistics.module.model.TArea" >
+    update t_area
+    <set >
+      <if test="cCity != null" >
+        C_CITY = #{cCity,jdbcType=VARCHAR},
+      </if>
+      <if test="cCitycode != null" >
+        C_CITYCODE = #{cCitycode,jdbcType=VARCHAR},
+      </if>
+      <if test="cDistrict != null" >
+        C_DISTRICT = #{cDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="cPostcode != null" >
+        C_POSTCODE = #{cPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cProvince != null" >
+        C_PROVINCE = #{cProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="cShortcode != null" >
+        C_SHORTCODE = #{cShortcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logistics.module.model.TArea" >
+    update t_area
+    set C_CITY = #{cCity,jdbcType=VARCHAR},
+      C_CITYCODE = #{cCitycode,jdbcType=VARCHAR},
+      C_DISTRICT = #{cDistrict,jdbcType=VARCHAR},
+      C_POSTCODE = #{cPostcode,jdbcType=VARCHAR},
+      C_PROVINCE = #{cProvince,jdbcType=VARCHAR},
+      C_SHORTCODE = #{cShortcode,jdbcType=VARCHAR}
+    where C_ID = #{cId,jdbcType=VARCHAR}
+  </update>
+</mapper>

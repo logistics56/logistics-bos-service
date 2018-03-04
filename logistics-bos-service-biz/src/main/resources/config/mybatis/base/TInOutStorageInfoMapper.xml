@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.logistics.module.mapper.TInOutStorageInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.logistics.module.model.TInOutStorageInfo" >
+    <id column="C_ID" property="cId" jdbcType="INTEGER" />
+    <result column="C_ADDRESS" property="cAddress" jdbcType="VARCHAR" />
+    <result column="C_DESCRIPTION" property="cDescription" jdbcType="VARCHAR" />
+    <result column="C_OPERATION" property="cOperation" jdbcType="VARCHAR" />
+    <result column="C_TRANSIT_INFO_ID" property="cTransitInfoId" jdbcType="INTEGER" />
+    <result column="C_IN_OUT_INDEX" property="cInOutIndex" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_ADDRESS, C_DESCRIPTION, C_OPERATION, C_TRANSIT_INFO_ID, C_IN_OUT_INDEX
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.model.TInOutStorageInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_in_out_storage_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_in_out_storage_info
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.logistics.module.model.TInOutStorageInfo" >
+    insert into t_in_out_storage_info (C_ID, C_ADDRESS, C_DESCRIPTION, 
+      C_OPERATION, C_TRANSIT_INFO_ID, C_IN_OUT_INDEX
+      )
+    values (#{cId,jdbcType=INTEGER}, #{cAddress,jdbcType=VARCHAR}, #{cDescription,jdbcType=VARCHAR}, 
+      #{cOperation,jdbcType=VARCHAR}, #{cTransitInfoId,jdbcType=INTEGER}, #{cInOutIndex,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.logistics.module.model.TInOutStorageInfo" >
+    insert into t_in_out_storage_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cAddress != null" >
+        C_ADDRESS,
+      </if>
+      <if test="cDescription != null" >
+        C_DESCRIPTION,
+      </if>
+      <if test="cOperation != null" >
+        C_OPERATION,
+      </if>
+      <if test="cTransitInfoId != null" >
+        C_TRANSIT_INFO_ID,
+      </if>
+      <if test="cInOutIndex != null" >
+        C_IN_OUT_INDEX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cAddress != null" >
+        #{cAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cDescription != null" >
+        #{cDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="cOperation != null" >
+        #{cOperation,jdbcType=VARCHAR},
+      </if>
+      <if test="cTransitInfoId != null" >
+        #{cTransitInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="cInOutIndex != null" >
+        #{cInOutIndex,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.logistics.module.model.TInOutStorageInfoExample" resultType="java.lang.Integer" >
+    select count(*) from t_in_out_storage_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_in_out_storage_info
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cAddress != null" >
+        C_ADDRESS = #{record.cAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cDescription != null" >
+        C_DESCRIPTION = #{record.cDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cOperation != null" >
+        C_OPERATION = #{record.cOperation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cTransitInfoId != null" >
+        C_TRANSIT_INFO_ID = #{record.cTransitInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cInOutIndex != null" >
+        C_IN_OUT_INDEX = #{record.cInOutIndex,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_in_out_storage_info
+    set C_ID = #{record.cId,jdbcType=INTEGER},
+      C_ADDRESS = #{record.cAddress,jdbcType=VARCHAR},
+      C_DESCRIPTION = #{record.cDescription,jdbcType=VARCHAR},
+      C_OPERATION = #{record.cOperation,jdbcType=VARCHAR},
+      C_TRANSIT_INFO_ID = #{record.cTransitInfoId,jdbcType=INTEGER},
+      C_IN_OUT_INDEX = #{record.cInOutIndex,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logistics.module.model.TInOutStorageInfo" >
+    update t_in_out_storage_info
+    <set >
+      <if test="cAddress != null" >
+        C_ADDRESS = #{cAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cDescription != null" >
+        C_DESCRIPTION = #{cDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="cOperation != null" >
+        C_OPERATION = #{cOperation,jdbcType=VARCHAR},
+      </if>
+      <if test="cTransitInfoId != null" >
+        C_TRANSIT_INFO_ID = #{cTransitInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="cInOutIndex != null" >
+        C_IN_OUT_INDEX = #{cInOutIndex,jdbcType=INTEGER},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logistics.module.model.TInOutStorageInfo" >
+    update t_in_out_storage_info
+    set C_ADDRESS = #{cAddress,jdbcType=VARCHAR},
+      C_DESCRIPTION = #{cDescription,jdbcType=VARCHAR},
+      C_OPERATION = #{cOperation,jdbcType=VARCHAR},
+      C_TRANSIT_INFO_ID = #{cTransitInfoId,jdbcType=INTEGER},
+      C_IN_OUT_INDEX = #{cInOutIndex,jdbcType=INTEGER}
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>

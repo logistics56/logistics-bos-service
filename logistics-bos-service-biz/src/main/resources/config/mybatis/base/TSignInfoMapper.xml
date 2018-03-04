@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.logistics.module.mapper.TSignInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.logistics.module.model.TSignInfo" >
+    <id column="C_ID" property="cId" jdbcType="INTEGER" />
+    <result column="C_DESCRIPTION" property="cDescription" jdbcType="VARCHAR" />
+    <result column="C_ERROR_REMARK" property="cErrorRemark" jdbcType="VARCHAR" />
+    <result column="C_SIGN_NAME" property="cSignName" jdbcType="VARCHAR" />
+    <result column="C_SIGN_TIME" property="cSignTime" jdbcType="TIMESTAMP" />
+    <result column="C_SIGN_TYPE" property="cSignType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_DESCRIPTION, C_ERROR_REMARK, C_SIGN_NAME, C_SIGN_TIME, C_SIGN_TYPE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.model.TSignInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_sign_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sign_info
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.logistics.module.model.TSignInfo" >
+    insert into t_sign_info (C_ID, C_DESCRIPTION, C_ERROR_REMARK, 
+      C_SIGN_NAME, C_SIGN_TIME, C_SIGN_TYPE
+      )
+    values (#{cId,jdbcType=INTEGER}, #{cDescription,jdbcType=VARCHAR}, #{cErrorRemark,jdbcType=VARCHAR}, 
+      #{cSignName,jdbcType=VARCHAR}, #{cSignTime,jdbcType=TIMESTAMP}, #{cSignType,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.logistics.module.model.TSignInfo" >
+    insert into t_sign_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cDescription != null" >
+        C_DESCRIPTION,
+      </if>
+      <if test="cErrorRemark != null" >
+        C_ERROR_REMARK,
+      </if>
+      <if test="cSignName != null" >
+        C_SIGN_NAME,
+      </if>
+      <if test="cSignTime != null" >
+        C_SIGN_TIME,
+      </if>
+      <if test="cSignType != null" >
+        C_SIGN_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cDescription != null" >
+        #{cDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="cErrorRemark != null" >
+        #{cErrorRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="cSignName != null" >
+        #{cSignName,jdbcType=VARCHAR},
+      </if>
+      <if test="cSignTime != null" >
+        #{cSignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cSignType != null" >
+        #{cSignType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.logistics.module.model.TSignInfoExample" resultType="java.lang.Integer" >
+    select count(*) from t_sign_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_sign_info
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cDescription != null" >
+        C_DESCRIPTION = #{record.cDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cErrorRemark != null" >
+        C_ERROR_REMARK = #{record.cErrorRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cSignName != null" >
+        C_SIGN_NAME = #{record.cSignName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cSignTime != null" >
+        C_SIGN_TIME = #{record.cSignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cSignType != null" >
+        C_SIGN_TYPE = #{record.cSignType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_sign_info
+    set C_ID = #{record.cId,jdbcType=INTEGER},
+      C_DESCRIPTION = #{record.cDescription,jdbcType=VARCHAR},
+      C_ERROR_REMARK = #{record.cErrorRemark,jdbcType=VARCHAR},
+      C_SIGN_NAME = #{record.cSignName,jdbcType=VARCHAR},
+      C_SIGN_TIME = #{record.cSignTime,jdbcType=TIMESTAMP},
+      C_SIGN_TYPE = #{record.cSignType,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logistics.module.model.TSignInfo" >
+    update t_sign_info
+    <set >
+      <if test="cDescription != null" >
+        C_DESCRIPTION = #{cDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="cErrorRemark != null" >
+        C_ERROR_REMARK = #{cErrorRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="cSignName != null" >
+        C_SIGN_NAME = #{cSignName,jdbcType=VARCHAR},
+      </if>
+      <if test="cSignTime != null" >
+        C_SIGN_TIME = #{cSignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cSignType != null" >
+        C_SIGN_TYPE = #{cSignType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logistics.module.model.TSignInfo" >
+    update t_sign_info
+    set C_DESCRIPTION = #{cDescription,jdbcType=VARCHAR},
+      C_ERROR_REMARK = #{cErrorRemark,jdbcType=VARCHAR},
+      C_SIGN_NAME = #{cSignName,jdbcType=VARCHAR},
+      C_SIGN_TIME = #{cSignTime,jdbcType=TIMESTAMP},
+      C_SIGN_TYPE = #{cSignType,jdbcType=VARCHAR}
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>

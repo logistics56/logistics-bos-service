@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.logistics.module.mapper.TArchiveMapper" >
+  <resultMap id="BaseResultMap" type="com.logistics.module.model.TArchive" >
+    <id column="C_ID" property="cId" jdbcType="INTEGER" />
+    <result column="C_ARCHIVE_NAME" property="cArchiveName" jdbcType="VARCHAR" />
+    <result column="C_ARCHIVE_NUM" property="cArchiveNum" jdbcType="VARCHAR" />
+    <result column="C_HASCHILD" property="cHaschild" jdbcType="INTEGER" />
+    <result column="C_OPERATING_COMPANY" property="cOperatingCompany" jdbcType="VARCHAR" />
+    <result column="C_OPERATING_TIME" property="cOperatingTime" jdbcType="TIMESTAMP" />
+    <result column="C_OPERATOR" property="cOperator" jdbcType="VARCHAR" />
+    <result column="C_REMARK" property="cRemark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_ARCHIVE_NAME, C_ARCHIVE_NUM, C_HASCHILD, C_OPERATING_COMPANY, C_OPERATING_TIME, 
+    C_OPERATOR, C_REMARK
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.model.TArchiveExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_archive
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_archive
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.logistics.module.model.TArchive" >
+    insert into t_archive (C_ID, C_ARCHIVE_NAME, C_ARCHIVE_NUM, 
+      C_HASCHILD, C_OPERATING_COMPANY, C_OPERATING_TIME, 
+      C_OPERATOR, C_REMARK)
+    values (#{cId,jdbcType=INTEGER}, #{cArchiveName,jdbcType=VARCHAR}, #{cArchiveNum,jdbcType=VARCHAR}, 
+      #{cHaschild,jdbcType=INTEGER}, #{cOperatingCompany,jdbcType=VARCHAR}, #{cOperatingTime,jdbcType=TIMESTAMP}, 
+      #{cOperator,jdbcType=VARCHAR}, #{cRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.logistics.module.model.TArchive" >
+    insert into t_archive
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cArchiveName != null" >
+        C_ARCHIVE_NAME,
+      </if>
+      <if test="cArchiveNum != null" >
+        C_ARCHIVE_NUM,
+      </if>
+      <if test="cHaschild != null" >
+        C_HASCHILD,
+      </if>
+      <if test="cOperatingCompany != null" >
+        C_OPERATING_COMPANY,
+      </if>
+      <if test="cOperatingTime != null" >
+        C_OPERATING_TIME,
+      </if>
+      <if test="cOperator != null" >
+        C_OPERATOR,
+      </if>
+      <if test="cRemark != null" >
+        C_REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cArchiveName != null" >
+        #{cArchiveName,jdbcType=VARCHAR},
+      </if>
+      <if test="cArchiveNum != null" >
+        #{cArchiveNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cHaschild != null" >
+        #{cHaschild,jdbcType=INTEGER},
+      </if>
+      <if test="cOperatingCompany != null" >
+        #{cOperatingCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cOperatingTime != null" >
+        #{cOperatingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cOperator != null" >
+        #{cOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="cRemark != null" >
+        #{cRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.logistics.module.model.TArchiveExample" resultType="java.lang.Integer" >
+    select count(*) from t_archive
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_archive
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cArchiveName != null" >
+        C_ARCHIVE_NAME = #{record.cArchiveName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cArchiveNum != null" >
+        C_ARCHIVE_NUM = #{record.cArchiveNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cHaschild != null" >
+        C_HASCHILD = #{record.cHaschild,jdbcType=INTEGER},
+      </if>
+      <if test="record.cOperatingCompany != null" >
+        C_OPERATING_COMPANY = #{record.cOperatingCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cOperatingTime != null" >
+        C_OPERATING_TIME = #{record.cOperatingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cOperator != null" >
+        C_OPERATOR = #{record.cOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cRemark != null" >
+        C_REMARK = #{record.cRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_archive
+    set C_ID = #{record.cId,jdbcType=INTEGER},
+      C_ARCHIVE_NAME = #{record.cArchiveName,jdbcType=VARCHAR},
+      C_ARCHIVE_NUM = #{record.cArchiveNum,jdbcType=VARCHAR},
+      C_HASCHILD = #{record.cHaschild,jdbcType=INTEGER},
+      C_OPERATING_COMPANY = #{record.cOperatingCompany,jdbcType=VARCHAR},
+      C_OPERATING_TIME = #{record.cOperatingTime,jdbcType=TIMESTAMP},
+      C_OPERATOR = #{record.cOperator,jdbcType=VARCHAR},
+      C_REMARK = #{record.cRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logistics.module.model.TArchive" >
+    update t_archive
+    <set >
+      <if test="cArchiveName != null" >
+        C_ARCHIVE_NAME = #{cArchiveName,jdbcType=VARCHAR},
+      </if>
+      <if test="cArchiveNum != null" >
+        C_ARCHIVE_NUM = #{cArchiveNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cHaschild != null" >
+        C_HASCHILD = #{cHaschild,jdbcType=INTEGER},
+      </if>
+      <if test="cOperatingCompany != null" >
+        C_OPERATING_COMPANY = #{cOperatingCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cOperatingTime != null" >
+        C_OPERATING_TIME = #{cOperatingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cOperator != null" >
+        C_OPERATOR = #{cOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="cRemark != null" >
+        C_REMARK = #{cRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logistics.module.model.TArchive" >
+    update t_archive
+    set C_ARCHIVE_NAME = #{cArchiveName,jdbcType=VARCHAR},
+      C_ARCHIVE_NUM = #{cArchiveNum,jdbcType=VARCHAR},
+      C_HASCHILD = #{cHaschild,jdbcType=INTEGER},
+      C_OPERATING_COMPANY = #{cOperatingCompany,jdbcType=VARCHAR},
+      C_OPERATING_TIME = #{cOperatingTime,jdbcType=TIMESTAMP},
+      C_OPERATOR = #{cOperator,jdbcType=VARCHAR},
+      C_REMARK = #{cRemark,jdbcType=VARCHAR}
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>

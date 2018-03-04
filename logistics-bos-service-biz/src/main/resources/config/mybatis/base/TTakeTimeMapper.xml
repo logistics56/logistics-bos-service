@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.logistics.module.mapper.TTakeTimeMapper" >
+  <resultMap id="BaseResultMap" type="com.logistics.module.model.TTakeTime" >
+    <id column="C_ID" property="cId" jdbcType="INTEGER" />
+    <result column="C_COMPANY" property="cCompany" jdbcType="VARCHAR" />
+    <result column="C_NAME" property="cName" jdbcType="VARCHAR" />
+    <result column="C_NORMAL_DUTY_TIME" property="cNormalDutyTime" jdbcType="VARCHAR" />
+    <result column="C_NORMAL_WORK_TIME" property="cNormalWorkTime" jdbcType="VARCHAR" />
+    <result column="C_OPERATING_COMPANY" property="cOperatingCompany" jdbcType="VARCHAR" />
+    <result column="C_OPERATING_TIME" property="cOperatingTime" jdbcType="TIMESTAMP" />
+    <result column="C_OPERATOR" property="cOperator" jdbcType="VARCHAR" />
+    <result column="C_SAT_DUTY_TIME" property="cSatDutyTime" jdbcType="VARCHAR" />
+    <result column="C_SAT_WORK_TIME" property="cSatWorkTime" jdbcType="VARCHAR" />
+    <result column="C_STATUS" property="cStatus" jdbcType="VARCHAR" />
+    <result column="C_SUN_DUTY_TIME" property="cSunDutyTime" jdbcType="VARCHAR" />
+    <result column="C_SUN_WORK_TIME" property="cSunWorkTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_COMPANY, C_NAME, C_NORMAL_DUTY_TIME, C_NORMAL_WORK_TIME, C_OPERATING_COMPANY, 
+    C_OPERATING_TIME, C_OPERATOR, C_SAT_DUTY_TIME, C_SAT_WORK_TIME, C_STATUS, C_SUN_DUTY_TIME, 
+    C_SUN_WORK_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.model.TTakeTimeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_take_time
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_take_time
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.logistics.module.model.TTakeTime" >
+    insert into t_take_time (C_ID, C_COMPANY, C_NAME, 
+      C_NORMAL_DUTY_TIME, C_NORMAL_WORK_TIME, C_OPERATING_COMPANY, 
+      C_OPERATING_TIME, C_OPERATOR, C_SAT_DUTY_TIME, 
+      C_SAT_WORK_TIME, C_STATUS, C_SUN_DUTY_TIME, 
+      C_SUN_WORK_TIME)
+    values (#{cId,jdbcType=INTEGER}, #{cCompany,jdbcType=VARCHAR}, #{cName,jdbcType=VARCHAR}, 
+      #{cNormalDutyTime,jdbcType=VARCHAR}, #{cNormalWorkTime,jdbcType=VARCHAR}, #{cOperatingCompany,jdbcType=VARCHAR}, 
+      #{cOperatingTime,jdbcType=TIMESTAMP}, #{cOperator,jdbcType=VARCHAR}, #{cSatDutyTime,jdbcType=VARCHAR}, 
+      #{cSatWorkTime,jdbcType=VARCHAR}, #{cStatus,jdbcType=VARCHAR}, #{cSunDutyTime,jdbcType=VARCHAR}, 
+      #{cSunWorkTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.logistics.module.model.TTakeTime" >
+    insert into t_take_time
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cCompany != null" >
+        C_COMPANY,
+      </if>
+      <if test="cName != null" >
+        C_NAME,
+      </if>
+      <if test="cNormalDutyTime != null" >
+        C_NORMAL_DUTY_TIME,
+      </if>
+      <if test="cNormalWorkTime != null" >
+        C_NORMAL_WORK_TIME,
+      </if>
+      <if test="cOperatingCompany != null" >
+        C_OPERATING_COMPANY,
+      </if>
+      <if test="cOperatingTime != null" >
+        C_OPERATING_TIME,
+      </if>
+      <if test="cOperator != null" >
+        C_OPERATOR,
+      </if>
+      <if test="cSatDutyTime != null" >
+        C_SAT_DUTY_TIME,
+      </if>
+      <if test="cSatWorkTime != null" >
+        C_SAT_WORK_TIME,
+      </if>
+      <if test="cStatus != null" >
+        C_STATUS,
+      </if>
+      <if test="cSunDutyTime != null" >
+        C_SUN_DUTY_TIME,
+      </if>
+      <if test="cSunWorkTime != null" >
+        C_SUN_WORK_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cCompany != null" >
+        #{cCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cName != null" >
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cNormalDutyTime != null" >
+        #{cNormalDutyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cNormalWorkTime != null" >
+        #{cNormalWorkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cOperatingCompany != null" >
+        #{cOperatingCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cOperatingTime != null" >
+        #{cOperatingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cOperator != null" >
+        #{cOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="cSatDutyTime != null" >
+        #{cSatDutyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cSatWorkTime != null" >
+        #{cSatWorkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cStatus != null" >
+        #{cStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="cSunDutyTime != null" >
+        #{cSunDutyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cSunWorkTime != null" >
+        #{cSunWorkTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.logistics.module.model.TTakeTimeExample" resultType="java.lang.Integer" >
+    select count(*) from t_take_time
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_take_time
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cCompany != null" >
+        C_COMPANY = #{record.cCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cName != null" >
+        C_NAME = #{record.cName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cNormalDutyTime != null" >
+        C_NORMAL_DUTY_TIME = #{record.cNormalDutyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cNormalWorkTime != null" >
+        C_NORMAL_WORK_TIME = #{record.cNormalWorkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cOperatingCompany != null" >
+        C_OPERATING_COMPANY = #{record.cOperatingCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cOperatingTime != null" >
+        C_OPERATING_TIME = #{record.cOperatingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cOperator != null" >
+        C_OPERATOR = #{record.cOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cSatDutyTime != null" >
+        C_SAT_DUTY_TIME = #{record.cSatDutyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cSatWorkTime != null" >
+        C_SAT_WORK_TIME = #{record.cSatWorkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cStatus != null" >
+        C_STATUS = #{record.cStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cSunDutyTime != null" >
+        C_SUN_DUTY_TIME = #{record.cSunDutyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cSunWorkTime != null" >
+        C_SUN_WORK_TIME = #{record.cSunWorkTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_take_time
+    set C_ID = #{record.cId,jdbcType=INTEGER},
+      C_COMPANY = #{record.cCompany,jdbcType=VARCHAR},
+      C_NAME = #{record.cName,jdbcType=VARCHAR},
+      C_NORMAL_DUTY_TIME = #{record.cNormalDutyTime,jdbcType=VARCHAR},
+      C_NORMAL_WORK_TIME = #{record.cNormalWorkTime,jdbcType=VARCHAR},
+      C_OPERATING_COMPANY = #{record.cOperatingCompany,jdbcType=VARCHAR},
+      C_OPERATING_TIME = #{record.cOperatingTime,jdbcType=TIMESTAMP},
+      C_OPERATOR = #{record.cOperator,jdbcType=VARCHAR},
+      C_SAT_DUTY_TIME = #{record.cSatDutyTime,jdbcType=VARCHAR},
+      C_SAT_WORK_TIME = #{record.cSatWorkTime,jdbcType=VARCHAR},
+      C_STATUS = #{record.cStatus,jdbcType=VARCHAR},
+      C_SUN_DUTY_TIME = #{record.cSunDutyTime,jdbcType=VARCHAR},
+      C_SUN_WORK_TIME = #{record.cSunWorkTime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logistics.module.model.TTakeTime" >
+    update t_take_time
+    <set >
+      <if test="cCompany != null" >
+        C_COMPANY = #{cCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cName != null" >
+        C_NAME = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cNormalDutyTime != null" >
+        C_NORMAL_DUTY_TIME = #{cNormalDutyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cNormalWorkTime != null" >
+        C_NORMAL_WORK_TIME = #{cNormalWorkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cOperatingCompany != null" >
+        C_OPERATING_COMPANY = #{cOperatingCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cOperatingTime != null" >
+        C_OPERATING_TIME = #{cOperatingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cOperator != null" >
+        C_OPERATOR = #{cOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="cSatDutyTime != null" >
+        C_SAT_DUTY_TIME = #{cSatDutyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cSatWorkTime != null" >
+        C_SAT_WORK_TIME = #{cSatWorkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cStatus != null" >
+        C_STATUS = #{cStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="cSunDutyTime != null" >
+        C_SUN_DUTY_TIME = #{cSunDutyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cSunWorkTime != null" >
+        C_SUN_WORK_TIME = #{cSunWorkTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logistics.module.model.TTakeTime" >
+    update t_take_time
+    set C_COMPANY = #{cCompany,jdbcType=VARCHAR},
+      C_NAME = #{cName,jdbcType=VARCHAR},
+      C_NORMAL_DUTY_TIME = #{cNormalDutyTime,jdbcType=VARCHAR},
+      C_NORMAL_WORK_TIME = #{cNormalWorkTime,jdbcType=VARCHAR},
+      C_OPERATING_COMPANY = #{cOperatingCompany,jdbcType=VARCHAR},
+      C_OPERATING_TIME = #{cOperatingTime,jdbcType=TIMESTAMP},
+      C_OPERATOR = #{cOperator,jdbcType=VARCHAR},
+      C_SAT_DUTY_TIME = #{cSatDutyTime,jdbcType=VARCHAR},
+      C_SAT_WORK_TIME = #{cSatWorkTime,jdbcType=VARCHAR},
+      C_STATUS = #{cStatus,jdbcType=VARCHAR},
+      C_SUN_DUTY_TIME = #{cSunDutyTime,jdbcType=VARCHAR},
+      C_SUN_WORK_TIME = #{cSunWorkTime,jdbcType=VARCHAR}
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>
