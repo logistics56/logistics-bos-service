@@ -1,5 +1,9 @@
 package com.logistics.module.test.dao.impl;
-
+/**
+* @author 李振        E-mail:lizhn95@163.com
+* @version 创建时间：2018-03-10
+* 
+*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

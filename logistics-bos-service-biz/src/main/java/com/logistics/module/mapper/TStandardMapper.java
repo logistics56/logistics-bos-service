@@ -23,4 +23,8 @@ public interface TStandardMapper {
     int updateByPrimaryKeySelective(TStandard record);
 
     int updateByPrimaryKey(TStandard record);
+    
+    int queryTotal();
+    
+    List<TStandard> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
 }
