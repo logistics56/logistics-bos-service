@@ -9,4 +9,8 @@
   from t_standard
   limit #{pageNum},#{pageSize}
   </select>
+  <select id="queryMaxId" resultType="java.lang.Integer">
+  SELECT MAX(C_ID)
+  FROM t_standard
+  </select>
 </mapper>

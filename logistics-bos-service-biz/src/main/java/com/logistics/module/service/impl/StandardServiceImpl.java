@@ -50,4 +50,23 @@ public class StandardServiceImpl implements StandardService {
 		return targetList;
 	}
 
+	@Override
+	public int insertSelective(StandardDTO record) {
+		TStandard standard = new TStandard();
+		BeanUtils.copyProperties(record, standard);
+		return standardDao.insertSelective(standard);
+	}
+
+	@Override
+	public int updateByPrimaryKey(StandardDTO record) {
+		TStandard standard = new TStandard();
+		BeanUtils.copyProperties(record, standard);
+		return standardDao.updateByPrimaryKey(standard);
+	}
+
+	@Override
+	public int queryMaxId() {
+		return standardDao.queryMaxId();
+	}
+
 }

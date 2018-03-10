@@ -29,4 +29,19 @@ public class StandardDaoImpl implements StandardDao {
 		return standardMapper.queryByPage(pageNum, pageSize);
 	}
 
+	@Override
+	public int insertSelective(TStandard record) {
+		return standardMapper.insertSelective(record);
+	}
+
+	@Override
+	public int updateByPrimaryKey(TStandard record) {
+		return standardMapper.updateByPrimaryKey(record);
+	}
+
+	@Override
+	public int queryMaxId() {
+		return standardMapper.queryMaxId();
+	}
+
 }

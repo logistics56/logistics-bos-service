@@ -22,4 +22,10 @@ public interface StandardDao {
      * @return
      */
     List<TStandard> queryByPage(int pageNum, int pageSize);
+    
+    int insertSelective(TStandard record);
+    
+    int updateByPrimaryKey(TStandard record);
+    
+    int queryMaxId();
 }

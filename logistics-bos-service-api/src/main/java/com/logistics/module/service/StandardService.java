@@ -24,4 +24,10 @@ public interface StandardService {
      * @return
      */
     List<StandardDTO> queryByPage(int pageNum, int pageSize);
+    
+    int insertSelective(StandardDTO record);
+    
+    int updateByPrimaryKey(StandardDTO record);
+    
+    int queryMaxId();
 }
