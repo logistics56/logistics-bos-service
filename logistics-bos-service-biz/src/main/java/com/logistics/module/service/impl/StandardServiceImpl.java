@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.logistics.module.dao.StandardDao;
+import com.logistics.module.dto.StandardDTO;
 import com.logistics.module.model.TStandard;
-import com.logistics.module.test.dto.StandardDTO;
-import com.logistics.module.test.service.StandardService;
+import com.logistics.module.service.StandardService;
 
 /**
 *

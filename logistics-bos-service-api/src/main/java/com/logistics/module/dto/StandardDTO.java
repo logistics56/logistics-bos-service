@@ -1,4 +1,4 @@
-package com.logistics.module.test.dto;
+package com.logistics.module.dto;
 
 import java.io.Serializable;
 import java.util.Date;

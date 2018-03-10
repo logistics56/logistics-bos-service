@@ -1,8 +1,8 @@
-package com.logistics.module.test.service;
+package com.logistics.module.service;
 
 import java.util.List;
 
-import com.logistics.module.test.dto.StandardDTO;
+import com.logistics.module.dto.StandardDTO;
 
 /**
 * 
