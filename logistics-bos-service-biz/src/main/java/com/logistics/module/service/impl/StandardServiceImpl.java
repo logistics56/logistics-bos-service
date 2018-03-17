@@ -69,4 +69,22 @@ public class StandardServiceImpl implements StandardService {
 		return standardDao.queryMaxId();
 	}
 
+	@Override
+	public StandardDTO selectByPrimaryKey(Integer cId) {
+		TStandard result = standardDao.selectByPrimaryKey(cId);
+		if(result == null){
+			return null;
+		}
+		StandardDTO standardDTO = new StandardDTO();
+		BeanUtils.copyProperties(result, standardDTO);
+		return standardDTO;
+	}
+
+	@Override
+	public List<StandardDTO> queryAll() {
+		List<TStandard> results = standardDao.queryAll();
+		List<StandardDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+
 }

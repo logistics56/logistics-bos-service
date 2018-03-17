@@ -2,13 +2,15 @@ package com.logistics.module.dao;
 
 import java.util.List;
 
-import com.logistics.module.model.TStandard;
+import com.logistics.module.model.TCourier;
+
 /**
+*
 * @author 李振        E-mail:lizhn95@163.com
-* @version 创建时间：2018-03-10
+* @version 创建时间：2018年3月17日 上午8:23:45
 * 
 */
-public interface StandardDao {
+public interface CourierDao {
 	/**
 	 * 查询收派标准的数据总个数
 	 * @return
@@ -21,15 +23,15 @@ public interface StandardDao {
      * @param pageSize  每页数据量
      * @return
      */
-    List<TStandard> queryByPage(int pageNum, int pageSize);
+    List<TCourier> queryByPage(int pageNum, int pageSize);
     
-    int insertSelective(TStandard record);
+    int insertSelective(TCourier record);
     
-    int updateByPrimaryKey(TStandard record);
+    int updateByPrimaryKey(TCourier record);
     
     int queryMaxId();
     
-    TStandard selectByPrimaryKey(Integer cId);
+    TCourier queryByNum(String num);
     
-    List<TStandard> queryAll();
+    int deleteData(int id);
 }

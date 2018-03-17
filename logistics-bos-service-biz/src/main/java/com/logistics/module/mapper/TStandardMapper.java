@@ -29,5 +29,7 @@ public interface TStandardMapper {
     List<TStandard> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
     
     int queryMaxId();
+    
+    List<TStandard> queryAll();
 
 }

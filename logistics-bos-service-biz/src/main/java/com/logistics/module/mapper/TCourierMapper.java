@@ -2,6 +2,7 @@ package com.logistics.module.mapper;
 
 import com.logistics.module.model.TCourier;
 import com.logistics.module.model.TCourierExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -23,4 +24,14 @@ public interface TCourierMapper {
     int updateByPrimaryKeySelective(TCourier record);
 
     int updateByPrimaryKey(TCourier record);
+    
+    int queryTotal();
+    
+    List<TCourier> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    int queryMaxId();
+    
+    TCourier queryByNum(@Param("num") String num);
+    
+    int deleteData(@Param("id") int id);
 }

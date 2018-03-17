@@ -30,4 +30,8 @@ public interface StandardService {
     int updateByPrimaryKey(StandardDTO record);
     
     int queryMaxId();
+    
+    StandardDTO selectByPrimaryKey(Integer cId);
+    
+    public List<StandardDTO> queryAll();
 }

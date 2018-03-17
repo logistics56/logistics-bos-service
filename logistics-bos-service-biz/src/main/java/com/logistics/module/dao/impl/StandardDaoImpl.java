@@ -44,4 +44,14 @@ public class StandardDaoImpl implements StandardDao {
 		return standardMapper.queryMaxId();
 	}
 
+	@Override
+	public TStandard selectByPrimaryKey(Integer cId) {
+		return standardMapper.selectByPrimaryKey(cId);
+	}
+
+	@Override
+	public List<TStandard> queryAll() {
+		return standardMapper.queryAll();
+	}
+
 }
