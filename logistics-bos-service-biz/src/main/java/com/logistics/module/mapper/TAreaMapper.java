@@ -2,6 +2,7 @@ package com.logistics.module.mapper;
 
 import com.logistics.module.model.TArea;
 import com.logistics.module.model.TAreaExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -23,4 +24,16 @@ public interface TAreaMapper {
     int updateByPrimaryKeySelective(TArea record);
 
     int updateByPrimaryKey(TArea record);
+    
+    int queryTotal();
+    
+    List<TArea> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    List<TArea> queryMaxId();
+    
+    List<TArea> queryByKeyword(@Param("keyword") String keyword, @Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    int deleteSelect(@Param("id") String id);
+    
+    int queryTotalByKeyword(@Param("keyword") String keyword);
 }
