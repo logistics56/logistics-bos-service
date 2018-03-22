@@ -20,11 +20,11 @@
 		init-method="init" lazy-init="false">
 		<property name="services">
 			<map>
-				<entry key="http://service.lizhen.com/logistics-bos-service/testService_1.0.0" value-ref="testService" />
 				<entry key="http://service.lizhen.com/logistics-bos-service/standardService_1.0.0" value-ref="standardService" />
 				<entry key="http://service.lizhen.com/logistics-bos-service/courierService_1.0.0" value-ref="courierService" />
 				<entry key="http://service.lizhen.com/logistics-bos-service/areaService_1.0.0" value-ref="areaService" />
 				<entry key="http://service.lizhen.com/logistics-bos-service/fixedAreaService_1.0.0" value-ref="fixedAreaService" />
+				<entry key="http://service.lizhen.com/logistics-bos-service/customerService_1.0.0" value-ref="customerService" />
 			</map>
 		</property>
 	</bean>

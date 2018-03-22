@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.logistics.module.crm.mapper.TCustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.logistics.module.crm.model.TCustomer" >
+    <id column="C_ID" property="cId" jdbcType="INTEGER" />
+    <result column="C_ADDRESS" property="cAddress" jdbcType="VARCHAR" />
+    <result column="C_BRITHDAY" property="cBrithday" jdbcType="DATE" />
+    <result column="C_COMPANY" property="cCompany" jdbcType="VARCHAR" />
+    <result column="C_DEPARTMENT" property="cDepartment" jdbcType="VARCHAR" />
+    <result column="C_EMAIL" property="cEmail" jdbcType="VARCHAR" />
+    <result column="C_Fixed_AREA_ID" property="cFixedAreaId" jdbcType="VARCHAR" />
+    <result column="C_MOBILEPHONE" property="cMobilephone" jdbcType="VARCHAR" />
+    <result column="C_PASSWORD" property="cPassword" jdbcType="VARCHAR" />
+    <result column="C_POSITION" property="cPosition" jdbcType="VARCHAR" />
+    <result column="C_SEX" property="cSex" jdbcType="INTEGER" />
+    <result column="C_TELEPHONE" property="cTelephone" jdbcType="VARCHAR" />
+    <result column="C_TYPE" property="cType" jdbcType="INTEGER" />
+    <result column="C_USERNAME" property="cUsername" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_ADDRESS, C_BRITHDAY, C_COMPANY, C_DEPARTMENT, C_EMAIL, C_Fixed_AREA_ID, C_MOBILEPHONE, 
+    C_PASSWORD, C_POSITION, C_SEX, C_TELEPHONE, C_TYPE, C_USERNAME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.crm.model.TCustomerExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_customer
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.logistics.module.crm.model.TCustomer" >
+    insert into t_customer (C_ID, C_ADDRESS, C_BRITHDAY, 
+      C_COMPANY, C_DEPARTMENT, C_EMAIL, 
+      C_Fixed_AREA_ID, C_MOBILEPHONE, C_PASSWORD, 
+      C_POSITION, C_SEX, C_TELEPHONE, 
+      C_TYPE, C_USERNAME)
+    values (#{cId,jdbcType=INTEGER}, #{cAddress,jdbcType=VARCHAR}, #{cBrithday,jdbcType=DATE}, 
+      #{cCompany,jdbcType=VARCHAR}, #{cDepartment,jdbcType=VARCHAR}, #{cEmail,jdbcType=VARCHAR}, 
+      #{cFixedAreaId,jdbcType=VARCHAR}, #{cMobilephone,jdbcType=VARCHAR}, #{cPassword,jdbcType=VARCHAR}, 
+      #{cPosition,jdbcType=VARCHAR}, #{cSex,jdbcType=INTEGER}, #{cTelephone,jdbcType=VARCHAR}, 
+      #{cType,jdbcType=INTEGER}, #{cUsername,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.logistics.module.crm.model.TCustomer" >
+    insert into t_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cAddress != null" >
+        C_ADDRESS,
+      </if>
+      <if test="cBrithday != null" >
+        C_BRITHDAY,
+      </if>
+      <if test="cCompany != null" >
+        C_COMPANY,
+      </if>
+      <if test="cDepartment != null" >
+        C_DEPARTMENT,
+      </if>
+      <if test="cEmail != null" >
+        C_EMAIL,
+      </if>
+      <if test="cFixedAreaId != null" >
+        C_Fixed_AREA_ID,
+      </if>
+      <if test="cMobilephone != null" >
+        C_MOBILEPHONE,
+      </if>
+      <if test="cPassword != null" >
+        C_PASSWORD,
+      </if>
+      <if test="cPosition != null" >
+        C_POSITION,
+      </if>
+      <if test="cSex != null" >
+        C_SEX,
+      </if>
+      <if test="cTelephone != null" >
+        C_TELEPHONE,
+      </if>
+      <if test="cType != null" >
+        C_TYPE,
+      </if>
+      <if test="cUsername != null" >
+        C_USERNAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cAddress != null" >
+        #{cAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cBrithday != null" >
+        #{cBrithday,jdbcType=DATE},
+      </if>
+      <if test="cCompany != null" >
+        #{cCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cDepartment != null" >
+        #{cDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="cEmail != null" >
+        #{cEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="cFixedAreaId != null" >
+        #{cFixedAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="cMobilephone != null" >
+        #{cMobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cPassword != null" >
+        #{cPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="cPosition != null" >
+        #{cPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="cSex != null" >
+        #{cSex,jdbcType=INTEGER},
+      </if>
+      <if test="cTelephone != null" >
+        #{cTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cType != null" >
+        #{cType,jdbcType=INTEGER},
+      </if>
+      <if test="cUsername != null" >
+        #{cUsername,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.logistics.module.crm.model.TCustomerExample" resultType="java.lang.Integer" >
+    select count(*) from t_customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_customer
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cAddress != null" >
+        C_ADDRESS = #{record.cAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cBrithday != null" >
+        C_BRITHDAY = #{record.cBrithday,jdbcType=DATE},
+      </if>
+      <if test="record.cCompany != null" >
+        C_COMPANY = #{record.cCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cDepartment != null" >
+        C_DEPARTMENT = #{record.cDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cEmail != null" >
+        C_EMAIL = #{record.cEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cFixedAreaId != null" >
+        C_Fixed_AREA_ID = #{record.cFixedAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cMobilephone != null" >
+        C_MOBILEPHONE = #{record.cMobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cPassword != null" >
+        C_PASSWORD = #{record.cPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cPosition != null" >
+        C_POSITION = #{record.cPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cSex != null" >
+        C_SEX = #{record.cSex,jdbcType=INTEGER},
+      </if>
+      <if test="record.cTelephone != null" >
+        C_TELEPHONE = #{record.cTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cType != null" >
+        C_TYPE = #{record.cType,jdbcType=INTEGER},
+      </if>
+      <if test="record.cUsername != null" >
+        C_USERNAME = #{record.cUsername,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_customer
+    set C_ID = #{record.cId,jdbcType=INTEGER},
+      C_ADDRESS = #{record.cAddress,jdbcType=VARCHAR},
+      C_BRITHDAY = #{record.cBrithday,jdbcType=DATE},
+      C_COMPANY = #{record.cCompany,jdbcType=VARCHAR},
+      C_DEPARTMENT = #{record.cDepartment,jdbcType=VARCHAR},
+      C_EMAIL = #{record.cEmail,jdbcType=VARCHAR},
+      C_Fixed_AREA_ID = #{record.cFixedAreaId,jdbcType=VARCHAR},
+      C_MOBILEPHONE = #{record.cMobilephone,jdbcType=VARCHAR},
+      C_PASSWORD = #{record.cPassword,jdbcType=VARCHAR},
+      C_POSITION = #{record.cPosition,jdbcType=VARCHAR},
+      C_SEX = #{record.cSex,jdbcType=INTEGER},
+      C_TELEPHONE = #{record.cTelephone,jdbcType=VARCHAR},
+      C_TYPE = #{record.cType,jdbcType=INTEGER},
+      C_USERNAME = #{record.cUsername,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logistics.module.crm.model.TCustomer" >
+    update t_customer
+    <set >
+      <if test="cAddress != null" >
+        C_ADDRESS = #{cAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cBrithday != null" >
+        C_BRITHDAY = #{cBrithday,jdbcType=DATE},
+      </if>
+      <if test="cCompany != null" >
+        C_COMPANY = #{cCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cDepartment != null" >
+        C_DEPARTMENT = #{cDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="cEmail != null" >
+        C_EMAIL = #{cEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="cFixedAreaId != null" >
+        C_Fixed_AREA_ID = #{cFixedAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="cMobilephone != null" >
+        C_MOBILEPHONE = #{cMobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cPassword != null" >
+        C_PASSWORD = #{cPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="cPosition != null" >
+        C_POSITION = #{cPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="cSex != null" >
+        C_SEX = #{cSex,jdbcType=INTEGER},
+      </if>
+      <if test="cTelephone != null" >
+        C_TELEPHONE = #{cTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cType != null" >
+        C_TYPE = #{cType,jdbcType=INTEGER},
+      </if>
+      <if test="cUsername != null" >
+        C_USERNAME = #{cUsername,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logistics.module.crm.model.TCustomer" >
+    update t_customer
+    set C_ADDRESS = #{cAddress,jdbcType=VARCHAR},
+      C_BRITHDAY = #{cBrithday,jdbcType=DATE},
+      C_COMPANY = #{cCompany,jdbcType=VARCHAR},
+      C_DEPARTMENT = #{cDepartment,jdbcType=VARCHAR},
+      C_EMAIL = #{cEmail,jdbcType=VARCHAR},
+      C_Fixed_AREA_ID = #{cFixedAreaId,jdbcType=VARCHAR},
+      C_MOBILEPHONE = #{cMobilephone,jdbcType=VARCHAR},
+      C_PASSWORD = #{cPassword,jdbcType=VARCHAR},
+      C_POSITION = #{cPosition,jdbcType=VARCHAR},
+      C_SEX = #{cSex,jdbcType=INTEGER},
+      C_TELEPHONE = #{cTelephone,jdbcType=VARCHAR},
+      C_TYPE = #{cType,jdbcType=INTEGER},
+      C_USERNAME = #{cUsername,jdbcType=VARCHAR}
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>

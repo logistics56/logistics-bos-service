@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.logistics.module.bos.mapper.TPromotionMapper" >
+  <resultMap id="BaseResultMap" type="com.logistics.module.bos.model.TPromotion" >
+    <id column="C_ID" property="cId" jdbcType="INTEGER" />
+    <result column="C_ACTIVE_SCOPE" property="cActiveScope" jdbcType="VARCHAR" />
+    <result column="C_DESCRIPTION" property="cDescription" jdbcType="VARCHAR" />
+    <result column="C_END_DATE" property="cEndDate" jdbcType="TIMESTAMP" />
+    <result column="C_START_DATE" property="cStartDate" jdbcType="TIMESTAMP" />
+    <result column="C_STATUS" property="cStatus" jdbcType="VARCHAR" />
+    <result column="C_TITLE" property="cTitle" jdbcType="VARCHAR" />
+    <result column="C_TITLE_IMG" property="cTitleImg" jdbcType="VARCHAR" />
+    <result column="C_UPDATE_TIME" property="cUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="C_UPDATE_UNIT" property="cUpdateUnit" jdbcType="VARCHAR" />
+    <result column="C_UPDATE_USER" property="cUpdateUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_ACTIVE_SCOPE, C_DESCRIPTION, C_END_DATE, C_START_DATE, C_STATUS, C_TITLE, 
+    C_TITLE_IMG, C_UPDATE_TIME, C_UPDATE_UNIT, C_UPDATE_USER
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.bos.model.TPromotionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_promotion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_promotion
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.logistics.module.bos.model.TPromotion" >
+    insert into t_promotion (C_ID, C_ACTIVE_SCOPE, C_DESCRIPTION, 
+      C_END_DATE, C_START_DATE, C_STATUS, 
+      C_TITLE, C_TITLE_IMG, C_UPDATE_TIME, 
+      C_UPDATE_UNIT, C_UPDATE_USER)
+    values (#{cId,jdbcType=INTEGER}, #{cActiveScope,jdbcType=VARCHAR}, #{cDescription,jdbcType=VARCHAR}, 
+      #{cEndDate,jdbcType=TIMESTAMP}, #{cStartDate,jdbcType=TIMESTAMP}, #{cStatus,jdbcType=VARCHAR}, 
+      #{cTitle,jdbcType=VARCHAR}, #{cTitleImg,jdbcType=VARCHAR}, #{cUpdateTime,jdbcType=TIMESTAMP}, 
+      #{cUpdateUnit,jdbcType=VARCHAR}, #{cUpdateUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.logistics.module.bos.model.TPromotion" >
+    insert into t_promotion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cActiveScope != null" >
+        C_ACTIVE_SCOPE,
+      </if>
+      <if test="cDescription != null" >
+        C_DESCRIPTION,
+      </if>
+      <if test="cEndDate != null" >
+        C_END_DATE,
+      </if>
+      <if test="cStartDate != null" >
+        C_START_DATE,
+      </if>
+      <if test="cStatus != null" >
+        C_STATUS,
+      </if>
+      <if test="cTitle != null" >
+        C_TITLE,
+      </if>
+      <if test="cTitleImg != null" >
+        C_TITLE_IMG,
+      </if>
+      <if test="cUpdateTime != null" >
+        C_UPDATE_TIME,
+      </if>
+      <if test="cUpdateUnit != null" >
+        C_UPDATE_UNIT,
+      </if>
+      <if test="cUpdateUser != null" >
+        C_UPDATE_USER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cActiveScope != null" >
+        #{cActiveScope,jdbcType=VARCHAR},
+      </if>
+      <if test="cDescription != null" >
+        #{cDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="cEndDate != null" >
+        #{cEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cStartDate != null" >
+        #{cStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cStatus != null" >
+        #{cStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="cTitle != null" >
+        #{cTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="cTitleImg != null" >
+        #{cTitleImg,jdbcType=VARCHAR},
+      </if>
+      <if test="cUpdateTime != null" >
+        #{cUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cUpdateUnit != null" >
+        #{cUpdateUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="cUpdateUser != null" >
+        #{cUpdateUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.logistics.module.bos.model.TPromotionExample" resultType="java.lang.Integer" >
+    select count(*) from t_promotion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_promotion
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cActiveScope != null" >
+        C_ACTIVE_SCOPE = #{record.cActiveScope,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cDescription != null" >
+        C_DESCRIPTION = #{record.cDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cEndDate != null" >
+        C_END_DATE = #{record.cEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cStartDate != null" >
+        C_START_DATE = #{record.cStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cStatus != null" >
+        C_STATUS = #{record.cStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cTitle != null" >
+        C_TITLE = #{record.cTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cTitleImg != null" >
+        C_TITLE_IMG = #{record.cTitleImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cUpdateTime != null" >
+        C_UPDATE_TIME = #{record.cUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cUpdateUnit != null" >
+        C_UPDATE_UNIT = #{record.cUpdateUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cUpdateUser != null" >
+        C_UPDATE_USER = #{record.cUpdateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_promotion
+    set C_ID = #{record.cId,jdbcType=INTEGER},
+      C_ACTIVE_SCOPE = #{record.cActiveScope,jdbcType=VARCHAR},
+      C_DESCRIPTION = #{record.cDescription,jdbcType=VARCHAR},
+      C_END_DATE = #{record.cEndDate,jdbcType=TIMESTAMP},
+      C_START_DATE = #{record.cStartDate,jdbcType=TIMESTAMP},
+      C_STATUS = #{record.cStatus,jdbcType=VARCHAR},
+      C_TITLE = #{record.cTitle,jdbcType=VARCHAR},
+      C_TITLE_IMG = #{record.cTitleImg,jdbcType=VARCHAR},
+      C_UPDATE_TIME = #{record.cUpdateTime,jdbcType=TIMESTAMP},
+      C_UPDATE_UNIT = #{record.cUpdateUnit,jdbcType=VARCHAR},
+      C_UPDATE_USER = #{record.cUpdateUser,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logistics.module.bos.model.TPromotion" >
+    update t_promotion
+    <set >
+      <if test="cActiveScope != null" >
+        C_ACTIVE_SCOPE = #{cActiveScope,jdbcType=VARCHAR},
+      </if>
+      <if test="cDescription != null" >
+        C_DESCRIPTION = #{cDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="cEndDate != null" >
+        C_END_DATE = #{cEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cStartDate != null" >
+        C_START_DATE = #{cStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cStatus != null" >
+        C_STATUS = #{cStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="cTitle != null" >
+        C_TITLE = #{cTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="cTitleImg != null" >
+        C_TITLE_IMG = #{cTitleImg,jdbcType=VARCHAR},
+      </if>
+      <if test="cUpdateTime != null" >
+        C_UPDATE_TIME = #{cUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cUpdateUnit != null" >
+        C_UPDATE_UNIT = #{cUpdateUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="cUpdateUser != null" >
+        C_UPDATE_USER = #{cUpdateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logistics.module.bos.model.TPromotion" >
+    update t_promotion
+    set C_ACTIVE_SCOPE = #{cActiveScope,jdbcType=VARCHAR},
+      C_DESCRIPTION = #{cDescription,jdbcType=VARCHAR},
+      C_END_DATE = #{cEndDate,jdbcType=TIMESTAMP},
+      C_START_DATE = #{cStartDate,jdbcType=TIMESTAMP},
+      C_STATUS = #{cStatus,jdbcType=VARCHAR},
+      C_TITLE = #{cTitle,jdbcType=VARCHAR},
+      C_TITLE_IMG = #{cTitleImg,jdbcType=VARCHAR},
+      C_UPDATE_TIME = #{cUpdateTime,jdbcType=TIMESTAMP},
+      C_UPDATE_UNIT = #{cUpdateUnit,jdbcType=VARCHAR},
+      C_UPDATE_USER = #{cUpdateUser,jdbcType=VARCHAR}
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.logistics.module.bos.mapper.TSubAreaMapper" >
+  <resultMap id="BaseResultMap" type="com.logistics.module.bos.model.TSubArea" >
+    <id column="C_ID" property="cId" jdbcType="VARCHAR" />
+    <result column="C_ASSIST_KEY_WORDS" property="cAssistKeyWords" jdbcType="VARCHAR" />
+    <result column="C_ENDNUM" property="cEndnum" jdbcType="VARCHAR" />
+    <result column="C_KEY_WORDS" property="cKeyWords" jdbcType="VARCHAR" />
+    <result column="C_SINGLE" property="cSingle" jdbcType="CHAR" />
+    <result column="C_START_NUM" property="cStartNum" jdbcType="VARCHAR" />
+    <result column="C_AREA_ID" property="cAreaId" jdbcType="VARCHAR" />
+    <result column="C_FIXEDAREA_ID" property="cFixedareaId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_ASSIST_KEY_WORDS, C_ENDNUM, C_KEY_WORDS, C_SINGLE, C_START_NUM, C_AREA_ID, 
+    C_FIXEDAREA_ID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.bos.model.TSubAreaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_sub_area
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sub_area
+    where C_ID = #{cId,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.logistics.module.bos.model.TSubArea" >
+    insert into t_sub_area (C_ID, C_ASSIST_KEY_WORDS, C_ENDNUM, 
+      C_KEY_WORDS, C_SINGLE, C_START_NUM, 
+      C_AREA_ID, C_FIXEDAREA_ID)
+    values (#{cId,jdbcType=VARCHAR}, #{cAssistKeyWords,jdbcType=VARCHAR}, #{cEndnum,jdbcType=VARCHAR}, 
+      #{cKeyWords,jdbcType=VARCHAR}, #{cSingle,jdbcType=CHAR}, #{cStartNum,jdbcType=VARCHAR}, 
+      #{cAreaId,jdbcType=VARCHAR}, #{cFixedareaId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.logistics.module.bos.model.TSubArea" >
+    insert into t_sub_area
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cAssistKeyWords != null" >
+        C_ASSIST_KEY_WORDS,
+      </if>
+      <if test="cEndnum != null" >
+        C_ENDNUM,
+      </if>
+      <if test="cKeyWords != null" >
+        C_KEY_WORDS,
+      </if>
+      <if test="cSingle != null" >
+        C_SINGLE,
+      </if>
+      <if test="cStartNum != null" >
+        C_START_NUM,
+      </if>
+      <if test="cAreaId != null" >
+        C_AREA_ID,
+      </if>
+      <if test="cFixedareaId != null" >
+        C_FIXEDAREA_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=VARCHAR},
+      </if>
+      <if test="cAssistKeyWords != null" >
+        #{cAssistKeyWords,jdbcType=VARCHAR},
+      </if>
+      <if test="cEndnum != null" >
+        #{cEndnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cKeyWords != null" >
+        #{cKeyWords,jdbcType=VARCHAR},
+      </if>
+      <if test="cSingle != null" >
+        #{cSingle,jdbcType=CHAR},
+      </if>
+      <if test="cStartNum != null" >
+        #{cStartNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cAreaId != null" >
+        #{cAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="cFixedareaId != null" >
+        #{cFixedareaId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.logistics.module.bos.model.TSubAreaExample" resultType="java.lang.Integer" >
+    select count(*) from t_sub_area
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_sub_area
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cAssistKeyWords != null" >
+        C_ASSIST_KEY_WORDS = #{record.cAssistKeyWords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cEndnum != null" >
+        C_ENDNUM = #{record.cEndnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cKeyWords != null" >
+        C_KEY_WORDS = #{record.cKeyWords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cSingle != null" >
+        C_SINGLE = #{record.cSingle,jdbcType=CHAR},
+      </if>
+      <if test="record.cStartNum != null" >
+        C_START_NUM = #{record.cStartNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cAreaId != null" >
+        C_AREA_ID = #{record.cAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cFixedareaId != null" >
+        C_FIXEDAREA_ID = #{record.cFixedareaId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_sub_area
+    set C_ID = #{record.cId,jdbcType=VARCHAR},
+      C_ASSIST_KEY_WORDS = #{record.cAssistKeyWords,jdbcType=VARCHAR},
+      C_ENDNUM = #{record.cEndnum,jdbcType=VARCHAR},
+      C_KEY_WORDS = #{record.cKeyWords,jdbcType=VARCHAR},
+      C_SINGLE = #{record.cSingle,jdbcType=CHAR},
+      C_START_NUM = #{record.cStartNum,jdbcType=VARCHAR},
+      C_AREA_ID = #{record.cAreaId,jdbcType=VARCHAR},
+      C_FIXEDAREA_ID = #{record.cFixedareaId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logistics.module.bos.model.TSubArea" >
+    update t_sub_area
+    <set >
+      <if test="cAssistKeyWords != null" >
+        C_ASSIST_KEY_WORDS = #{cAssistKeyWords,jdbcType=VARCHAR},
+      </if>
+      <if test="cEndnum != null" >
+        C_ENDNUM = #{cEndnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cKeyWords != null" >
+        C_KEY_WORDS = #{cKeyWords,jdbcType=VARCHAR},
+      </if>
+      <if test="cSingle != null" >
+        C_SINGLE = #{cSingle,jdbcType=CHAR},
+      </if>
+      <if test="cStartNum != null" >
+        C_START_NUM = #{cStartNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cAreaId != null" >
+        C_AREA_ID = #{cAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="cFixedareaId != null" >
+        C_FIXEDAREA_ID = #{cFixedareaId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logistics.module.bos.model.TSubArea" >
+    update t_sub_area
+    set C_ASSIST_KEY_WORDS = #{cAssistKeyWords,jdbcType=VARCHAR},
+      C_ENDNUM = #{cEndnum,jdbcType=VARCHAR},
+      C_KEY_WORDS = #{cKeyWords,jdbcType=VARCHAR},
+      C_SINGLE = #{cSingle,jdbcType=CHAR},
+      C_START_NUM = #{cStartNum,jdbcType=VARCHAR},
+      C_AREA_ID = #{cAreaId,jdbcType=VARCHAR},
+      C_FIXEDAREA_ID = #{cFixedareaId,jdbcType=VARCHAR}
+    where C_ID = #{cId,jdbcType=VARCHAR}
+  </update>
+</mapper>

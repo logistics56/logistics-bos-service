@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.logistics.module.bos.mapper.TStandardMapper" >
+  <resultMap id="BaseResultMap" type="com.logistics.module.bos.model.TStandard" >
+    <id column="C_ID" property="cId" jdbcType="INTEGER" />
+    <result column="C_MAX_LENGTH" property="cMaxLength" jdbcType="INTEGER" />
+    <result column="C_MAX_WEIGHT" property="cMaxWeight" jdbcType="INTEGER" />
+    <result column="C_MIN_LENGTH" property="cMinLength" jdbcType="INTEGER" />
+    <result column="C_MIN_WEIGHT" property="cMinWeight" jdbcType="INTEGER" />
+    <result column="C_NAME" property="cName" jdbcType="VARCHAR" />
+    <result column="C_OPERATING_COMPANY" property="cOperatingCompany" jdbcType="VARCHAR" />
+    <result column="C_OPERATING_TIME" property="cOperatingTime" jdbcType="TIMESTAMP" />
+    <result column="C_OPERATOR" property="cOperator" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_MAX_LENGTH, C_MAX_WEIGHT, C_MIN_LENGTH, C_MIN_WEIGHT, C_NAME, C_OPERATING_COMPANY, 
+    C_OPERATING_TIME, C_OPERATOR
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.bos.model.TStandardExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_standard
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_standard
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.logistics.module.bos.model.TStandard" >
+    insert into t_standard (C_ID, C_MAX_LENGTH, C_MAX_WEIGHT, 
+      C_MIN_LENGTH, C_MIN_WEIGHT, C_NAME, 
+      C_OPERATING_COMPANY, C_OPERATING_TIME, C_OPERATOR
+      )
+    values (#{cId,jdbcType=INTEGER}, #{cMaxLength,jdbcType=INTEGER}, #{cMaxWeight,jdbcType=INTEGER}, 
+      #{cMinLength,jdbcType=INTEGER}, #{cMinWeight,jdbcType=INTEGER}, #{cName,jdbcType=VARCHAR}, 
+      #{cOperatingCompany,jdbcType=VARCHAR}, #{cOperatingTime,jdbcType=TIMESTAMP}, #{cOperator,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.logistics.module.bos.model.TStandard" >
+    insert into t_standard
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cMaxLength != null" >
+        C_MAX_LENGTH,
+      </if>
+      <if test="cMaxWeight != null" >
+        C_MAX_WEIGHT,
+      </if>
+      <if test="cMinLength != null" >
+        C_MIN_LENGTH,
+      </if>
+      <if test="cMinWeight != null" >
+        C_MIN_WEIGHT,
+      </if>
+      <if test="cName != null" >
+        C_NAME,
+      </if>
+      <if test="cOperatingCompany != null" >
+        C_OPERATING_COMPANY,
+      </if>
+      <if test="cOperatingTime != null" >
+        C_OPERATING_TIME,
+      </if>
+      <if test="cOperator != null" >
+        C_OPERATOR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cMaxLength != null" >
+        #{cMaxLength,jdbcType=INTEGER},
+      </if>
+      <if test="cMaxWeight != null" >
+        #{cMaxWeight,jdbcType=INTEGER},
+      </if>
+      <if test="cMinLength != null" >
+        #{cMinLength,jdbcType=INTEGER},
+      </if>
+      <if test="cMinWeight != null" >
+        #{cMinWeight,jdbcType=INTEGER},
+      </if>
+      <if test="cName != null" >
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cOperatingCompany != null" >
+        #{cOperatingCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cOperatingTime != null" >
+        #{cOperatingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cOperator != null" >
+        #{cOperator,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.logistics.module.bos.model.TStandardExample" resultType="java.lang.Integer" >
+    select count(*) from t_standard
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_standard
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cMaxLength != null" >
+        C_MAX_LENGTH = #{record.cMaxLength,jdbcType=INTEGER},
+      </if>
+      <if test="record.cMaxWeight != null" >
+        C_MAX_WEIGHT = #{record.cMaxWeight,jdbcType=INTEGER},
+      </if>
+      <if test="record.cMinLength != null" >
+        C_MIN_LENGTH = #{record.cMinLength,jdbcType=INTEGER},
+      </if>
+      <if test="record.cMinWeight != null" >
+        C_MIN_WEIGHT = #{record.cMinWeight,jdbcType=INTEGER},
+      </if>
+      <if test="record.cName != null" >
+        C_NAME = #{record.cName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cOperatingCompany != null" >
+        C_OPERATING_COMPANY = #{record.cOperatingCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cOperatingTime != null" >
+        C_OPERATING_TIME = #{record.cOperatingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cOperator != null" >
+        C_OPERATOR = #{record.cOperator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_standard
+    set C_ID = #{record.cId,jdbcType=INTEGER},
+      C_MAX_LENGTH = #{record.cMaxLength,jdbcType=INTEGER},
+      C_MAX_WEIGHT = #{record.cMaxWeight,jdbcType=INTEGER},
+      C_MIN_LENGTH = #{record.cMinLength,jdbcType=INTEGER},
+      C_MIN_WEIGHT = #{record.cMinWeight,jdbcType=INTEGER},
+      C_NAME = #{record.cName,jdbcType=VARCHAR},
+      C_OPERATING_COMPANY = #{record.cOperatingCompany,jdbcType=VARCHAR},
+      C_OPERATING_TIME = #{record.cOperatingTime,jdbcType=TIMESTAMP},
+      C_OPERATOR = #{record.cOperator,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logistics.module.bos.model.TStandard" >
+    update t_standard
+    <set >
+      <if test="cMaxLength != null" >
+        C_MAX_LENGTH = #{cMaxLength,jdbcType=INTEGER},
+      </if>
+      <if test="cMaxWeight != null" >
+        C_MAX_WEIGHT = #{cMaxWeight,jdbcType=INTEGER},
+      </if>
+      <if test="cMinLength != null" >
+        C_MIN_LENGTH = #{cMinLength,jdbcType=INTEGER},
+      </if>
+      <if test="cMinWeight != null" >
+        C_MIN_WEIGHT = #{cMinWeight,jdbcType=INTEGER},
+      </if>
+      <if test="cName != null" >
+        C_NAME = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cOperatingCompany != null" >
+        C_OPERATING_COMPANY = #{cOperatingCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cOperatingTime != null" >
+        C_OPERATING_TIME = #{cOperatingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cOperator != null" >
+        C_OPERATOR = #{cOperator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logistics.module.bos.model.TStandard" >
+    update t_standard
+    set C_MAX_LENGTH = #{cMaxLength,jdbcType=INTEGER},
+      C_MAX_WEIGHT = #{cMaxWeight,jdbcType=INTEGER},
+      C_MIN_LENGTH = #{cMinLength,jdbcType=INTEGER},
+      C_MIN_WEIGHT = #{cMinWeight,jdbcType=INTEGER},
+      C_NAME = #{cName,jdbcType=VARCHAR},
+      C_OPERATING_COMPANY = #{cOperatingCompany,jdbcType=VARCHAR},
+      C_OPERATING_TIME = #{cOperatingTime,jdbcType=TIMESTAMP},
+      C_OPERATOR = #{cOperator,jdbcType=VARCHAR}
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>

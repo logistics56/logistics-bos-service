@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.logistics.module.bos.mapper.TVehicleMapper" >
+  <resultMap id="BaseResultMap" type="com.logistics.module.bos.model.TVehicle" >
+    <id column="C_ID" property="cId" jdbcType="INTEGER" />
+    <result column="C_DRIVER" property="cDriver" jdbcType="VARCHAR" />
+    <result column="C_REMARK" property="cRemark" jdbcType="VARCHAR" />
+    <result column="C_ROUTE_NAME" property="cRouteName" jdbcType="VARCHAR" />
+    <result column="C_ROUTE_TYPE" property="cRouteType" jdbcType="VARCHAR" />
+    <result column="C_SNIPPER" property="cSnipper" jdbcType="VARCHAR" />
+    <result column="C_TELEPHONE" property="cTelephone" jdbcType="VARCHAR" />
+    <result column="C_TON" property="cTon" jdbcType="INTEGER" />
+    <result column="C_VEHICLE_NUM" property="cVehicleNum" jdbcType="VARCHAR" />
+    <result column="C_VEHICLE_TYPE" property="cVehicleType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_DRIVER, C_REMARK, C_ROUTE_NAME, C_ROUTE_TYPE, C_SNIPPER, C_TELEPHONE, C_TON, 
+    C_VEHICLE_NUM, C_VEHICLE_TYPE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.bos.model.TVehicleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_vehicle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_vehicle
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.logistics.module.bos.model.TVehicle" >
+    insert into t_vehicle (C_ID, C_DRIVER, C_REMARK, 
+      C_ROUTE_NAME, C_ROUTE_TYPE, C_SNIPPER, 
+      C_TELEPHONE, C_TON, C_VEHICLE_NUM, 
+      C_VEHICLE_TYPE)
+    values (#{cId,jdbcType=INTEGER}, #{cDriver,jdbcType=VARCHAR}, #{cRemark,jdbcType=VARCHAR}, 
+      #{cRouteName,jdbcType=VARCHAR}, #{cRouteType,jdbcType=VARCHAR}, #{cSnipper,jdbcType=VARCHAR}, 
+      #{cTelephone,jdbcType=VARCHAR}, #{cTon,jdbcType=INTEGER}, #{cVehicleNum,jdbcType=VARCHAR}, 
+      #{cVehicleType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.logistics.module.bos.model.TVehicle" >
+    insert into t_vehicle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cDriver != null" >
+        C_DRIVER,
+      </if>
+      <if test="cRemark != null" >
+        C_REMARK,
+      </if>
+      <if test="cRouteName != null" >
+        C_ROUTE_NAME,
+      </if>
+      <if test="cRouteType != null" >
+        C_ROUTE_TYPE,
+      </if>
+      <if test="cSnipper != null" >
+        C_SNIPPER,
+      </if>
+      <if test="cTelephone != null" >
+        C_TELEPHONE,
+      </if>
+      <if test="cTon != null" >
+        C_TON,
+      </if>
+      <if test="cVehicleNum != null" >
+        C_VEHICLE_NUM,
+      </if>
+      <if test="cVehicleType != null" >
+        C_VEHICLE_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cDriver != null" >
+        #{cDriver,jdbcType=VARCHAR},
+      </if>
+      <if test="cRemark != null" >
+        #{cRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="cRouteName != null" >
+        #{cRouteName,jdbcType=VARCHAR},
+      </if>
+      <if test="cRouteType != null" >
+        #{cRouteType,jdbcType=VARCHAR},
+      </if>
+      <if test="cSnipper != null" >
+        #{cSnipper,jdbcType=VARCHAR},
+      </if>
+      <if test="cTelephone != null" >
+        #{cTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cTon != null" >
+        #{cTon,jdbcType=INTEGER},
+      </if>
+      <if test="cVehicleNum != null" >
+        #{cVehicleNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cVehicleType != null" >
+        #{cVehicleType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.logistics.module.bos.model.TVehicleExample" resultType="java.lang.Integer" >
+    select count(*) from t_vehicle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_vehicle
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cDriver != null" >
+        C_DRIVER = #{record.cDriver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cRemark != null" >
+        C_REMARK = #{record.cRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cRouteName != null" >
+        C_ROUTE_NAME = #{record.cRouteName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cRouteType != null" >
+        C_ROUTE_TYPE = #{record.cRouteType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cSnipper != null" >
+        C_SNIPPER = #{record.cSnipper,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cTelephone != null" >
+        C_TELEPHONE = #{record.cTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cTon != null" >
+        C_TON = #{record.cTon,jdbcType=INTEGER},
+      </if>
+      <if test="record.cVehicleNum != null" >
+        C_VEHICLE_NUM = #{record.cVehicleNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cVehicleType != null" >
+        C_VEHICLE_TYPE = #{record.cVehicleType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_vehicle
+    set C_ID = #{record.cId,jdbcType=INTEGER},
+      C_DRIVER = #{record.cDriver,jdbcType=VARCHAR},
+      C_REMARK = #{record.cRemark,jdbcType=VARCHAR},
+      C_ROUTE_NAME = #{record.cRouteName,jdbcType=VARCHAR},
+      C_ROUTE_TYPE = #{record.cRouteType,jdbcType=VARCHAR},
+      C_SNIPPER = #{record.cSnipper,jdbcType=VARCHAR},
+      C_TELEPHONE = #{record.cTelephone,jdbcType=VARCHAR},
+      C_TON = #{record.cTon,jdbcType=INTEGER},
+      C_VEHICLE_NUM = #{record.cVehicleNum,jdbcType=VARCHAR},
+      C_VEHICLE_TYPE = #{record.cVehicleType,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logistics.module.bos.model.TVehicle" >
+    update t_vehicle
+    <set >
+      <if test="cDriver != null" >
+        C_DRIVER = #{cDriver,jdbcType=VARCHAR},
+      </if>
+      <if test="cRemark != null" >
+        C_REMARK = #{cRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="cRouteName != null" >
+        C_ROUTE_NAME = #{cRouteName,jdbcType=VARCHAR},
+      </if>
+      <if test="cRouteType != null" >
+        C_ROUTE_TYPE = #{cRouteType,jdbcType=VARCHAR},
+      </if>
+      <if test="cSnipper != null" >
+        C_SNIPPER = #{cSnipper,jdbcType=VARCHAR},
+      </if>
+      <if test="cTelephone != null" >
+        C_TELEPHONE = #{cTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cTon != null" >
+        C_TON = #{cTon,jdbcType=INTEGER},
+      </if>
+      <if test="cVehicleNum != null" >
+        C_VEHICLE_NUM = #{cVehicleNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cVehicleType != null" >
+        C_VEHICLE_TYPE = #{cVehicleType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logistics.module.bos.model.TVehicle" >
+    update t_vehicle
+    set C_DRIVER = #{cDriver,jdbcType=VARCHAR},
+      C_REMARK = #{cRemark,jdbcType=VARCHAR},
+      C_ROUTE_NAME = #{cRouteName,jdbcType=VARCHAR},
+      C_ROUTE_TYPE = #{cRouteType,jdbcType=VARCHAR},
+      C_SNIPPER = #{cSnipper,jdbcType=VARCHAR},
+      C_TELEPHONE = #{cTelephone,jdbcType=VARCHAR},
+      C_TON = #{cTon,jdbcType=INTEGER},
+      C_VEHICLE_NUM = #{cVehicleNum,jdbcType=VARCHAR},
+      C_VEHICLE_TYPE = #{cVehicleType,jdbcType=VARCHAR}
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>
