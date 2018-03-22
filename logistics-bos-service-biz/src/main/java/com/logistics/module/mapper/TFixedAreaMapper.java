@@ -23,4 +23,16 @@ public interface TFixedAreaMapper {
     int updateByPrimaryKeySelective(TFixedArea record);
 
     int updateByPrimaryKey(TFixedArea record);
+    
+    int queryTotal();
+    
+    List<TFixedArea> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    List<TFixedArea> queryMaxId();
+    
+    List<TFixedArea> queryByKeyword(@Param("keyword") String keyword, @Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    int deleteSelect(@Param("id") String id);
+    
+    int queryTotalByKeyword(@Param("keyword") String keyword);
 }
