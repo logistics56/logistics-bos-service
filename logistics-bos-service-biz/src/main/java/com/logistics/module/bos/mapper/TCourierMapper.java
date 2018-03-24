@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TCourierMapper {
-    int countByExample(TCourierExample example);
+	int countByExample(TCourierExample example);
 
     int insert(TCourier record);
 
@@ -33,4 +33,8 @@ public interface TCourierMapper {
     TCourier queryByNum(@Param("num") String num);
     
     int deleteData(@Param("id") int id);
+    
+    List<TCourier> queryByFixedAreaId(@Param("fixedAreaId") String fixedAreaId);
+    
+    int updateFixedAreaId(@Param("fixesAreaId") String fixesAreaId,@Param("id") int id, @Param("takeTimeId") int takeTimeId);
 }

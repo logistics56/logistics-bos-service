@@ -56,5 +56,15 @@ public class CourierDaoImpl implements CourierDao {
 	public int deleteData(int id) {
 		return tCourierMapper.deleteData(id);
 	}
+	
+	@Override
+	public int updateFixedAreaId(String fixesAreaId, int id, int takeTimeId) {
+		return tCourierMapper.updateFixedAreaId(fixesAreaId, id, takeTimeId);
+	}
+
+	@Override
+	public List<TCourier> queryByFixedAreaId(String fixedAreaId) {
+		return tCourierMapper.queryByFixedAreaId(fixedAreaId);
+	}
 
 }

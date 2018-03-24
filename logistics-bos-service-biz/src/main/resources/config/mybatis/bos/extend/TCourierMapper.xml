@@ -23,4 +23,14 @@
   from t_courier
   where C_COURIER_NUM = #{num}
   </select>
+ <select id="queryByFixedAreaId" resultMap="BaseResultMap" parameterType="map">
+ SELECT <include refid="Base_Column_List" />
+ FROM t_courier 
+ WHERE C_Fixed_AREA_ID IN (#{fixedAreaId})
+ </select>
+ <update id="updateFixedAreaId" parameterType="map">
+ update t_courier
+ set C_Fixed_AREA_ID = #{fixesAreaId}, C_TAKETIME_ID = #{takeTimeId}
+ where C_ID = #{id}
+ </update>
 </mapper>

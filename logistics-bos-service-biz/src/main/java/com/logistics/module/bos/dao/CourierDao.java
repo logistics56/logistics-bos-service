@@ -34,4 +34,8 @@ public interface CourierDao {
     TCourier queryByNum(String num);
     
     int deleteData(int id);
+    
+    List<TCourier> queryByFixedAreaId(String fixedAreaId);
+    
+    int updateFixedAreaId(String fixesAreaId, int id, int takeTimeId);
 }

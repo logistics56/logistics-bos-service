@@ -29,6 +29,8 @@ public class TCourier implements Serializable {
 
     private Integer cTaketimeId;
 
+    private String cFixedAreaId;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getcId() {
@@ -135,6 +137,14 @@ public class TCourier implements Serializable {
         this.cTaketimeId = cTaketimeId;
     }
 
+    public String getcFixedAreaId() {
+        return cFixedAreaId;
+    }
+
+    public void setcFixedAreaId(String cFixedAreaId) {
+        this.cFixedAreaId = cFixedAreaId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -154,6 +164,7 @@ public class TCourier implements Serializable {
         sb.append(", cVehicleType=").append(cVehicleType);
         sb.append(", cStandardId=").append(cStandardId);
         sb.append(", cTaketimeId=").append(cTaketimeId);
+        sb.append(", cFixedAreaId=").append(cFixedAreaId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

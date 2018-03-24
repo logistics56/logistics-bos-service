@@ -15,6 +15,7 @@
     <result column="C_VEHICLE_TYPE" property="cVehicleType" jdbcType="VARCHAR" />
     <result column="C_STANDARD_ID" property="cStandardId" jdbcType="INTEGER" />
     <result column="C_TAKETIME_ID" property="cTaketimeId" jdbcType="INTEGER" />
+    <result column="C_Fixed_AREA_ID" property="cFixedAreaId" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -76,7 +77,7 @@
   </sql>
   <sql id="Base_Column_List" >
     C_ID, C_CHECK_PWD, C_COMPANY, C_COURIER_NUM, C_DELTAG, C_NAME, C_PDA, C_TELEPHONE, 
-    C_TYPE, C_VEHICLE_NUM, C_VEHICLE_TYPE, C_STANDARD_ID, C_TAKETIME_ID
+    C_TYPE, C_VEHICLE_NUM, C_VEHICLE_TYPE, C_STANDARD_ID, C_TAKETIME_ID, C_Fixed_AREA_ID
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.bos.model.TCourierExample" >
     select
@@ -103,12 +104,12 @@
       C_COURIER_NUM, C_DELTAG, C_NAME, 
       C_PDA, C_TELEPHONE, C_TYPE, 
       C_VEHICLE_NUM, C_VEHICLE_TYPE, C_STANDARD_ID, 
-      C_TAKETIME_ID)
+      C_TAKETIME_ID, C_Fixed_AREA_ID)
     values (#{cId,jdbcType=INTEGER}, #{cCheckPwd,jdbcType=VARCHAR}, #{cCompany,jdbcType=VARCHAR}, 
       #{cCourierNum,jdbcType=VARCHAR}, #{cDeltag,jdbcType=CHAR}, #{cName,jdbcType=VARCHAR}, 
       #{cPda,jdbcType=VARCHAR}, #{cTelephone,jdbcType=VARCHAR}, #{cType,jdbcType=VARCHAR}, 
       #{cVehicleNum,jdbcType=VARCHAR}, #{cVehicleType,jdbcType=VARCHAR}, #{cStandardId,jdbcType=INTEGER}, 
-      #{cTaketimeId,jdbcType=INTEGER})
+      #{cTaketimeId,jdbcType=INTEGER}, #{cFixedAreaId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.logistics.module.bos.model.TCourier" >
     insert into t_courier
@@ -152,6 +153,9 @@
       <if test="cTaketimeId != null" >
         C_TAKETIME_ID,
       </if>
+      <if test="cFixedAreaId != null" >
+        C_Fixed_AREA_ID,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="cId != null" >
@@ -192,6 +196,9 @@
       </if>
       <if test="cTaketimeId != null" >
         #{cTaketimeId,jdbcType=INTEGER},
+      </if>
+      <if test="cFixedAreaId != null" >
+        #{cFixedAreaId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -243,6 +250,9 @@
       <if test="record.cTaketimeId != null" >
         C_TAKETIME_ID = #{record.cTaketimeId,jdbcType=INTEGER},
       </if>
+      <if test="record.cFixedAreaId != null" >
+        C_Fixed_AREA_ID = #{record.cFixedAreaId,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -262,7 +272,8 @@
       C_VEHICLE_NUM = #{record.cVehicleNum,jdbcType=VARCHAR},
       C_VEHICLE_TYPE = #{record.cVehicleType,jdbcType=VARCHAR},
       C_STANDARD_ID = #{record.cStandardId,jdbcType=INTEGER},
-      C_TAKETIME_ID = #{record.cTaketimeId,jdbcType=INTEGER}
+      C_TAKETIME_ID = #{record.cTaketimeId,jdbcType=INTEGER},
+      C_Fixed_AREA_ID = #{record.cFixedAreaId,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -306,6 +317,9 @@
       <if test="cTaketimeId != null" >
         C_TAKETIME_ID = #{cTaketimeId,jdbcType=INTEGER},
       </if>
+      <if test="cFixedAreaId != null" >
+        C_Fixed_AREA_ID = #{cFixedAreaId,jdbcType=VARCHAR},
+      </if>
     </set>
     where C_ID = #{cId,jdbcType=INTEGER}
   </update>
@@ -322,7 +336,8 @@
       C_VEHICLE_NUM = #{cVehicleNum,jdbcType=VARCHAR},
       C_VEHICLE_TYPE = #{cVehicleType,jdbcType=VARCHAR},
       C_STANDARD_ID = #{cStandardId,jdbcType=INTEGER},
-      C_TAKETIME_ID = #{cTaketimeId,jdbcType=INTEGER}
+      C_TAKETIME_ID = #{cTaketimeId,jdbcType=INTEGER},
+      C_Fixed_AREA_ID = #{cFixedAreaId,jdbcType=VARCHAR}
     where C_ID = #{cId,jdbcType=INTEGER}
   </update>
 </mapper>

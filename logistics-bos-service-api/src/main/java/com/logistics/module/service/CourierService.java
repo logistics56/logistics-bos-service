@@ -34,4 +34,8 @@ public interface CourierService {
     CourierDTO queryByNum(String num);
     
     int deleteData(int id);
+    
+    List<CourierDTO> queryByFixedAreaId(String fixedAreaId);
+    
+	int updateFixedAreaId(String fixesAreaId, int id, int takeTimeId);
 }

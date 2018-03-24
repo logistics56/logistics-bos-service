@@ -983,6 +983,76 @@ public class TCourierExample {
             addCriterion("C_TAKETIME_ID not between", value1, value2, "cTaketimeId");
             return (Criteria) this;
         }
+
+        public Criteria andCFixedAreaIdIsNull() {
+            addCriterion("C_Fixed_AREA_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCFixedAreaIdIsNotNull() {
+            addCriterion("C_Fixed_AREA_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCFixedAreaIdEqualTo(String value) {
+            addCriterion("C_Fixed_AREA_ID =", value, "cFixedAreaId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCFixedAreaIdNotEqualTo(String value) {
+            addCriterion("C_Fixed_AREA_ID <>", value, "cFixedAreaId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCFixedAreaIdGreaterThan(String value) {
+            addCriterion("C_Fixed_AREA_ID >", value, "cFixedAreaId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCFixedAreaIdGreaterThanOrEqualTo(String value) {
+            addCriterion("C_Fixed_AREA_ID >=", value, "cFixedAreaId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCFixedAreaIdLessThan(String value) {
+            addCriterion("C_Fixed_AREA_ID <", value, "cFixedAreaId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCFixedAreaIdLessThanOrEqualTo(String value) {
+            addCriterion("C_Fixed_AREA_ID <=", value, "cFixedAreaId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCFixedAreaIdLike(String value) {
+            addCriterion("C_Fixed_AREA_ID like", value, "cFixedAreaId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCFixedAreaIdNotLike(String value) {
+            addCriterion("C_Fixed_AREA_ID not like", value, "cFixedAreaId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCFixedAreaIdIn(List<String> values) {
+            addCriterion("C_Fixed_AREA_ID in", values, "cFixedAreaId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCFixedAreaIdNotIn(List<String> values) {
+            addCriterion("C_Fixed_AREA_ID not in", values, "cFixedAreaId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCFixedAreaIdBetween(String value1, String value2) {
+            addCriterion("C_Fixed_AREA_ID between", value1, value2, "cFixedAreaId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCFixedAreaIdNotBetween(String value1, String value2) {
+            addCriterion("C_Fixed_AREA_ID not between", value1, value2, "cFixedAreaId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
