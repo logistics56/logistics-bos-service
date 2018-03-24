@@ -27,6 +27,7 @@
 				<entry key="http://service.lizhen.com/logistics-bos-service/fixedAreaService_1.0.0" value-ref="fixedAreaService" />
 				<entry key="http://service.lizhen.com/logistics-bos-service/takeTimeService_1.0.0" value-ref="takeTimeService" />
 				<entry key="http://service.lizhen.com/logistics-bos-service/subAreaService_1.0.0" value-ref="subAreaService" />
+				<entry key="http://service.lizhen.com/logistics-bos-service/vehicleService_1.0.0" value-ref="vehicleService" />
 			</map>
 		</property>
 	</bean>

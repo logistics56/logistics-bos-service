@@ -23,4 +23,12 @@ public interface TVehicleMapper {
     int updateByPrimaryKeySelective(TVehicle record);
 
     int updateByPrimaryKey(TVehicle record);
+    
+    int queryTotal();
+    
+    List<TVehicle> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    int queryMaxId();
+    
+    int deleteSelect(@Param("id") String id);
 }
