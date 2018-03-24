@@ -37,5 +37,7 @@ public interface CourierDao {
     
     List<TCourier> queryByFixedAreaId(String fixedAreaId);
     
-    int updateFixedAreaId(String fixesAreaId, int id, int takeTimeId);
+    int updateFixedAreaId(String fixedAreaId, int id, int takeTimeId);
+    
+    int queryTotalByFixedAreaId(String fixedAreaId);
 }

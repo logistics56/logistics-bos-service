@@ -67,4 +67,9 @@ public class CourierDaoImpl implements CourierDao {
 		return tCourierMapper.queryByFixedAreaId(fixedAreaId);
 	}
 
+	@Override
+	public int queryTotalByFixedAreaId(String fixedAreaId) {
+		return tCourierMapper.queryTotalByFixedAreaId(fixedAreaId);
+	}
+
 }

@@ -26,5 +26,7 @@ public interface TCustomerMapper {
     
     List<TCustomer> queryByFixedAreaId(@Param("fixedAreaId") String fixedAreaId);
     
-    int updateFixedAreaId(@Param("fixesAreaId") String fixesAreaId,@Param("id") int id);
+    int updateFixedAreaId(@Param("fixedAreaId") String fixedAreaId,@Param("id") int id);
+    
+    int queryTotalByFixedAreaId(@Param("fixedAreaId") String fixedAreaId);
 }

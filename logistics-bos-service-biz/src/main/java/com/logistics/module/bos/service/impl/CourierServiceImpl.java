@@ -86,8 +86,8 @@ public class CourierServiceImpl implements CourierService {
 	}
 
 	@Override
-	public int updateFixedAreaId(String fixesAreaId, int id, int takeTimeId) {
-		return courierDao.updateFixedAreaId(fixesAreaId, id, takeTimeId);
+	public int updateFixedAreaId(String fixedAreaId, int id, int takeTimeId) {
+		return courierDao.updateFixedAreaId(fixedAreaId, id, takeTimeId);
 	}
 
 	@Override
@@ -95,6 +95,11 @@ public class CourierServiceImpl implements CourierService {
 		List<TCourier> results = courierDao.queryByFixedAreaId(fixedAreaId);
 		List<CourierDTO> convert = convertPoToDto(results);
 		return convert;
+	}
+
+	@Override
+	public int queryTotalByFixedAreaId(String fixedAreaId) {
+		return courierDao.queryTotalByFixedAreaId(fixedAreaId);
 	}
 
 }

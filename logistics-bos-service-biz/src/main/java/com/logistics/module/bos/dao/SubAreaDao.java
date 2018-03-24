@@ -36,4 +36,8 @@ public interface SubAreaDao {
     int deleteSelect(String id);
     
     int queryTotalByKeyword(String keyword);
+    
+    List<TSubArea> queryByFixedAreaId( String fixedAreaId);
+    
+    int queryTotalByFixedAreaId( String fixedAreaId);
 }

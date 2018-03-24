@@ -16,6 +16,8 @@ public interface CustomerDao {
 	
 	List<TCustomer> queryByFixedAreaId(String fixedAreaId);
 	
-	int updateFixedAreaId(String fixesAreaId, int id);
+	int updateFixedAreaId(String fixedAreaId, int id);
+	
+	int queryTotalByFixedAreaId(String fixedAreaId);
 
 }

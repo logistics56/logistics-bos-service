@@ -37,4 +37,13 @@
   <delete id="deleteSelect" parameterType="map">
   delete  FROM t_sub_area where C_ID = #{id}
   </delete>
+  <select id="queryByFixedAreaId" resultMap="BaseResultMap" parameterType="map">
+   select <include refid="Base_Column_List"  />
+  from t_sub_area
+  where C_FIXEDAREA_ID = #{fixedAreaId}
+  </select>
+  <select id="queryTotalByFixedAreaId" resultType="java.lang.Integer" parameterType="map">
+  select count(*) from t_sub_area
+  where C_FIXEDAREA_ID = #{fixedAreaId}
+  </select>
 </mapper>

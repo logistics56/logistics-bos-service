@@ -32,8 +32,13 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public int updateFixedAreaId(String fixesAreaId, int id) {
-		return tCustomerMapper.updateFixedAreaId(fixesAreaId, id);
+	public int updateFixedAreaId(String fixedAreaId, int id) {
+		return tCustomerMapper.updateFixedAreaId(fixedAreaId, id);
+	}
+
+	@Override
+	public int queryTotalByFixedAreaId(String fixedAreaId) {
+		return tCustomerMapper.queryTotalByFixedAreaId(fixedAreaId);
 	}
 
 }

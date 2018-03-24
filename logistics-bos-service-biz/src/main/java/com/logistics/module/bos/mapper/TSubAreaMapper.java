@@ -1,6 +1,5 @@
 package com.logistics.module.bos.mapper;
 
-import com.logistics.module.bos.model.TArea;
 import com.logistics.module.bos.model.TSubArea;
 import com.logistics.module.bos.model.TSubAreaExample;
 import java.util.List;
@@ -36,4 +35,8 @@ public interface TSubAreaMapper {
     int deleteSelect(@Param("id") String id);
     
     int queryTotalByKeyword(@Param("keyword") String keyword);
+    
+    List<TSubArea> queryByFixedAreaId(@Param("fixedAreaId") String fixedAreaId);
+    
+    int queryTotalByFixedAreaId(@Param("fixedAreaId") String fixedAreaId);
 }

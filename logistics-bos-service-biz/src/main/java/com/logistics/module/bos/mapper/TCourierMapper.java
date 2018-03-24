@@ -36,5 +36,7 @@ public interface TCourierMapper {
     
     List<TCourier> queryByFixedAreaId(@Param("fixedAreaId") String fixedAreaId);
     
-    int updateFixedAreaId(@Param("fixesAreaId") String fixesAreaId,@Param("id") int id, @Param("takeTimeId") int takeTimeId);
+    int updateFixedAreaId(@Param("fixedAreaId") String fixedAreaId,@Param("id") int id, @Param("takeTimeId") int takeTimeId);
+    
+    int queryTotalByFixedAreaId(@Param("fixedAreaId") String fixedAreaId);
 }

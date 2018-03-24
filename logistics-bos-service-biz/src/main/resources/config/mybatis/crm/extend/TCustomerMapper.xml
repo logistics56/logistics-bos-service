@@ -8,7 +8,12 @@
  </select>
  <update id="updateFixedAreaId" parameterType="map">
  update t_customer
- set C_Fixed_AREA_ID = #{fixesAreaId}
+ set C_Fixed_AREA_ID = #{fixedAreaId}
  where C_ID = #{id}
  </update>
+ 
+<select id="queryTotalByFixedAreaId" resultType="java.lang.Integer" parameterType="map">
+  select count(*) from t_customer
+  where C_Fixed_AREA_ID = #{fixedAreaId}
+  </select>
 </mapper>

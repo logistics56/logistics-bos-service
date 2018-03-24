@@ -61,4 +61,9 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDao.updateFixedAreaId(fixesAreaId, id);
 	}
 
+	@Override
+	public int queryTotalByFixedAreaId(String fixesAreaId) {
+		return customerDao.queryTotalByFixedAreaId(fixesAreaId);
+	}
+
 }

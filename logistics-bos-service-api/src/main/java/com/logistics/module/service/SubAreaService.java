@@ -36,4 +36,8 @@ public interface SubAreaService {
     int deleteSelect(String id);
     
     int queryTotalByKeyword(String keyword);
+    
+    List<SubAreaDTO> queryByFixedAreaId(String fixedAreaId);
+    
+    int queryTotalByFixedAreaId( String fixedAreaId);
 }

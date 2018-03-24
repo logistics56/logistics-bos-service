@@ -61,4 +61,14 @@ public class SubAreaDaoImpl implements SubAreaDao {
 		return tSubAreaMapper.queryTotalByKeyword(keyword);
 	}
 
+	@Override
+	public List<TSubArea> queryByFixedAreaId(String fixedAreaId) {
+		return tSubAreaMapper.queryByFixedAreaId(fixedAreaId);
+	}
+
+	@Override
+	public int queryTotalByFixedAreaId(String fixedAreaId) {
+		return tSubAreaMapper.queryTotalByFixedAreaId(fixedAreaId);
+	}
+
 }
