@@ -1,5 +1,7 @@
 package com.logistics.module.crm.service;
 
+import java.util.List;
+
 import com.logistics.module.crm.dto.CustomerDTO;
 
 /**
@@ -9,5 +11,10 @@ import com.logistics.module.crm.dto.CustomerDTO;
 * 
 */
 public interface CustomerService {
+	
 	CustomerDTO selectByPrimaryKey(Integer cId);
+	
+	List<CustomerDTO> queryByFixedAreaId(String fixedAreaId);
+	
+	int updateFixedAreaId(String fixesAreaId, int id);
 }

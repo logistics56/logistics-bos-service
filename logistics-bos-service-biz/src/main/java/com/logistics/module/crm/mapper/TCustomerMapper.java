@@ -23,4 +23,8 @@ public interface TCustomerMapper {
     int updateByPrimaryKeySelective(TCustomer record);
 
     int updateByPrimaryKey(TCustomer record);
+    
+    List<TCustomer> queryByFixedAreaId(@Param("fixedAreaId") String fixedAreaId);
+    
+    int updateFixedAreaId(@Param("fixesAreaId") String fixesAreaId,@Param("id") int id);
 }

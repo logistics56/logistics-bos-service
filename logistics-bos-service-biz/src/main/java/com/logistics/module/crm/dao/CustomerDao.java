@@ -1,5 +1,7 @@
 package com.logistics.module.crm.dao;
 
+import java.util.List;
+
 import com.logistics.module.crm.model.TCustomer;
 
 /**
@@ -11,5 +13,9 @@ import com.logistics.module.crm.model.TCustomer;
 public interface CustomerDao {
 	
 	TCustomer selectByPrimaryKey(Integer cId);
+	
+	List<TCustomer> queryByFixedAreaId(String fixedAreaId);
+	
+	int updateFixedAreaId(String fixesAreaId, int id);
 
 }

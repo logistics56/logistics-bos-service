@@ -1,5 +1,7 @@
 package com.logistics.module.crm.dao.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,16 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public TCustomer selectByPrimaryKey(Integer cId) {
 		return tCustomerMapper.selectByPrimaryKey(cId);
+	}
+
+	@Override
+	public List<TCustomer> queryByFixedAreaId(String fixedAreaId) {
+		return tCustomerMapper.queryByFixedAreaId(fixedAreaId);
+	}
+
+	@Override
+	public int updateFixedAreaId(String fixesAreaId, int id) {
+		return tCustomerMapper.updateFixedAreaId(fixesAreaId, id);
 	}
 
 }
