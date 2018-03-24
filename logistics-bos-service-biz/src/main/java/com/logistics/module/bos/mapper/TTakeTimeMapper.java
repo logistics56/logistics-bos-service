@@ -23,4 +23,12 @@ public interface TTakeTimeMapper {
     int updateByPrimaryKeySelective(TTakeTime record);
 
     int updateByPrimaryKey(TTakeTime record);
+    
+    int queryTotal();
+    
+    List<TTakeTime> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    int queryMaxId();
+    
+    List<TTakeTime> queryAll();
 }
