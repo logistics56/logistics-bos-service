@@ -38,4 +38,6 @@ public interface FixedAreaService {
     int queryTotalByKeyword(String keyword);
     
     FixedAreaDTO selectByPrimaryKey(String cId);
+    
+    List<FixedAreaDTO> queryAll();
 }

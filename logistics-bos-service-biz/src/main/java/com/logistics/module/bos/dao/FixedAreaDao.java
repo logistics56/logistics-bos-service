@@ -2,7 +2,6 @@ package com.logistics.module.bos.dao;
 
 import java.util.List;
 
-import com.logistics.module.bos.model.TArea;
 import com.logistics.module.bos.model.TFixedArea;
 
 /**
@@ -39,4 +38,6 @@ public interface FixedAreaDao {
     int queryTotalByKeyword(String keyword);
     
     TFixedArea selectByPrimaryKey(String cId);
+    
+    List<TFixedArea> queryAll();
 }

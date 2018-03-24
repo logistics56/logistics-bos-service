@@ -66,4 +66,9 @@ public class FixedAreaDaoImpl implements FixedAreaDao {
 		return tFixedAreaMapper.selectByPrimaryKey(cId);
 	}
 
+	@Override
+	public List<TFixedArea> queryAll() {
+		return tFixedAreaMapper.queryAll();
+	}
+
 }

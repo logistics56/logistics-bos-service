@@ -86,4 +86,22 @@ public class AreaServiceImpl implements AreaService {
 		return areaDao.queryTotalByKeyword(keyword);
 	}
 
+	@Override
+	public AreaDTO selectByPrimaryKey(String cId) {
+		TArea area = areaDao.selectByPrimaryKey(cId);
+		if(area == null){
+			return null;
+		}
+		AreaDTO dto = new AreaDTO();
+		BeanUtils.copyProperties(area, dto);
+		return dto;
+	}
+
+	@Override
+	public List<AreaDTO> queryAll() {
+		List<TArea> results = areaDao.queryAll();
+		List<AreaDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+
 }

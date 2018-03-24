@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.logistics.module.bos.mapper.TSubAreaMapper" >
+ <select id="queryTotal" resultType="java.lang.Integer">
+  select count(*) from t_sub_area
+  </select>
+  <select id="queryByPage" resultMap="BaseResultMap" parameterType="map">
+  select <include refid="Base_Column_List" />
+  from t_sub_area
+  limit #{pageNum},#{pageSize}
+  </select>
+  <select id="queryMaxId" resultMap="BaseResultMap">
+  SELECT <include refid="Base_Column_List" />
+  FROM t_sub_area
+  order by C_ID desc
+  </select>
+  <select id="queryByKeyword" resultMap="BaseResultMap" parameterType="map">
+  select <include refid="Base_Column_List" />
+  from t_sub_area
+  where    C_ID LIKE concat(concat('%', #{keyword}),'%') or
+  C_ASSIST_KEY_WORDS LIKE concat(concat('%', #{keyword}),'%') or
+  C_ENDNUM LIKE concat(concat('%', #{keyword}),'%') or
+  C_KEY_WORDS LIKE concat(concat('%', #{keyword}),'%') or
+  C_SINGLE LIKE concat(concat('%', #{keyword}),'%') or
+  C_START_NUM LIKE concat(concat('%', #{keyword}),'%')
+  limit #{pageNum},#{pageSize}
+  </select>
+    <select id="queryTotalByKeyword" resultType="java.lang.Integer" parameterType="map">
+  	select count(*) from t_sub_area
+  	where   C_ID LIKE concat(concat('%', #{keyword}),'%') or
+  C_ASSIST_KEY_WORDS LIKE concat(concat('%', #{keyword}),'%') or
+  C_ENDNUM LIKE concat(concat('%', #{keyword}),'%') or
+  C_KEY_WORDS LIKE concat(concat('%', #{keyword}),'%') or
+  C_SINGLE LIKE concat(concat('%', #{keyword}),'%') or
+  C_START_NUM LIKE concat(concat('%', #{keyword}),'%')
+  </select>
+  <delete id="deleteSelect" parameterType="map">
+  delete  FROM t_sub_area where C_ID = #{id}
+  </delete>
+</mapper>

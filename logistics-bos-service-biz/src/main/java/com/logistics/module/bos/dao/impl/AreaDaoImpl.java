@@ -61,4 +61,14 @@ public class AreaDaoImpl implements AreaDao {
 		return tAreaMapper.queryTotalByKeyword(keyword);
 	}
 
+	@Override
+	public TArea selectByPrimaryKey(String cId) {
+		return tAreaMapper.selectByPrimaryKey(cId);
+	}
+
+	@Override
+	public List<TArea> queryAll() {
+		return tAreaMapper.queryAll();
+	}
+
 }

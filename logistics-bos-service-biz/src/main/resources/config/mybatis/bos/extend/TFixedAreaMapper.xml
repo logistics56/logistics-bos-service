@@ -35,4 +35,8 @@
   <delete id="deleteSelect" parameterType="map">
   delete  FROM t_fixed_area where C_ID = #{id}
   </delete>
+    <select id="queryAll" resultMap="BaseResultMap" parameterType="map">
+  select <include refid="Base_Column_List" />
+  from t_fixed_area
+  </select>
 </mapper>

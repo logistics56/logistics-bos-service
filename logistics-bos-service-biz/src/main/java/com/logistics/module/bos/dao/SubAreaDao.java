@@ -2,15 +2,15 @@ package com.logistics.module.bos.dao;
 
 import java.util.List;
 
-import com.logistics.module.bos.model.TArea;
+import com.logistics.module.bos.model.TSubArea;
 
 /**
 *
 * @author 李振        E-mail:lizhn95@163.com
-* @version 创建时间：2018年3月18日 上午10:47:15
+* @version 创建时间：2018年3月24日 下午12:42:27
 * 
 */
-public interface AreaDao {
+public interface SubAreaDao {
 	/**
 	 * 查询收派标准的数据总个数
 	 * @return
@@ -23,21 +23,17 @@ public interface AreaDao {
      * @param pageSize  每页数据量
      * @return
      */
-    List<TArea> queryByPage(int pageNum, int pageSize);
+    List<TSubArea> queryByPage(int pageNum, int pageSize);
     
-    int insertSelective(TArea record);
+    int insertSelective(TSubArea record);
     
-    int updateByPrimaryKeySelective(TArea record);
+    int updateByPrimaryKeySelective(TSubArea record);
     
-    List<TArea> queryMaxId();
+    List<TSubArea> queryMaxId();
     
-    List<TArea> queryByKeyword(String keyword, int pageNum, int pageSize);
+    List<TSubArea> queryByKeyword(String keyword, int pageNum, int pageSize);
     
     int deleteSelect(String id);
     
     int queryTotalByKeyword(String keyword);
-    
-    TArea selectByPrimaryKey(String cId);
-    
-    List<TArea> queryAll();
 }

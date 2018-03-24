@@ -2,15 +2,15 @@ package com.logistics.module.service;
 
 import java.util.List;
 
-import com.logistics.module.dto.AreaDTO;
+import com.logistics.module.dto.SubAreaDTO;
 
 /**
 *
 * @author 李振        E-mail:lizhn95@163.com
-* @version 创建时间：2018年3月18日 上午10:55:09
+* @version 创建时间：2018年3月24日 下午12:46:57
 * 
 */
-public interface AreaService {
+public interface SubAreaService {
 	/**
 	 * 查询收派标准的数据总个数
 	 * @return
@@ -23,20 +23,17 @@ public interface AreaService {
      * @param pageSize  每页数据量
      * @return
      */
-    List<AreaDTO> queryByPage(int pageNum, int pageSize);
+    List<SubAreaDTO> queryByPage(int pageNum, int pageSize);
     
-    int insertSelective(AreaDTO record);
+    int insertSelective(SubAreaDTO record);
     
-    int updateByPrimaryKeySelective(AreaDTO record);
+    int updateByPrimaryKeySelective(SubAreaDTO record);
     
-    List<AreaDTO> queryMaxId();
+    List<SubAreaDTO> queryMaxId();
     
-    List<AreaDTO> queryByKeyword(String keyword, int pageNum, int pageSize);
+    List<SubAreaDTO> queryByKeyword(String keyword, int pageNum, int pageSize);
     
     int deleteSelect(String id);
     
     int queryTotalByKeyword(String keyword);
-    
-    AreaDTO selectByPrimaryKey(String cId);
-    List<AreaDTO> queryAll();
 }

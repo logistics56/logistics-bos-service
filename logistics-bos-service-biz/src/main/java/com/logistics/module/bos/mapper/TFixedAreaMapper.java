@@ -2,6 +2,7 @@ package com.logistics.module.bos.mapper;
 
 import com.logistics.module.bos.model.TFixedArea;
 import com.logistics.module.bos.model.TFixedAreaExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -35,4 +36,6 @@ public interface TFixedAreaMapper {
     int deleteSelect(@Param("id") String id);
     
     int queryTotalByKeyword(@Param("keyword") String keyword);
+    
+    List<TFixedArea> queryAll();
 }

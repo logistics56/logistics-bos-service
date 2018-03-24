@@ -97,4 +97,11 @@ public class FixedAreaServiceImpl implements FixedAreaService {
 		return dto;
 	}
 
+	@Override
+	public List<FixedAreaDTO> queryAll() {
+		List<TFixedArea> results = fixedAreaDao.queryAll();
+		List<FixedAreaDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+
 }

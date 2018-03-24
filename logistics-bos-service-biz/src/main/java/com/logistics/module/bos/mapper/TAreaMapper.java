@@ -2,6 +2,7 @@ package com.logistics.module.bos.mapper;
 
 import com.logistics.module.bos.model.TArea;
 import com.logistics.module.bos.model.TAreaExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -35,4 +36,6 @@ public interface TAreaMapper {
     int deleteSelect(@Param("id") String id);
     
     int queryTotalByKeyword(@Param("keyword") String keyword);
+    
+    List<TArea> queryAll();
 }

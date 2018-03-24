@@ -1,5 +1,6 @@
 package com.logistics.module.bos.mapper;
 
+import com.logistics.module.bos.model.TArea;
 import com.logistics.module.bos.model.TSubArea;
 import com.logistics.module.bos.model.TSubAreaExample;
 import java.util.List;
@@ -23,4 +24,16 @@ public interface TSubAreaMapper {
     int updateByPrimaryKeySelective(TSubArea record);
 
     int updateByPrimaryKey(TSubArea record);
+    
+    int queryTotal();
+    
+    List<TSubArea> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    List<TSubArea> queryMaxId();
+    
+    List<TSubArea> queryByKeyword(@Param("keyword") String keyword, @Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    int deleteSelect(@Param("id") String id);
+    
+    int queryTotalByKeyword(@Param("keyword") String keyword);
 }
