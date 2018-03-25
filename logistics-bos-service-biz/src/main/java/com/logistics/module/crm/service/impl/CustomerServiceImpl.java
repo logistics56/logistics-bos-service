@@ -83,4 +83,9 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDao.insertSelective(po);
 	}
 
+	@Override
+	public int updateType(String telephone) {
+		return customerDao.updateType(telephone);
+	}
+
 }

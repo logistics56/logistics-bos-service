@@ -23,5 +23,7 @@ public interface CustomerDao {
 	List<TCustomer> queryByTelephone(String telephone);
 	
 	int insertSelective(TCustomer record);
+	
+	int updateType(String telephone);
 
 }

@@ -21,4 +21,9 @@
  FROM t_customer 
  WHERE C_TELEPHONE = #{telephone}
   </select>
+  <update id="updateType" parameterType="map">
+  update t_customer
+ 	set C_TYPE = 1
+ 	where C_TELEPHONE = #{telephone}
+  </update>
 </mapper>

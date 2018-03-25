@@ -23,4 +23,6 @@ public interface CustomerService {
 	List<CustomerDTO> queryByTelephone(String telephone);
 	
 	int insertSelective(CustomerDTO record);
+	
+	int updateType(String telephone);
 }

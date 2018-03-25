@@ -51,4 +51,9 @@ public class CustomerDaoImpl implements CustomerDao {
 		return tCustomerMapper.insertSelective(record);
 	}
 
+	@Override
+	public int updateType(String telephone) {
+		return tCustomerMapper.updateType(telephone);
+	}
+
 }
