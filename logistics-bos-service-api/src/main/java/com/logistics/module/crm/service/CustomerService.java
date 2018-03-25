@@ -19,4 +19,8 @@ public interface CustomerService {
 	int updateFixedAreaId(String fixesAreaId, int id);
 	
 	int queryTotalByFixedAreaId(String fixesAreaId);
+	
+	List<CustomerDTO> queryByTelephone(String telephone);
+	
+	int insertSelective(CustomerDTO record);
 }

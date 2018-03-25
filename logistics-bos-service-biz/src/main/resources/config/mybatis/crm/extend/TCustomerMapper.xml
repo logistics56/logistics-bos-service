@@ -16,4 +16,9 @@
   select count(*) from t_customer
   where C_Fixed_AREA_ID = #{fixedAreaId}
   </select>
+  <select id="queryByTelephone" resultMap="BaseResultMap" parameterType="map">
+ SELECT <include refid="Base_Column_List" />
+ FROM t_customer 
+ WHERE C_TELEPHONE = #{telephone}
+  </select>
 </mapper>

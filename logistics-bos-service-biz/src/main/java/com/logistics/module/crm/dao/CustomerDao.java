@@ -19,5 +19,9 @@ public interface CustomerDao {
 	int updateFixedAreaId(String fixedAreaId, int id);
 	
 	int queryTotalByFixedAreaId(String fixedAreaId);
+	
+	List<TCustomer> queryByTelephone(String telephone);
+	
+	int insertSelective(TCustomer record);
 
 }

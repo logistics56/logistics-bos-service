@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.logistics.module.crm.mapper.TSmsSignupMapper" >
+  <resultMap id="BaseResultMap" type="com.logistics.module.crm.model.TSmsSignup" >
+    <id column="C_ID" property="cId" jdbcType="INTEGER" />
+    <result column="C_TELEPHONE" property="cTelephone" jdbcType="VARCHAR" />
+    <result column="C_CHECKCODE" property="cCheckcode" jdbcType="VARCHAR" />
+    <result column="C_SOURCE" property="cSource" jdbcType="INTEGER" />
+    <result column="C_USERNAME" property="cUsername" jdbcType="VARCHAR" />
+    <result column="C_CREATETIME" property="cCreatetime" jdbcType="TIMESTAMP" />
+    <result column="C_UPDATETIME" property="cUpdatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_TELEPHONE, C_CHECKCODE, C_SOURCE, C_USERNAME, C_CREATETIME, C_UPDATETIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.crm.model.TSmsSignupExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_sms_signup
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sms_signup
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.logistics.module.crm.model.TSmsSignup" >
+    insert into t_sms_signup (C_ID, C_TELEPHONE, C_CHECKCODE, 
+      C_SOURCE, C_USERNAME, C_CREATETIME, 
+      C_UPDATETIME)
+    values (#{cId,jdbcType=INTEGER}, #{cTelephone,jdbcType=VARCHAR}, #{cCheckcode,jdbcType=VARCHAR}, 
+      #{cSource,jdbcType=INTEGER}, #{cUsername,jdbcType=VARCHAR}, #{cCreatetime,jdbcType=TIMESTAMP}, 
+      #{cUpdatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.logistics.module.crm.model.TSmsSignup" >
+    insert into t_sms_signup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cTelephone != null" >
+        C_TELEPHONE,
+      </if>
+      <if test="cCheckcode != null" >
+        C_CHECKCODE,
+      </if>
+      <if test="cSource != null" >
+        C_SOURCE,
+      </if>
+      <if test="cUsername != null" >
+        C_USERNAME,
+      </if>
+      <if test="cCreatetime != null" >
+        C_CREATETIME,
+      </if>
+      <if test="cUpdatetime != null" >
+        C_UPDATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cTelephone != null" >
+        #{cTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cCheckcode != null" >
+        #{cCheckcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cSource != null" >
+        #{cSource,jdbcType=INTEGER},
+      </if>
+      <if test="cUsername != null" >
+        #{cUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="cCreatetime != null" >
+        #{cCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cUpdatetime != null" >
+        #{cUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.logistics.module.crm.model.TSmsSignupExample" resultType="java.lang.Integer" >
+    select count(*) from t_sms_signup
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_sms_signup
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cTelephone != null" >
+        C_TELEPHONE = #{record.cTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cCheckcode != null" >
+        C_CHECKCODE = #{record.cCheckcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cSource != null" >
+        C_SOURCE = #{record.cSource,jdbcType=INTEGER},
+      </if>
+      <if test="record.cUsername != null" >
+        C_USERNAME = #{record.cUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cCreatetime != null" >
+        C_CREATETIME = #{record.cCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cUpdatetime != null" >
+        C_UPDATETIME = #{record.cUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_sms_signup
+    set C_ID = #{record.cId,jdbcType=INTEGER},
+      C_TELEPHONE = #{record.cTelephone,jdbcType=VARCHAR},
+      C_CHECKCODE = #{record.cCheckcode,jdbcType=VARCHAR},
+      C_SOURCE = #{record.cSource,jdbcType=INTEGER},
+      C_USERNAME = #{record.cUsername,jdbcType=VARCHAR},
+      C_CREATETIME = #{record.cCreatetime,jdbcType=TIMESTAMP},
+      C_UPDATETIME = #{record.cUpdatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logistics.module.crm.model.TSmsSignup" >
+    update t_sms_signup
+    <set >
+      <if test="cTelephone != null" >
+        C_TELEPHONE = #{cTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cCheckcode != null" >
+        C_CHECKCODE = #{cCheckcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cSource != null" >
+        C_SOURCE = #{cSource,jdbcType=INTEGER},
+      </if>
+      <if test="cUsername != null" >
+        C_USERNAME = #{cUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="cCreatetime != null" >
+        C_CREATETIME = #{cCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cUpdatetime != null" >
+        C_UPDATETIME = #{cUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logistics.module.crm.model.TSmsSignup" >
+    update t_sms_signup
+    set C_TELEPHONE = #{cTelephone,jdbcType=VARCHAR},
+      C_CHECKCODE = #{cCheckcode,jdbcType=VARCHAR},
+      C_SOURCE = #{cSource,jdbcType=INTEGER},
+      C_USERNAME = #{cUsername,jdbcType=VARCHAR},
+      C_CREATETIME = #{cCreatetime,jdbcType=TIMESTAMP},
+      C_UPDATETIME = #{cUpdatetime,jdbcType=TIMESTAMP}
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>

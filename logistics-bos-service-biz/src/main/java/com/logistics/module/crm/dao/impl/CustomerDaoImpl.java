@@ -41,4 +41,14 @@ public class CustomerDaoImpl implements CustomerDao {
 		return tCustomerMapper.queryTotalByFixedAreaId(fixedAreaId);
 	}
 
+	@Override
+	public List<TCustomer> queryByTelephone(String telephone) {
+		return tCustomerMapper.queryByTelephone(telephone);
+	}
+
+	@Override
+	public int insertSelective(TCustomer record) {
+		return tCustomerMapper.insertSelective(record);
+	}
+
 }

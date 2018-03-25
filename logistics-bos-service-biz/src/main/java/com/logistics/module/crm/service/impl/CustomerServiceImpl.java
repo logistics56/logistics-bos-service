@@ -66,4 +66,21 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDao.queryTotalByFixedAreaId(fixesAreaId);
 	}
 
+	@Override
+	public List<CustomerDTO> queryByTelephone(String telephone) {
+		List<TCustomer> pos = customerDao.queryByTelephone(telephone);
+		List<CustomerDTO> dtos = poToDto(pos);
+		return dtos;
+	}
+
+	@Override
+	public int insertSelective(CustomerDTO record) {
+		if(record == null){
+			return 0;
+		}
+		TCustomer po = new TCustomer();
+		BeanUtils.copyProperties(record, po);
+		return customerDao.insertSelective(po);
+	}
+
 }
