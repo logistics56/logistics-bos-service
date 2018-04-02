@@ -88,4 +88,14 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDao.updateType(telephone);
 	}
 
+	@Override
+	public int updateByPrimaryKeySelective(CustomerDTO record) {
+		if(record == null){
+			return 0;
+		}
+		TCustomer po = new TCustomer();
+		BeanUtils.copyProperties(record, po);
+		return customerDao.updateByPrimaryKeySelective(po);
+	}
+
 }

@@ -56,4 +56,9 @@ public class CustomerDaoImpl implements CustomerDao {
 		return tCustomerMapper.updateType(telephone);
 	}
 
+	@Override
+	public int updateByPrimaryKeySelective(TCustomer record) {
+		return tCustomerMapper.updateByPrimaryKeySelective(record);
+	}
+
 }

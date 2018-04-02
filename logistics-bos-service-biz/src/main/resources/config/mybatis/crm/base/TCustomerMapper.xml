@@ -16,6 +16,7 @@
     <result column="C_TELEPHONE" property="cTelephone" jdbcType="VARCHAR" />
     <result column="C_TYPE" property="cType" jdbcType="INTEGER" />
     <result column="C_USERNAME" property="cUsername" jdbcType="VARCHAR" />
+    <result column="C_IMG" property="cImg" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -77,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List" >
     C_ID, C_ADDRESS, C_BRITHDAY, C_COMPANY, C_DEPARTMENT, C_EMAIL, C_Fixed_AREA_ID, C_MOBILEPHONE, 
-    C_PASSWORD, C_POSITION, C_SEX, C_TELEPHONE, C_TYPE, C_USERNAME
+    C_PASSWORD, C_POSITION, C_SEX, C_TELEPHONE, C_TYPE, C_USERNAME, C_IMG
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.crm.model.TCustomerExample" >
     select
@@ -104,12 +105,14 @@
       C_COMPANY, C_DEPARTMENT, C_EMAIL, 
       C_Fixed_AREA_ID, C_MOBILEPHONE, C_PASSWORD, 
       C_POSITION, C_SEX, C_TELEPHONE, 
-      C_TYPE, C_USERNAME)
+      C_TYPE, C_USERNAME, C_IMG
+      )
     values (#{cId,jdbcType=INTEGER}, #{cAddress,jdbcType=VARCHAR}, #{cBrithday,jdbcType=DATE}, 
       #{cCompany,jdbcType=VARCHAR}, #{cDepartment,jdbcType=VARCHAR}, #{cEmail,jdbcType=VARCHAR}, 
       #{cFixedAreaId,jdbcType=VARCHAR}, #{cMobilephone,jdbcType=VARCHAR}, #{cPassword,jdbcType=VARCHAR}, 
       #{cPosition,jdbcType=VARCHAR}, #{cSex,jdbcType=INTEGER}, #{cTelephone,jdbcType=VARCHAR}, 
-      #{cType,jdbcType=INTEGER}, #{cUsername,jdbcType=VARCHAR})
+      #{cType,jdbcType=INTEGER}, #{cUsername,jdbcType=VARCHAR}, #{cImg,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.logistics.module.crm.model.TCustomer" >
     insert into t_customer
@@ -156,6 +159,9 @@
       <if test="cUsername != null" >
         C_USERNAME,
       </if>
+      <if test="cImg != null" >
+        C_IMG,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="cId != null" >
@@ -199,6 +205,9 @@
       </if>
       <if test="cUsername != null" >
         #{cUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="cImg != null" >
+        #{cImg,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -253,6 +262,9 @@
       <if test="record.cUsername != null" >
         C_USERNAME = #{record.cUsername,jdbcType=VARCHAR},
       </if>
+      <if test="record.cImg != null" >
+        C_IMG = #{record.cImg,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -273,7 +285,8 @@
       C_SEX = #{record.cSex,jdbcType=INTEGER},
       C_TELEPHONE = #{record.cTelephone,jdbcType=VARCHAR},
       C_TYPE = #{record.cType,jdbcType=INTEGER},
-      C_USERNAME = #{record.cUsername,jdbcType=VARCHAR}
+      C_USERNAME = #{record.cUsername,jdbcType=VARCHAR},
+      C_IMG = #{record.cImg,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -320,6 +333,9 @@
       <if test="cUsername != null" >
         C_USERNAME = #{cUsername,jdbcType=VARCHAR},
       </if>
+      <if test="cImg != null" >
+        C_IMG = #{cImg,jdbcType=VARCHAR},
+      </if>
     </set>
     where C_ID = #{cId,jdbcType=INTEGER}
   </update>
@@ -337,7 +353,8 @@
       C_SEX = #{cSex,jdbcType=INTEGER},
       C_TELEPHONE = #{cTelephone,jdbcType=VARCHAR},
       C_TYPE = #{cType,jdbcType=INTEGER},
-      C_USERNAME = #{cUsername,jdbcType=VARCHAR}
+      C_USERNAME = #{cUsername,jdbcType=VARCHAR},
+      C_IMG = #{cImg,jdbcType=VARCHAR}
     where C_ID = #{cId,jdbcType=INTEGER}
   </update>
 </mapper>

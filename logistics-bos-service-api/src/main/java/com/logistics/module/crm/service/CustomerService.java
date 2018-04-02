@@ -25,4 +25,6 @@ public interface CustomerService {
 	int insertSelective(CustomerDTO record);
 	
 	int updateType(String telephone);
+	
+	int updateByPrimaryKeySelective(CustomerDTO record);
 }

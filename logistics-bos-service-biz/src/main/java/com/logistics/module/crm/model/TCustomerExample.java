@@ -1071,6 +1071,76 @@ public class TCustomerExample {
             addCriterion("C_USERNAME not between", value1, value2, "cUsername");
             return (Criteria) this;
         }
+
+        public Criteria andCImgIsNull() {
+            addCriterion("C_IMG is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgIsNotNull() {
+            addCriterion("C_IMG is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgEqualTo(String value) {
+            addCriterion("C_IMG =", value, "cImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgNotEqualTo(String value) {
+            addCriterion("C_IMG <>", value, "cImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgGreaterThan(String value) {
+            addCriterion("C_IMG >", value, "cImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgGreaterThanOrEqualTo(String value) {
+            addCriterion("C_IMG >=", value, "cImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgLessThan(String value) {
+            addCriterion("C_IMG <", value, "cImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgLessThanOrEqualTo(String value) {
+            addCriterion("C_IMG <=", value, "cImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgLike(String value) {
+            addCriterion("C_IMG like", value, "cImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgNotLike(String value) {
+            addCriterion("C_IMG not like", value, "cImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgIn(List<String> values) {
+            addCriterion("C_IMG in", values, "cImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgNotIn(List<String> values) {
+            addCriterion("C_IMG not in", values, "cImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgBetween(String value1, String value2) {
+            addCriterion("C_IMG between", value1, value2, "cImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgNotBetween(String value1, String value2) {
+            addCriterion("C_IMG not between", value1, value2, "cImg");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

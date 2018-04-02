@@ -4,33 +4,80 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TCustomer implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 地址
+     */
     private String cAddress;
 
+    /**
+     * 生日
+     */
     private Date cBrithday;
 
+    /**
+     * 公司
+     */
     private String cCompany;
 
+    /**
+     * 部门
+     */
     private String cDepartment;
 
+    /**
+     * 邮箱
+     */
     private String cEmail;
 
+    /**
+     * 定区编码
+     */
     private String cFixedAreaId;
 
+    /**
+     * 座机
+     */
     private String cMobilephone;
 
+    /**
+     * 密码
+     */
     private String cPassword;
 
+    /**
+     * 职位
+     */
     private String cPosition;
 
+    /**
+     * 性别 1男 2女
+     */
     private Integer cSex;
 
+    /**
+     * 手机号
+     */
     private String cTelephone;
 
+    /**
+     * 是否绑定邮箱(1:绑定邮箱,0:未绑定)
+     */
     private Integer cType;
 
+    /**
+     * 用户名
+     */
     private String cUsername;
+
+    /**
+     * 头像
+     */
+    private String cImg;
 
     private static final long serialVersionUID = 1L;
 
@@ -146,6 +193,14 @@ public class TCustomer implements Serializable {
         this.cUsername = cUsername;
     }
 
+    public String getcImg() {
+        return cImg;
+    }
+
+    public void setcImg(String cImg) {
+        this.cImg = cImg;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -166,6 +221,7 @@ public class TCustomer implements Serializable {
         sb.append(", cTelephone=").append(cTelephone);
         sb.append(", cType=").append(cType);
         sb.append(", cUsername=").append(cUsername);
+        sb.append(", cImg=").append(cImg);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

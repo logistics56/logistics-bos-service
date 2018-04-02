@@ -25,5 +25,7 @@ public interface CustomerDao {
 	int insertSelective(TCustomer record);
 	
 	int updateType(String telephone);
+	
+	int updateByPrimaryKeySelective(TCustomer record);
 
 }
