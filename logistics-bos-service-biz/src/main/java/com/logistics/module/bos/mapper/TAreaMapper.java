@@ -38,4 +38,6 @@ public interface TAreaMapper {
     int queryTotalByKeyword(@Param("keyword") String keyword);
     
     List<TArea> queryAll();
+    
+    List<TArea> queryByPCD(@Param("province") String province, @Param("city") String city, @Param("district") String district);
 }

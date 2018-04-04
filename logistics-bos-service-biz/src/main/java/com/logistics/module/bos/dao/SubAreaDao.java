@@ -40,4 +40,6 @@ public interface SubAreaDao {
     List<TSubArea> queryByFixedAreaId( String fixedAreaId);
     
     int queryTotalByFixedAreaId( String fixedAreaId);
+    
+    List<TSubArea> queryAll();
 }

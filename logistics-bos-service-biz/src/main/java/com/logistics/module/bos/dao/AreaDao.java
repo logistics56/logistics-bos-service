@@ -2,6 +2,8 @@ package com.logistics.module.bos.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.logistics.module.bos.model.TArea;
 
 /**
@@ -40,4 +42,6 @@ public interface AreaDao {
     TArea selectByPrimaryKey(String cId);
     
     List<TArea> queryAll();
+    
+    List<TArea> queryByPCD(String province, String city, String district);
 }

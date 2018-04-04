@@ -98,4 +98,11 @@ public class SubAreaServiceImpl implements SubAreaService {
 		return subAreaDao.queryTotalByFixedAreaId(fixedAreaId);
 	}
 
+	@Override
+	public List<SubAreaDTO> queryAll() {
+		List<TSubArea> results = subAreaDao.queryAll();
+		List<SubAreaDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+
 }

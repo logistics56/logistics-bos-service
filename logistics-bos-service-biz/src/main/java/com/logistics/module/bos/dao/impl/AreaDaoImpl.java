@@ -71,4 +71,9 @@ public class AreaDaoImpl implements AreaDao {
 		return tAreaMapper.queryAll();
 	}
 
+	@Override
+	public List<TArea> queryByPCD(String province, String city, String district) {
+		return tAreaMapper.queryByPCD(province, city, district);
+	}
+
 }

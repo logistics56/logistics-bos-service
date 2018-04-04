@@ -71,4 +71,9 @@ public class SubAreaDaoImpl implements SubAreaDao {
 		return tSubAreaMapper.queryTotalByFixedAreaId(fixedAreaId);
 	}
 
+	@Override
+	public List<TSubArea> queryAll() {
+		return tSubAreaMapper.queryAll();
+	}
+
 }

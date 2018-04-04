@@ -23,4 +23,6 @@ public interface TOrderMapper {
     int updateByPrimaryKeySelective(TOrder record);
 
     int updateByPrimaryKey(TOrder record);
+    
+    TOrder queryByOrderNum(@Param("orderNum") String orderNum);
 }

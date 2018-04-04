@@ -46,4 +46,9 @@
   select count(*) from t_sub_area
   where C_FIXEDAREA_ID = #{fixedAreaId}
   </select>
+  
+  <select id="queryAll" resultMap="BaseResultMap" parameterType="map">
+   select <include refid="Base_Column_List"  />
+  from t_sub_area
+  </select>
 </mapper>

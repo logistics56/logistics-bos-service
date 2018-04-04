@@ -39,4 +39,6 @@ public interface TSubAreaMapper {
     List<TSubArea> queryByFixedAreaId(@Param("fixedAreaId") String fixedAreaId);
     
     int queryTotalByFixedAreaId(@Param("fixedAreaId") String fixedAreaId);
+    
+    List<TSubArea> queryAll();
 }

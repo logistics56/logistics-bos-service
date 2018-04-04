@@ -40,4 +40,6 @@ public interface SubAreaService {
     List<SubAreaDTO> queryByFixedAreaId(String fixedAreaId);
     
     int queryTotalByFixedAreaId( String fixedAreaId);
+    
+    List<SubAreaDTO> queryAll();
 }

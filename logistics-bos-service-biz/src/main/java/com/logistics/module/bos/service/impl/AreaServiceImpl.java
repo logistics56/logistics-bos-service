@@ -104,4 +104,11 @@ public class AreaServiceImpl implements AreaService {
 		return convert;
 	}
 
+	@Override
+	public List<AreaDTO> queryByPCD(String province, String city, String district) {
+		List<TArea> results = areaDao.queryByPCD(province, city, district);
+		List<AreaDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+
 }

@@ -42,4 +42,20 @@
   select <include refid="Base_Column_List" />
   from t_area
   </select>
+  
+  <select id="queryByPCD" resultMap="BaseResultMap" parameterType="map">
+  select <include refid="Base_Column_List" />
+  from t_area
+  <where>
+  <if test="province != null">
+   C_PROVINCE = #{province}
+  </if>
+  <if test="city != null">
+   C_CITY = #{city}
+  </if>
+  <if test="district != null">
+   C_DISTRICT = #{district}
+  </if>
+  </where>
+  </select>
 </mapper>

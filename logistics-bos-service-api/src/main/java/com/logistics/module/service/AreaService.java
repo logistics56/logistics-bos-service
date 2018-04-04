@@ -38,5 +38,8 @@ public interface AreaService {
     int queryTotalByKeyword(String keyword);
     
     AreaDTO selectByPrimaryKey(String cId);
+    
     List<AreaDTO> queryAll();
+    
+    List<AreaDTO> queryByPCD(String province, String city, String district);
 }
