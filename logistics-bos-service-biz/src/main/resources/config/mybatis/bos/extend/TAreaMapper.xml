@@ -46,16 +46,16 @@
   <select id="queryByPCD" resultMap="BaseResultMap" parameterType="map">
   select <include refid="Base_Column_List" />
   from t_area
-  <where>
+  where 1=1 
   <if test="province != null">
-   C_PROVINCE = #{province}
+   and  C_PROVINCE = #{province}
   </if>
   <if test="city != null">
-   C_CITY = #{city}
+   and C_CITY = #{city}
   </if>
   <if test="district != null">
-   C_DISTRICT = #{district}
+   and C_DISTRICT = #{district}
   </if>
-  </where>
+ 
   </select>
 </mapper>
