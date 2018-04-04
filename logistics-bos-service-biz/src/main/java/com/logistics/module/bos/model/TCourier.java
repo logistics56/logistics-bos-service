@@ -3,32 +3,74 @@ package com.logistics.module.bos.model;
 import java.io.Serializable;
 
 public class TCourier implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 查台密码
+     */
     private String cCheckPwd;
 
+    /**
+     * 单位
+     */
     private String cCompany;
 
+    /**
+     * 快递员工号
+     */
     private String cCourierNum;
 
+    /**
+     * 作废标志 1 为标记作废
+     */
     private String cDeltag;
 
+    /**
+     * 快递员姓名
+     */
     private String cName;
 
+    /**
+     * PDA号
+     */
     private String cPda;
 
+    /**
+     * 快递员联系电话
+     */
     private String cTelephone;
 
+    /**
+     * 取件员类型
+     */
     private String cType;
 
+    /**
+     * 车牌号
+     */
     private String cVehicleNum;
 
+    /**
+     * 车辆类型
+     */
     private String cVehicleType;
 
+    /**
+     * 取派标准id
+     */
     private Integer cStandardId;
 
+    /**
+     * 收派时间id
+     */
     private Integer cTaketimeId;
 
+    /**
+     * 定区编码id
+     */
     private String cFixedAreaId;
 
     private static final long serialVersionUID = 1L;

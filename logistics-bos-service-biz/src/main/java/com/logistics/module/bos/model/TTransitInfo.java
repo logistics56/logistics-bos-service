@@ -3,16 +3,34 @@ package com.logistics.module.bos.model;
 import java.io.Serializable;
 
 public class TTransitInfo implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 出库地址
+     */
     private String cOutletAddress;
 
+    /**
+     * 出入库中转、到达网点、开始配送、正常签收、异常
+     */
     private String cStatus;
 
+    /**
+     * 关联配送信息
+     */
     private Integer cDeliveryInfoId;
 
+    /**
+     * 关联签收信息
+     */
     private Integer cSignInfoId;
 
+    /**
+     * 关联运单信息
+     */
     private Integer cWaybillId;
 
     private static final long serialVersionUID = 1L;

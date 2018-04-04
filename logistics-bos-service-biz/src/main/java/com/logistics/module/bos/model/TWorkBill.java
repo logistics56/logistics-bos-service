@@ -4,22 +4,49 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TWorkBill implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 追单次数
+     */
     private Integer cAttachbilltimes;
 
+    /**
+     * 工单生成时间
+     */
     private Date cBuildtime;
 
+    /**
+     * 取件状态
+     */
     private String cPickstate;
 
+    /**
+     * 订单备注
+     */
     private String cRemark;
 
+    /**
+     * 短信序号
+     */
     private String cSmsnumber;
 
+    /**
+     * 工单类型 新,追,销(新单:没有确认货物状态的 已通知:自动下单下发短信 已确认:接到短信,回复收信确认信息 已取件:已经取件成功,发回确认信息 生成工作单已取消:销单)
+     */
     private String cType;
 
+    /**
+     * 快递员
+     */
     private Integer cCourier;
 
+    /**
+     * 订单
+     */
     private Integer cOrderId;
 
     private static final long serialVersionUID = 1L;

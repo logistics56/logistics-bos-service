@@ -15,7 +15,6 @@
     <result column="C_REC_COMPANY" property="cRecCompany" jdbcType="VARCHAR" />
     <result column="C_REC_MOBILE" property="cRecMobile" jdbcType="VARCHAR" />
     <result column="C_REC_NAME" property="cRecName" jdbcType="VARCHAR" />
-    <result column="C_REMARK" property="cRemark" jdbcType="VARCHAR" />
     <result column="C_SEND_ADDRESS" property="cSendAddress" jdbcType="VARCHAR" />
     <result column="C_SEND_COMPANY" property="cSendCompany" jdbcType="VARCHAR" />
     <result column="C_SEND_MOBILE" property="cSendMobile" jdbcType="VARCHAR" />
@@ -29,6 +28,9 @@
     <result column="C_ORDER_ID" property="cOrderId" jdbcType="INTEGER" />
     <result column="C_REC_AREA_ID" property="cRecAreaId" jdbcType="VARCHAR" />
     <result column="C_SEND_AREA_ID" property="cSendAreaId" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.logistics.module.bos.model.TWayBill" extends="BaseResultMap" >
+    <result column="C_REMARK" property="cRemark" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -90,10 +92,29 @@
   </sql>
   <sql id="Base_Column_List" >
     C_ID, C_ACTLWEIT, C_ARRIVE_CITY, C_DELTAG, C_FEEITEMNUM, C_FLOADREQR, C_GOODS_TYPE, 
-    C_NUM, C_PAY_TYPE_NUM, C_REC_ADDRESS, C_REC_COMPANY, C_REC_MOBILE, C_REC_NAME, C_REMARK, 
-    C_SEND_ADDRESS, C_SEND_COMPANY, C_SEND_MOBILE, C_SEND_NAME, C_SEND_PRO_NUM, C_SIGN_STATUS, 
-    C_VOL, C_WAY_BILL_NUM, C_WAY_BILL_TYPE, C_WEIGHT, C_ORDER_ID, C_REC_AREA_ID, C_SEND_AREA_ID
+    C_NUM, C_PAY_TYPE_NUM, C_REC_ADDRESS, C_REC_COMPANY, C_REC_MOBILE, C_REC_NAME, C_SEND_ADDRESS, 
+    C_SEND_COMPANY, C_SEND_MOBILE, C_SEND_NAME, C_SEND_PRO_NUM, C_SIGN_STATUS, C_VOL, 
+    C_WAY_BILL_NUM, C_WAY_BILL_TYPE, C_WEIGHT, C_ORDER_ID, C_REC_AREA_ID, C_SEND_AREA_ID
   </sql>
+  <sql id="Blob_Column_List" >
+    C_REMARK
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.logistics.module.bos.model.TWayBillExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_way_bill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.bos.model.TWayBillExample" >
     select
     <if test="distinct" >
@@ -108,9 +129,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from t_way_bill
     where C_ID = #{cId,jdbcType=INTEGER}
   </select>
@@ -119,21 +142,21 @@
       C_DELTAG, C_FEEITEMNUM, C_FLOADREQR, 
       C_GOODS_TYPE, C_NUM, C_PAY_TYPE_NUM, 
       C_REC_ADDRESS, C_REC_COMPANY, C_REC_MOBILE, 
-      C_REC_NAME, C_REMARK, C_SEND_ADDRESS, 
-      C_SEND_COMPANY, C_SEND_MOBILE, C_SEND_NAME, 
-      C_SEND_PRO_NUM, C_SIGN_STATUS, C_VOL, 
-      C_WAY_BILL_NUM, C_WAY_BILL_TYPE, C_WEIGHT, 
-      C_ORDER_ID, C_REC_AREA_ID, C_SEND_AREA_ID
+      C_REC_NAME, C_SEND_ADDRESS, C_SEND_COMPANY, 
+      C_SEND_MOBILE, C_SEND_NAME, C_SEND_PRO_NUM, 
+      C_SIGN_STATUS, C_VOL, C_WAY_BILL_NUM, 
+      C_WAY_BILL_TYPE, C_WEIGHT, C_ORDER_ID, 
+      C_REC_AREA_ID, C_SEND_AREA_ID, C_REMARK
       )
     values (#{cId,jdbcType=INTEGER}, #{cActlweit,jdbcType=DOUBLE}, #{cArriveCity,jdbcType=VARCHAR}, 
       #{cDeltag,jdbcType=VARCHAR}, #{cFeeitemnum,jdbcType=INTEGER}, #{cFloadreqr,jdbcType=VARCHAR}, 
       #{cGoodsType,jdbcType=VARCHAR}, #{cNum,jdbcType=INTEGER}, #{cPayTypeNum,jdbcType=VARCHAR}, 
       #{cRecAddress,jdbcType=VARCHAR}, #{cRecCompany,jdbcType=VARCHAR}, #{cRecMobile,jdbcType=VARCHAR}, 
-      #{cRecName,jdbcType=VARCHAR}, #{cRemark,jdbcType=VARCHAR}, #{cSendAddress,jdbcType=VARCHAR}, 
-      #{cSendCompany,jdbcType=VARCHAR}, #{cSendMobile,jdbcType=VARCHAR}, #{cSendName,jdbcType=VARCHAR}, 
-      #{cSendProNum,jdbcType=VARCHAR}, #{cSignStatus,jdbcType=INTEGER}, #{cVol,jdbcType=VARCHAR}, 
-      #{cWayBillNum,jdbcType=VARCHAR}, #{cWayBillType,jdbcType=VARCHAR}, #{cWeight,jdbcType=DOUBLE}, 
-      #{cOrderId,jdbcType=INTEGER}, #{cRecAreaId,jdbcType=VARCHAR}, #{cSendAreaId,jdbcType=VARCHAR}
+      #{cRecName,jdbcType=VARCHAR}, #{cSendAddress,jdbcType=VARCHAR}, #{cSendCompany,jdbcType=VARCHAR}, 
+      #{cSendMobile,jdbcType=VARCHAR}, #{cSendName,jdbcType=VARCHAR}, #{cSendProNum,jdbcType=VARCHAR}, 
+      #{cSignStatus,jdbcType=INTEGER}, #{cVol,jdbcType=VARCHAR}, #{cWayBillNum,jdbcType=VARCHAR}, 
+      #{cWayBillType,jdbcType=VARCHAR}, #{cWeight,jdbcType=DOUBLE}, #{cOrderId,jdbcType=INTEGER}, 
+      #{cRecAreaId,jdbcType=VARCHAR}, #{cSendAreaId,jdbcType=VARCHAR}, #{cRemark,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.logistics.module.bos.model.TWayBill" >
@@ -178,9 +201,6 @@
       <if test="cRecName != null" >
         C_REC_NAME,
       </if>
-      <if test="cRemark != null" >
-        C_REMARK,
-      </if>
       <if test="cSendAddress != null" >
         C_SEND_ADDRESS,
       </if>
@@ -219,6 +239,9 @@
       </if>
       <if test="cSendAreaId != null" >
         C_SEND_AREA_ID,
+      </if>
+      <if test="cRemark != null" >
+        C_REMARK,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -261,9 +284,6 @@
       <if test="cRecName != null" >
         #{cRecName,jdbcType=VARCHAR},
       </if>
-      <if test="cRemark != null" >
-        #{cRemark,jdbcType=VARCHAR},
-      </if>
       <if test="cSendAddress != null" >
         #{cSendAddress,jdbcType=VARCHAR},
       </if>
@@ -302,6 +322,9 @@
       </if>
       <if test="cSendAreaId != null" >
         #{cSendAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="cRemark != null" >
+        #{cRemark,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -353,9 +376,6 @@
       <if test="record.cRecName != null" >
         C_REC_NAME = #{record.cRecName,jdbcType=VARCHAR},
       </if>
-      <if test="record.cRemark != null" >
-        C_REMARK = #{record.cRemark,jdbcType=VARCHAR},
-      </if>
       <if test="record.cSendAddress != null" >
         C_SEND_ADDRESS = #{record.cSendAddress,jdbcType=VARCHAR},
       </if>
@@ -395,7 +415,43 @@
       <if test="record.cSendAreaId != null" >
         C_SEND_AREA_ID = #{record.cSendAreaId,jdbcType=VARCHAR},
       </if>
+      <if test="record.cRemark != null" >
+        C_REMARK = #{record.cRemark,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update t_way_bill
+    set C_ID = #{record.cId,jdbcType=INTEGER},
+      C_ACTLWEIT = #{record.cActlweit,jdbcType=DOUBLE},
+      C_ARRIVE_CITY = #{record.cArriveCity,jdbcType=VARCHAR},
+      C_DELTAG = #{record.cDeltag,jdbcType=VARCHAR},
+      C_FEEITEMNUM = #{record.cFeeitemnum,jdbcType=INTEGER},
+      C_FLOADREQR = #{record.cFloadreqr,jdbcType=VARCHAR},
+      C_GOODS_TYPE = #{record.cGoodsType,jdbcType=VARCHAR},
+      C_NUM = #{record.cNum,jdbcType=INTEGER},
+      C_PAY_TYPE_NUM = #{record.cPayTypeNum,jdbcType=VARCHAR},
+      C_REC_ADDRESS = #{record.cRecAddress,jdbcType=VARCHAR},
+      C_REC_COMPANY = #{record.cRecCompany,jdbcType=VARCHAR},
+      C_REC_MOBILE = #{record.cRecMobile,jdbcType=VARCHAR},
+      C_REC_NAME = #{record.cRecName,jdbcType=VARCHAR},
+      C_SEND_ADDRESS = #{record.cSendAddress,jdbcType=VARCHAR},
+      C_SEND_COMPANY = #{record.cSendCompany,jdbcType=VARCHAR},
+      C_SEND_MOBILE = #{record.cSendMobile,jdbcType=VARCHAR},
+      C_SEND_NAME = #{record.cSendName,jdbcType=VARCHAR},
+      C_SEND_PRO_NUM = #{record.cSendProNum,jdbcType=VARCHAR},
+      C_SIGN_STATUS = #{record.cSignStatus,jdbcType=INTEGER},
+      C_VOL = #{record.cVol,jdbcType=VARCHAR},
+      C_WAY_BILL_NUM = #{record.cWayBillNum,jdbcType=VARCHAR},
+      C_WAY_BILL_TYPE = #{record.cWayBillType,jdbcType=VARCHAR},
+      C_WEIGHT = #{record.cWeight,jdbcType=DOUBLE},
+      C_ORDER_ID = #{record.cOrderId,jdbcType=INTEGER},
+      C_REC_AREA_ID = #{record.cRecAreaId,jdbcType=VARCHAR},
+      C_SEND_AREA_ID = #{record.cSendAreaId,jdbcType=VARCHAR},
+      C_REMARK = #{record.cRemark,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -415,7 +471,6 @@
       C_REC_COMPANY = #{record.cRecCompany,jdbcType=VARCHAR},
       C_REC_MOBILE = #{record.cRecMobile,jdbcType=VARCHAR},
       C_REC_NAME = #{record.cRecName,jdbcType=VARCHAR},
-      C_REMARK = #{record.cRemark,jdbcType=VARCHAR},
       C_SEND_ADDRESS = #{record.cSendAddress,jdbcType=VARCHAR},
       C_SEND_COMPANY = #{record.cSendCompany,jdbcType=VARCHAR},
       C_SEND_MOBILE = #{record.cSendMobile,jdbcType=VARCHAR},
@@ -472,9 +527,6 @@
       <if test="cRecName != null" >
         C_REC_NAME = #{cRecName,jdbcType=VARCHAR},
       </if>
-      <if test="cRemark != null" >
-        C_REMARK = #{cRemark,jdbcType=VARCHAR},
-      </if>
       <if test="cSendAddress != null" >
         C_SEND_ADDRESS = #{cSendAddress,jdbcType=VARCHAR},
       </if>
@@ -514,7 +566,40 @@
       <if test="cSendAreaId != null" >
         C_SEND_AREA_ID = #{cSendAreaId,jdbcType=VARCHAR},
       </if>
+      <if test="cRemark != null" >
+        C_REMARK = #{cRemark,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.logistics.module.bos.model.TWayBill" >
+    update t_way_bill
+    set C_ACTLWEIT = #{cActlweit,jdbcType=DOUBLE},
+      C_ARRIVE_CITY = #{cArriveCity,jdbcType=VARCHAR},
+      C_DELTAG = #{cDeltag,jdbcType=VARCHAR},
+      C_FEEITEMNUM = #{cFeeitemnum,jdbcType=INTEGER},
+      C_FLOADREQR = #{cFloadreqr,jdbcType=VARCHAR},
+      C_GOODS_TYPE = #{cGoodsType,jdbcType=VARCHAR},
+      C_NUM = #{cNum,jdbcType=INTEGER},
+      C_PAY_TYPE_NUM = #{cPayTypeNum,jdbcType=VARCHAR},
+      C_REC_ADDRESS = #{cRecAddress,jdbcType=VARCHAR},
+      C_REC_COMPANY = #{cRecCompany,jdbcType=VARCHAR},
+      C_REC_MOBILE = #{cRecMobile,jdbcType=VARCHAR},
+      C_REC_NAME = #{cRecName,jdbcType=VARCHAR},
+      C_SEND_ADDRESS = #{cSendAddress,jdbcType=VARCHAR},
+      C_SEND_COMPANY = #{cSendCompany,jdbcType=VARCHAR},
+      C_SEND_MOBILE = #{cSendMobile,jdbcType=VARCHAR},
+      C_SEND_NAME = #{cSendName,jdbcType=VARCHAR},
+      C_SEND_PRO_NUM = #{cSendProNum,jdbcType=VARCHAR},
+      C_SIGN_STATUS = #{cSignStatus,jdbcType=INTEGER},
+      C_VOL = #{cVol,jdbcType=VARCHAR},
+      C_WAY_BILL_NUM = #{cWayBillNum,jdbcType=VARCHAR},
+      C_WAY_BILL_TYPE = #{cWayBillType,jdbcType=VARCHAR},
+      C_WEIGHT = #{cWeight,jdbcType=DOUBLE},
+      C_ORDER_ID = #{cOrderId,jdbcType=INTEGER},
+      C_REC_AREA_ID = #{cRecAreaId,jdbcType=VARCHAR},
+      C_SEND_AREA_ID = #{cSendAreaId,jdbcType=VARCHAR},
+      C_REMARK = #{cRemark,jdbcType=LONGVARCHAR}
     where C_ID = #{cId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.logistics.module.bos.model.TWayBill" >
@@ -531,7 +616,6 @@
       C_REC_COMPANY = #{cRecCompany,jdbcType=VARCHAR},
       C_REC_MOBILE = #{cRecMobile,jdbcType=VARCHAR},
       C_REC_NAME = #{cRecName,jdbcType=VARCHAR},
-      C_REMARK = #{cRemark,jdbcType=VARCHAR},
       C_SEND_ADDRESS = #{cSendAddress,jdbcType=VARCHAR},
       C_SEND_COMPANY = #{cSendCompany,jdbcType=VARCHAR},
       C_SEND_MOBILE = #{cSendMobile,jdbcType=VARCHAR},

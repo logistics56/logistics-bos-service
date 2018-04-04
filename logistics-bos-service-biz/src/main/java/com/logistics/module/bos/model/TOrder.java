@@ -4,52 +4,124 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TOrder implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 客户编号
+     */
     private Integer cCustomerId;
 
+    /**
+     * 托寄物类型：文件、衣服 、食品、电子商品
+     */
     private String cGoodsType;
 
+    /**
+     * 订单号
+     */
     private String cOrderNum;
 
+    /**
+     * 下单时间
+     */
     private Date cOrderTime;
 
+    /**
+     * 分单类型 1 自动分单 2 人工分单
+     */
     private String cOrderType;
 
+    /**
+     * 支付类型编号：寄付日结、寄付月结、到付
+     */
     private String cPayTypeNum;
 
+    /**
+     * 收件人详细地址信息
+     */
     private String cRecAddress;
 
+    /**
+     * 收件人公司
+     */
     private String cRecCompany;
 
+    /**
+     * 收件人电话
+     */
     private String cRecMobile;
 
+    /**
+     * 收件人姓名
+     */
     private String cRecName;
 
+    /**
+     * 备注
+     */
     private String cRemark;
 
+    /**
+     * 寄件人详细地址信息
+     */
     private String cSendAddress;
 
+    /**
+     * 寄件人公司
+     */
     private String cSendCompany;
 
+    /**
+     * 寄件人电话
+     */
     private String cSendMobile;
 
+    /**
+     * 给快递员捎话
+     */
     private String cSendMobileMsg;
 
+    /**
+     * 寄件人姓名
+     */
     private String cSendName;
 
+    /**
+     * 快递产品类型编号：駃达当日、駃达次日、駃达隔日
+     */
     private String cSendProNum;
 
+    /**
+     * 订单状态 1 待取件 2 运输中 3 已签收 4 异常
+     */
     private String cStatus;
 
+    /**
+     * 来电号码
+     */
     private String cTelephone;
 
+    /**
+     * 托寄物重量
+     */
     private Double cWeight;
 
+    /**
+     * 快递员id
+     */
     private Integer cCourierId;
 
+    /**
+     * 收件人地域id
+     */
     private String cRecAreaId;
 
+    /**
+     * 寄件人地域id
+     */
     private String cSendAreaId;
 
     private static final long serialVersionUID = 1L;

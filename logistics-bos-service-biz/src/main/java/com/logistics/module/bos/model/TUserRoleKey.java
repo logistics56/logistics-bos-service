@@ -3,8 +3,14 @@ package com.logistics.module.bos.model;
 import java.io.Serializable;
 
 public class TUserRoleKey implements Serializable {
+    /**
+     * 用户id
+     */
     private Integer cUserId;
 
+    /**
+     * 角色id
+     */
     private Integer cRoleId;
 
     private static final long serialVersionUID = 1L;

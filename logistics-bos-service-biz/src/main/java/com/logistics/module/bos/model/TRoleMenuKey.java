@@ -3,8 +3,14 @@ package com.logistics.module.bos.model;
 import java.io.Serializable;
 
 public class TRoleMenuKey implements Serializable {
+    /**
+     * 角色表id
+     */
     private Integer cRoleId;
 
+    /**
+     * 菜单表id
+     */
     private Integer cMenuId;
 
     private static final long serialVersionUID = 1L;

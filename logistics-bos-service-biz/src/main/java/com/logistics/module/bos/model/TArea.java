@@ -3,18 +3,39 @@ package com.logistics.module.bos.model;
 import java.io.Serializable;
 
 public class TArea implements Serializable {
+    /**
+     * 主键
+     */
     private String cId;
 
+    /**
+     * 城市
+     */
     private String cCity;
 
+    /**
+     * 城市编码
+     */
     private String cCitycode;
 
+    /**
+     * 区域
+     */
     private String cDistrict;
 
+    /**
+     * 邮编
+     */
     private String cPostcode;
 
+    /**
+     * 省
+     */
     private String cProvince;
 
+    /**
+     * 简码
+     */
     private String cShortcode;
 
     private static final long serialVersionUID = 1L;

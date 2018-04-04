@@ -4,22 +4,49 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TUser implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 生日
+     */
     private Date cBirthday;
 
+    /**
+     * 性别
+     */
     private String cGender;
 
+    /**
+     * 真实姓名
+     */
     private String cNickname;
 
+    /**
+     * 密码
+     */
     private String cPassword;
 
+    /**
+     * 备注
+     */
     private String cRemark;
 
+    /**
+     * 状态
+     */
     private String cStation;
 
+    /**
+     * 联系电话
+     */
     private String cTelephone;
 
+    /**
+     * 登陆用户名
+     */
     private String cUsername;
 
     private static final long serialVersionUID = 1L;

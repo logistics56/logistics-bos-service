@@ -3,24 +3,54 @@ package com.logistics.module.bos.model;
 import java.io.Serializable;
 
 public class TVehicle implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 司机
+     */
     private String cDriver;
 
+    /**
+     * 备注
+     */
     private String cRemark;
 
+    /**
+     * 线路名称
+     */
     private String cRouteName;
 
+    /**
+     * 线路类型
+     */
     private String cRouteType;
 
+    /**
+     * 承运商
+     */
     private String cSnipper;
 
+    /**
+     * 电话
+     */
     private String cTelephone;
 
+    /**
+     * 吨控
+     */
     private Integer cTon;
 
+    /**
+     * 车牌号
+     */
     private String cVehicleNum;
 
+    /**
+     * 车型
+     */
     private String cVehicleType;
 
     private static final long serialVersionUID = 1L;

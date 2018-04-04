@@ -4,30 +4,69 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TTakeTime implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 所属公司
+     */
     private String cCompany;
 
+    /**
+     * 收派时间名称
+     */
     private String cName;
 
+    /**
+     * 平常下班时间
+     */
     private String cNormalDutyTime;
 
+    /**
+     * 平常上班时间
+     */
     private String cNormalWorkTime;
 
+    /**
+     * 操作单位
+     */
     private String cOperatingCompany;
 
+    /**
+     * 操作时间
+     */
     private Date cOperatingTime;
 
+    /**
+     * 操作员
+     */
     private String cOperator;
 
+    /**
+     * 周六下班时间
+     */
     private String cSatDutyTime;
 
+    /**
+     * 周六上班时间
+     */
     private String cSatWorkTime;
 
+    /**
+     * 状态
+     */
     private String cStatus;
 
+    /**
+     * 周日下班时间
+     */
     private String cSunDutyTime;
 
+    /**
+     * 周日上班时间
+     */
     private String cSunWorkTime;
 
     private static final long serialVersionUID = 1L;

@@ -3,12 +3,24 @@ package com.logistics.module.bos.model;
 import java.io.Serializable;
 
 public class TRole implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 描述
+     */
     private String cDescription;
 
+    /**
+     * 角色关键字，用于权限控制
+     */
     private String cKeyword;
 
+    /**
+     * 角色名称
+     */
     private String cName;
 
     private static final long serialVersionUID = 1L;

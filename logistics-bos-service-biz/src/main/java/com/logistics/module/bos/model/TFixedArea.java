@@ -4,20 +4,44 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TFixedArea implements Serializable {
+    /**
+     * 主键
+     */
     private String cId;
 
+    /**
+     * 所属单位
+     */
     private String cCompany;
 
+    /**
+     * 定区负责人
+     */
     private String cFixedAreaLeader;
 
+    /**
+     * 定区名称
+     */
     private String cFixedAreaName;
 
+    /**
+     * 操作单位
+     */
     private String cOperatingCompany;
 
+    /**
+     * 操作时间
+     */
     private Date cOperatingTime;
 
+    /**
+     * 操作员
+     */
     private String cOperator;
 
+    /**
+     * 联系电话
+     */
     private String cTelephone;
 
     private static final long serialVersionUID = 1L;

@@ -4,20 +4,44 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TArchive implements Serializable {
+    /**
+     *  主键
+     */
     private Integer cId;
 
+    /**
+     * 档案名称
+     */
     private String cArchiveName;
 
+    /**
+     * 档案编号
+     */
     private String cArchiveNum;
 
+    /**
+     * 是否分级 0代表不分级 1代表分级
+     */
     private Integer cHaschild;
 
+    /**
+     * 操作单位
+     */
     private String cOperatingCompany;
 
+    /**
+     * 操作时间
+     */
     private Date cOperatingTime;
 
+    /**
+     * 操作员
+     */
     private String cOperator;
 
+    /**
+     * 备注
+     */
     private String cRemark;
 
     private static final long serialVersionUID = 1L;

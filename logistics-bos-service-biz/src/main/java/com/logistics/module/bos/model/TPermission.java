@@ -3,12 +3,24 @@ package com.logistics.module.bos.model;
 import java.io.Serializable;
 
 public class TPermission implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 描述
+     */
     private String cDescription;
 
+    /**
+     * 权限关键字，用于权限控制
+     */
     private String cKeyword;
 
+    /**
+     * 权限名称
+     */
     private String cName;
 
     private static final long serialVersionUID = 1L;

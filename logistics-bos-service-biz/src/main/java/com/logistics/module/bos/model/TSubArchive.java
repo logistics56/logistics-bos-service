@@ -4,22 +4,49 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TSubArchive implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 助记码
+     */
     private String cMnemonicCode;
 
+    /**
+     * 封存标志
+     */
     private String cMothballed;
 
+    /**
+     * 操作单位
+     */
     private String cOperatingCompany;
 
+    /**
+     * 操作时间
+     */
     private Date cOperatingTime;
 
+    /**
+     * 操作员
+     */
     private String cOperator;
 
+    /**
+     * 备注
+     */
     private String cRemark;
 
+    /**
+     * 子档名称
+     */
     private String cSubArchiveName;
 
+    /**
+     * 关联基本档案信息
+     */
     private Integer cArchiveId;
 
     private static final long serialVersionUID = 1L;

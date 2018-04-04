@@ -4,22 +4,49 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TStandard implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 最大长度
+     */
     private Integer cMaxLength;
 
+    /**
+     * 最大重量
+     */
     private Integer cMaxWeight;
 
+    /**
+     * 最小长度
+     */
     private Integer cMinLength;
 
+    /**
+     * 最小重量
+     */
     private Integer cMinWeight;
 
+    /**
+     * 标准名称
+     */
     private String cName;
 
+    /**
+     * 操作单位
+     */
     private String cOperatingCompany;
 
+    /**
+     * 操作时间
+     */
     private Date cOperatingTime;
 
+    /**
+     * 操作员
+     */
     private String cOperator;
 
     private static final long serialVersionUID = 1L;

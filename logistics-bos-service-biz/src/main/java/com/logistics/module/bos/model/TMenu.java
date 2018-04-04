@@ -3,16 +3,34 @@ package com.logistics.module.bos.model;
 import java.io.Serializable;
 
 public class TMenu implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 描述
+     */
     private String cDescription;
 
+    /**
+     * 菜单名称
+     */
     private String cName;
 
+    /**
+     * 访问路径
+     */
     private String cPage;
 
+    /**
+     * 优先级
+     */
     private Integer cPriority;
 
+    /**
+     * 父菜单id
+     */
     private Integer cPid;
 
     private static final long serialVersionUID = 1L;

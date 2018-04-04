@@ -3,16 +3,34 @@ package com.logistics.module.bos.model;
 import java.io.Serializable;
 
 public class TInOutStorageInfo implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 仓库、网点 地址
+     */
     private String cAddress;
 
+    /**
+     * 描述
+     */
     private String cDescription;
 
+    /**
+     * 操作类型 ： 入库、出库、到达网点
+     */
     private String cOperation;
 
+    /**
+     * 运输配送信息表id
+     */
     private Integer cTransitInfoId;
 
+    /**
+     * 排序
+     */
     private Integer cInOutIndex;
 
     private static final long serialVersionUID = 1L;

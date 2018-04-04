@@ -3,20 +3,44 @@ package com.logistics.module.bos.model;
 import java.io.Serializable;
 
 public class TSubArea implements Serializable {
+    /**
+     * 主键
+     */
     private String cId;
 
+    /**
+     * 辅助关键字
+     */
     private String cAssistKeyWords;
 
+    /**
+     * 终止号
+     */
     private String cEndnum;
 
+    /**
+     * 关键字
+     */
     private String cKeyWords;
 
+    /**
+     * 单双号
+     */
     private String cSingle;
 
+    /**
+     * 起始号
+     */
     private String cStartNum;
 
+    /**
+     * 区域
+     */
     private String cAreaId;
 
+    /**
+     * 定区
+     */
     private String cFixedareaId;
 
     private static final long serialVersionUID = 1L;

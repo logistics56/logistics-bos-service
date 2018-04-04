@@ -3,59 +3,140 @@ package com.logistics.module.bos.model;
 import java.io.Serializable;
 
 public class TWayBill implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 实际重量
+     */
     private Double cActlweit;
 
+    /**
+     * 到达地
+     */
     private String cArriveCity;
 
+    /**
+     * 1、新增修改单据状态为“否” 2、作废时需将状态置为“是” 3、取消作废时需要将状态置为“否”
+     */
     private String cDeltag;
 
+    /**
+     * 实际件数
+     */
     private Integer cFeeitemnum;
 
+    /**
+     * 配载要求 (比如录入1=无，2=禁航，4=禁航空铁路)
+     */
     private String cFloadreqr;
 
+    /**
+     * 托寄物类型：文件、衣服 、食品、电子商品
+     */
     private String cGoodsType;
 
+    /**
+     * 原件数
+     */
     private Integer cNum;
 
+    /**
+     * 支付类型编号：寄付日结、寄付月结、到付
+     */
     private String cPayTypeNum;
 
+    /**
+     * 收件人详细地址信息
+     */
     private String cRecAddress;
 
+    /**
+     * 收件人公司
+     */
     private String cRecCompany;
 
+    /**
+     * 收件人电话
+     */
     private String cRecMobile;
 
+    /**
+     * 收件人姓名
+     */
     private String cRecName;
 
-    private String cRemark;
-
+    /**
+     * 寄件人详细地址信息
+     */
     private String cSendAddress;
 
+    /**
+     * 寄件人公司
+     */
     private String cSendCompany;
 
+    /**
+     * 寄件人电话
+     */
     private String cSendMobile;
 
+    /**
+     * 寄件人姓名
+     */
     private String cSendName;
 
+    /**
+     * 快递产品类型编号：駃达当日、駃达次日、駃达隔日
+     */
     private String cSendProNum;
 
+    /**
+     * 运单状态： 1 待发货、 2 派送中、3 已签收、4 异常
+     */
     private Integer cSignStatus;
 
+    /**
+     * 体积 输入格式为1*1*1*1，表示长*宽*高*数量
+     */
     private String cVol;
 
+    /**
+     * 运单编号
+     */
     private String cWayBillNum;
 
+    /**
+     * 运单类型（类型包括：正常单据、异单、调单）
+     */
     private String cWayBillType;
 
+    /**
+     * 托寄物重量
+     */
     private Double cWeight;
 
+    /**
+     * 订单信息
+     */
     private Integer cOrderId;
 
+    /**
+     * 收件人省市区信息
+     */
     private String cRecAreaId;
 
+    /**
+     * 寄件人省市区信息
+     */
     private String cSendAreaId;
+
+    /**
+     * 备注
+     */
+    private String cRemark;
 
     private static final long serialVersionUID = 1L;
 
@@ -163,14 +244,6 @@ public class TWayBill implements Serializable {
         this.cRecName = cRecName;
     }
 
-    public String getcRemark() {
-        return cRemark;
-    }
-
-    public void setcRemark(String cRemark) {
-        this.cRemark = cRemark;
-    }
-
     public String getcSendAddress() {
         return cSendAddress;
     }
@@ -275,6 +348,14 @@ public class TWayBill implements Serializable {
         this.cSendAreaId = cSendAreaId;
     }
 
+    public String getcRemark() {
+        return cRemark;
+    }
+
+    public void setcRemark(String cRemark) {
+        this.cRemark = cRemark;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -294,7 +375,6 @@ public class TWayBill implements Serializable {
         sb.append(", cRecCompany=").append(cRecCompany);
         sb.append(", cRecMobile=").append(cRecMobile);
         sb.append(", cRecName=").append(cRecName);
-        sb.append(", cRemark=").append(cRemark);
         sb.append(", cSendAddress=").append(cSendAddress);
         sb.append(", cSendCompany=").append(cSendCompany);
         sb.append(", cSendMobile=").append(cSendMobile);
@@ -308,6 +388,7 @@ public class TWayBill implements Serializable {
         sb.append(", cOrderId=").append(cOrderId);
         sb.append(", cRecAreaId=").append(cRecAreaId);
         sb.append(", cSendAreaId=").append(cSendAreaId);
+        sb.append(", cRemark=").append(cRemark);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

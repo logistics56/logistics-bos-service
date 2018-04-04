@@ -4,26 +4,59 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TPromotion implements Serializable {
+    /**
+     * 主键
+     */
     private Integer cId;
 
+    /**
+     * 活动范围
+     */
     private String cActiveScope;
 
+    /**
+     * 宣传内容(活动描述信息)
+     */
     private String cDescription;
 
+    /**
+     * 失效时间
+     */
     private Date cEndDate;
 
+    /**
+     * 发布时间
+     */
     private Date cStartDate;
 
+    /**
+     * 状态 可取值：1.进行中 2. 已结束
+     */
     private String cStatus;
 
+    /**
+     * 宣传概要(标题)
+     */
     private String cTitle;
 
+    /**
+     * 宣传图片
+     */
     private String cTitleImg;
 
+    /**
+     * 更新时间
+     */
     private Date cUpdateTime;
 
+    /**
+     * 更新单位
+     */
     private String cUpdateUnit;
 
+    /**
+     * 更新人 后续与后台用户关联
+     */
     private String cUpdateUser;
 
     private static final long serialVersionUID = 1L;

@@ -12,15 +12,21 @@ public interface TWayBillMapper {
 
     int insertSelective(TWayBill record);
 
+    List<TWayBill> selectByExampleWithBLOBs(TWayBillExample example);
+
     List<TWayBill> selectByExample(TWayBillExample example);
 
     TWayBill selectByPrimaryKey(Integer cId);
 
     int updateByExampleSelective(@Param("record") TWayBill record, @Param("example") TWayBillExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") TWayBill record, @Param("example") TWayBillExample example);
+
     int updateByExample(@Param("record") TWayBill record, @Param("example") TWayBillExample example);
 
     int updateByPrimaryKeySelective(TWayBill record);
+
+    int updateByPrimaryKeyWithBLOBs(TWayBill record);
 
     int updateByPrimaryKey(TWayBill record);
 }
