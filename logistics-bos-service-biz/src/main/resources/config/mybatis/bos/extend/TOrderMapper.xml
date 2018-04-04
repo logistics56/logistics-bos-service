@@ -6,4 +6,18 @@
  from t_order
  where C_ORDER_NUM = #{orderNum}
  </select>
+ <select id="queryDisSendAddress" resultMap="BaseResultMap" parameterType="map">
+ SELECT <include refid="Base_Column_List" /> 
+ FROM t_order 
+ WHERE C_SEND_MOBILE = #{sendMobile} 
+ GROUP BY C_SEND_ADDRESS
+  order by C_ORDER_TIME desc
+ </select>
+ <select id="queryDisRecAddress" resultMap="BaseResultMap" parameterType="map">
+ SELECT <include refid="Base_Column_List" /> 
+ FROM t_order 
+ WHERE C_SEND_MOBILE = #{sendMobile} 
+ GROUP BY C_REC_ADDRESS
+ order by C_ORDER_TIME desc
+ </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.logistics.module.bos.dao.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +29,16 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public TOrder queryByOrderNum(String orderNum) {
 		return tOrderMapper.queryByOrderNum(orderNum);
+	}
+
+	@Override
+	public List<TOrder> queryDisSendAddress(String sendMobile) {
+		return tOrderMapper.queryDisSendAddress(sendMobile);
+	}
+
+	@Override
+	public List<TOrder> queryDisRecAddress(String sendMobile) {
+		return tOrderMapper.queryDisRecAddress(sendMobile);
 	}
 
 }

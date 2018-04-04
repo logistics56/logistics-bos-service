@@ -1,8 +1,12 @@
 package com.logistics.module.bos.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import com.logistics.module.bos.dao.OrderDao;
 import com.logistics.module.bos.model.TOrder;
@@ -41,6 +45,33 @@ public class OrderServiceImpl implements OrderService {
 		OrderDTO dto = new OrderDTO();
 		BeanUtils.copyProperties(po, dto);
 		return dto;
+	}
+
+	@Override
+	public List<OrderDTO> queryDisSendAddress(String sendMobile) {
+		List<TOrder> results = orderDao.queryDisSendAddress(sendMobile);
+		List<OrderDTO> dtos = convertPoToDto(results);
+		return dtos;
+	}
+
+	@Override
+	public List<OrderDTO> queryDisRecAddress(String sendMobile) {
+		List<TOrder> results = orderDao.queryDisRecAddress(sendMobile);
+		List<OrderDTO> dtos = convertPoToDto(results);
+		return dtos;
+	}
+	
+	private List<OrderDTO> convertPoToDto(List<TOrder> list) {
+		if (CollectionUtils.isEmpty(list)) {
+			return null;
+		}
+		List<OrderDTO> targetList = new ArrayList<OrderDTO>();
+		for (TOrder po : list) {
+			OrderDTO dto = new OrderDTO();
+			BeanUtils.copyProperties(po, dto);
+			targetList.add(dto);
+		}
+		return targetList;
 	}
 
 }

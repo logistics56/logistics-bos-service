@@ -1,5 +1,7 @@
 package com.logistics.module.bos.dao;
 
+import java.util.List;
+
 import com.logistics.module.bos.model.TOrder;
 
 /**
@@ -13,5 +15,9 @@ public interface OrderDao {
 	int insertSelective(TOrder record);
 	
 	TOrder queryByOrderNum(String orderNum);
+	
+    List<TOrder> queryDisSendAddress(String sendMobile);
+    
+    List<TOrder> queryDisRecAddress(String sendMobile);
 
 }

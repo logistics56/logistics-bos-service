@@ -1,5 +1,7 @@
 package com.logistics.module.service;
 
+import java.util.List;
+
 import com.logistics.module.dto.OrderDTO;
 
 /**
@@ -13,4 +15,8 @@ public interface OrderService {
 	int insertSelective(OrderDTO order);
 	
 	OrderDTO queryByOrderNum(String orderNum);
+	
+    List<OrderDTO> queryDisSendAddress(String sendMobile);
+    
+    List<OrderDTO> queryDisRecAddress(String sendMobile);
 }

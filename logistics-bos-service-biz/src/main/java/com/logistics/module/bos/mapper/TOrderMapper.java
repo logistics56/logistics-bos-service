@@ -25,4 +25,8 @@ public interface TOrderMapper {
     int updateByPrimaryKey(TOrder record);
     
     TOrder queryByOrderNum(@Param("orderNum") String orderNum);
+    
+    List<TOrder> queryDisSendAddress(@Param("sendMobile") String sendMobile);
+    
+    List<TOrder> queryDisRecAddress(@Param("sendMobile") String sendMobile);
 }
