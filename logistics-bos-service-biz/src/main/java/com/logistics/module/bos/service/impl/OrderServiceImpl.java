@@ -74,4 +74,20 @@ public class OrderServiceImpl implements OrderService {
 		return targetList;
 	}
 
+	@Override
+	public List<List<OrderDTO>> queryAllStatus(String sendMobile) {
+		List<List<OrderDTO>> list = new ArrayList<>(5);
+		List<OrderDTO> allList = new ArrayList<>();
+		for(int i =1 ; i <=4 ; i++){
+			List<TOrder> results = orderDao.queryByTelephoneAndStatus(sendMobile, i+"");
+			List<OrderDTO> dtos = convertPoToDto(results);
+			if(!CollectionUtils.isEmpty(dtos)){
+				allList.addAll(dtos);
+			}
+			list.add(dtos);
+		}
+		list.add(allList);//所有订单记录4
+		return list;
+	}
+
 }

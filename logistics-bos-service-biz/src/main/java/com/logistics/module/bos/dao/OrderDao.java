@@ -2,6 +2,8 @@ package com.logistics.module.bos.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.logistics.module.bos.model.TOrder;
 
 /**
@@ -19,5 +21,7 @@ public interface OrderDao {
     List<TOrder> queryDisSendAddress(String sendMobile);
     
     List<TOrder> queryDisRecAddress(String sendMobile);
+    
+    List<TOrder> queryByTelephoneAndStatus(String sendMobile, String status);
 
 }

@@ -41,4 +41,9 @@ public class OrderDaoImpl implements OrderDao {
 		return tOrderMapper.queryDisRecAddress(sendMobile);
 	}
 
+	@Override
+	public List<TOrder> queryByTelephoneAndStatus(String sendMobile, String status) {
+		return tOrderMapper.queryByTelephoneAndStatus(sendMobile, status);
+	}
+
 }

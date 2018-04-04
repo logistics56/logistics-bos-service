@@ -1,5 +1,6 @@
 package com.logistics.module.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.logistics.module.dto.OrderDTO;
@@ -19,4 +20,6 @@ public interface OrderService {
     List<OrderDTO> queryDisSendAddress(String sendMobile);
     
     List<OrderDTO> queryDisRecAddress(String sendMobile);
+    
+    List<List<OrderDTO>> queryAllStatus(String sendMobile);
 }

@@ -20,4 +20,10 @@
  GROUP BY C_REC_ADDRESS
  order by C_ORDER_TIME desc
  </select>
+ <select id="queryByTelephoneAndStatus" resultMap="BaseResultMap" parameterType="map">
+  SELECT <include refid="Base_Column_List" /> 
+ FROM t_order 
+ WHERE C_SEND_MOBILE = #{sendMobile} and C_STATUS = #{status}
+ order by C_ORDER_TIME desc
+ </select>
 </mapper>
