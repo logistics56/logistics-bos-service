@@ -17,4 +17,6 @@ public interface TUserRoleMapper {
     int updateByExampleSelective(@Param("record") TUserRoleKey record, @Param("example") TUserRoleExample example);
 
     int updateByExample(@Param("record") TUserRoleKey record, @Param("example") TUserRoleExample example);
+    
+    List<TUserRoleKey> selectByUserId(@Param("userId") int userId);
 }

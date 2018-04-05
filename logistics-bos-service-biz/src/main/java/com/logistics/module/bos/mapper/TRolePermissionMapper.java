@@ -17,4 +17,6 @@ public interface TRolePermissionMapper {
     int updateByExampleSelective(@Param("record") TRolePermissionKey record, @Param("example") TRolePermissionExample example);
 
     int updateByExample(@Param("record") TRolePermissionKey record, @Param("example") TRolePermissionExample example);
+    
+    List<TRolePermissionKey> selectByRoleId(@Param("roleId") int roleId);
 }
