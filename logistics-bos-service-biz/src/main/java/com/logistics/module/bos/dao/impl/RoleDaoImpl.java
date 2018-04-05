@@ -31,4 +31,29 @@ public class RoleDaoImpl implements RoleDao {
 		return tRoleMapper.queryAll();
 	}
 
+	@Override
+	public int queryTotal() {
+		return tRoleMapper.queryTotal();
+	}
+
+	@Override
+	public List<TRole> queryByPage(int pageNum, int pageSize) {
+		return tRoleMapper.queryByPage(pageNum, pageSize);
+	}
+
+	@Override
+	public int insertSelective(TRole record) {
+		return tRoleMapper.insertSelective(record);
+	}
+
+	@Override
+	public int queryMaxId() {
+		return tRoleMapper.queryMaxId();
+	}
+
+	@Override
+	public int deleteSelect(int id) {
+		return tRoleMapper.deleteSelect(id);
+	}
+
 }

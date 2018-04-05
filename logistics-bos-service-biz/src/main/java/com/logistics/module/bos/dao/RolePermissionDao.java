@@ -2,6 +2,8 @@ package com.logistics.module.bos.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.logistics.module.bos.model.TRolePermissionKey;
 
 /**
@@ -13,4 +15,10 @@ import com.logistics.module.bos.model.TRolePermissionKey;
 public interface RolePermissionDao {
 	
     List<TRolePermissionKey> selectByRoleId(int roleId);
+    
+    int insertSelective(TRolePermissionKey record);
+    
+    int deleteByRoleId(int roleId);
+    
+    int deleteByPermissionId(int permissionId);
 }

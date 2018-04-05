@@ -25,4 +25,12 @@ public interface TRoleMapper {
     int updateByPrimaryKey(TRole record);
     
     List<TRole> queryAll();
+    
+    int queryTotal();
+    
+    List<TRole> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    int queryMaxId();
+    
+    int deleteSelect(@Param("id") int id);
 }

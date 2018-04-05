@@ -19,4 +19,8 @@ public interface TRolePermissionMapper {
     int updateByExample(@Param("record") TRolePermissionKey record, @Param("example") TRolePermissionExample example);
     
     List<TRolePermissionKey> selectByRoleId(@Param("roleId") int roleId);
+    
+    int deleteByRoleId(@Param("roleId") int roleId);
+    
+    int deleteByPermissionId(@Param("permissionId") int permissionId);
 }

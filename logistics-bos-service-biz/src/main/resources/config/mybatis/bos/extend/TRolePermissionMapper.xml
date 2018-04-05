@@ -6,4 +6,10 @@ select <include refid="Base_Column_List" />
 from t_role_permission
 where C_ROLE_ID = #{roleId}
 </select>
+ <delete id="deleteByRoleId" parameterType="map">
+  delete  FROM t_role_permission where C_ROLE_ID = #{roleId}
+  </delete>
+  <delete id="deleteByPermissionId" parameterType="map">
+  delete  FROM t_role_permission where C_PERMISSION_ID = #{permissionId}
+  </delete>
 </mapper>

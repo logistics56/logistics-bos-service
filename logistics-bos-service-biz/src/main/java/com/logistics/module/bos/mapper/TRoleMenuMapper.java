@@ -17,4 +17,8 @@ public interface TRoleMenuMapper {
     int updateByExampleSelective(@Param("record") TRoleMenuKey record, @Param("example") TRoleMenuExample example);
 
     int updateByExample(@Param("record") TRoleMenuKey record, @Param("example") TRoleMenuExample example);
+    
+    int deleteByRoleId(@Param("roleId") int roleId);
+    
+    int deleteByMenuId(@Param("menuId") int menuId);
 }

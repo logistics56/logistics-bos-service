@@ -5,4 +5,20 @@
 select <include refid="Base_Column_List" />
 from t_role
 </select>
+
+<select id="queryTotal" resultType="java.lang.Integer">
+  select count(*) from t_role
+  </select>
+  <select id="queryByPage" resultMap="BaseResultMap" parameterType="map">
+  select <include refid="Base_Column_List" />
+  from t_role
+  limit #{pageNum},#{pageSize}
+  </select>
+  <select id="queryMaxId" resultType="java.lang.Integer">
+  SELECT MAX(C_ID)
+  FROM t_role
+  </select>
+  <delete id="deleteSelect" parameterType="map">
+  delete  FROM t_role where C_ID = #{id}
+  </delete>
 </mapper>

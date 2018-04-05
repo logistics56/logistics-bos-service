@@ -10,10 +10,8 @@ import org.springframework.util.CollectionUtils;
 
 import com.logistics.module.bos.dao.RoleDao;
 import com.logistics.module.bos.dao.UserRoleDao;
-import com.logistics.module.bos.model.TCourier;
 import com.logistics.module.bos.model.TRole;
 import com.logistics.module.bos.model.TUserRoleKey;
-import com.logistics.module.dto.CourierDTO;
 import com.logistics.module.dto.RoleDTO;
 import com.logistics.module.service.RoleService;
 
@@ -73,5 +71,40 @@ public class RoleServiceImpl implements RoleService {
 		return targetList;
 	}
 
+	@Override
+	public int queryTotal() {
+		return roleDao.queryTotal();
+	}
+
+	@Override
+	public List<RoleDTO> queryByPage(int pageNum, int pageSize) {
+		List<TRole> results = roleDao.queryByPage(pageNum, pageSize);
+		List<RoleDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+
+	@Override
+	public int insertSelective(RoleDTO record) {
+		TRole role = new TRole();
+		BeanUtils.copyProperties(record, role);
+		return roleDao.insertSelective(role);
+	}
+
+	@Override
+	public int queryMaxId() {
+		return roleDao.queryMaxId();
+	}
+
+	@Override
+	public List<RoleDTO> queryAll() {
+		List<TRole> results = roleDao.queryAll();
+		List<RoleDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+
+	@Override
+	public int deleteSelect(int id) {
+		return roleDao.deleteSelect(id);
+	}
 
 }

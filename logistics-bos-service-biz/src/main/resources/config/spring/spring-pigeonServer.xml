@@ -35,6 +35,8 @@
 				<entry key="http://service.lizhen.com/logistics-bos-service/roleService_1.0.0" value-ref="roleService" />
 				<entry key="http://service.lizhen.com/logistics-bos-service/permissionService_1.0.0" value-ref="permissionService" />
 				<entry key="http://service.lizhen.com/logistics-bos-service/menuService_1.0.0" value-ref="menuService" />
+				<entry key="http://service.lizhen.com/logistics-bos-service/rolePermissionService_1.0.0" value-ref="rolePermissionService" />
+				<entry key="http://service.lizhen.com/logistics-bos-service/roleMenuService_1.0.0" value-ref="roleMenuService" />
 			</map>
 		</property>
 	</bean>

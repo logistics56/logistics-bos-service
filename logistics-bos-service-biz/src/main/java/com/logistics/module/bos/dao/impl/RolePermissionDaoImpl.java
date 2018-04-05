@@ -26,4 +26,19 @@ public class RolePermissionDaoImpl implements RolePermissionDao {
 		return tRolePermissionMapper.selectByRoleId(roleId);
 	}
 
+	@Override
+	public int insertSelective(TRolePermissionKey record) {
+		return tRolePermissionMapper.insertSelective(record);
+	}
+
+	@Override
+	public int deleteByRoleId(int roleId) {
+		return tRolePermissionMapper.deleteByRoleId(roleId);
+	}
+
+	@Override
+	public int deleteByPermissionId(int permissionId) {
+		return tRolePermissionMapper.deleteByPermissionId(permissionId);
+	}
+
 }
