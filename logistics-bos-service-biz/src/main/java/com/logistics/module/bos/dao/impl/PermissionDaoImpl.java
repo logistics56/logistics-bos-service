@@ -31,4 +31,29 @@ public class PermissionDaoImpl implements PermissionDao {
 		return tPermissionMapper.queryAll();
 	}
 
+	@Override
+	public int queryTotal() {
+		return tPermissionMapper.queryTotal();
+	}
+
+	@Override
+	public List<TPermission> queryByPage(int pageNum, int pageSize) {
+		return tPermissionMapper.queryByPage(pageNum, pageSize);
+	}
+
+	@Override
+	public int insertSelective(TPermission record) {
+		return tPermissionMapper.insertSelective(record);
+	}
+
+	@Override
+	public int queryMaxId() {
+		return tPermissionMapper.queryMaxId();
+	}
+
+	@Override
+	public int deleteSelect(int id) {
+		return tPermissionMapper.deleteSelect(id);
+	}
+
 }

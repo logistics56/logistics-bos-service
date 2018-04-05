@@ -11,12 +11,12 @@ import org.springframework.util.CollectionUtils;
 import com.logistics.module.bos.dao.PermissionDao;
 import com.logistics.module.bos.dao.RolePermissionDao;
 import com.logistics.module.bos.dao.UserRoleDao;
+import com.logistics.module.bos.model.TMenu;
 import com.logistics.module.bos.model.TPermission;
-import com.logistics.module.bos.model.TRole;
 import com.logistics.module.bos.model.TRolePermissionKey;
 import com.logistics.module.bos.model.TUserRoleKey;
+import com.logistics.module.dto.MenuDTO;
 import com.logistics.module.dto.PermissionDTO;
-import com.logistics.module.dto.RoleDTO;
 import com.logistics.module.service.PermissionService;
 
 /**
@@ -81,6 +81,42 @@ public class PermissionServiceImpl implements PermissionService {
 			targetList.add(dto);
 		}
 		return targetList;
+	}
+
+	@Override
+	public int queryTotal() {
+		return permissionDao.queryTotal();
+	}
+
+	@Override
+	public List<PermissionDTO> queryByPage(int pageNum, int pageSize) {
+		List<TPermission> results = permissionDao.queryByPage(pageNum, pageSize);
+		List<PermissionDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+
+	@Override
+	public int insertSelective(PermissionDTO record) {
+		TPermission permission = new TPermission();
+		BeanUtils.copyProperties(record, permission);
+		return permissionDao.insertSelective(permission);
+	}
+
+	@Override
+	public int queryMaxId() {
+		return permissionDao.queryMaxId();
+	}
+
+	@Override
+	public List<PermissionDTO> queryAll() {
+		List<TPermission> results = permissionDao.queryAll();
+		List<PermissionDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+
+	@Override
+	public int deleteSelect(int id) {
+		return permissionDao.deleteSelect(id);
 	}
 
 }

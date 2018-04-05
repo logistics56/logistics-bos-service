@@ -25,4 +25,12 @@ public interface TPermissionMapper {
     int updateByPrimaryKey(TPermission record);
     
     List<TPermission> queryAll();
+    
+    int queryTotal();
+    
+    List<TPermission> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    int queryMaxId();
+    
+    int deleteSelect(@Param("id") int id);
 }
