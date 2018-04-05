@@ -11,4 +11,6 @@ import com.logistics.module.bos.model.TUser;
 public interface UserDao {
 
 	TUser selectByPrimaryKey(Integer cId);
+	
+	int updatePWD(int userNum, String password);
 }

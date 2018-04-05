@@ -24,4 +24,9 @@ public class UserDaoImpl implements UserDao {
 		return tUserMapper.selectByPrimaryKey(cId);
 	}
 
+	@Override
+	public int updatePWD(int userNum, String password) {
+		return tUserMapper.updatePWD(userNum, password);
+	}
+
 }

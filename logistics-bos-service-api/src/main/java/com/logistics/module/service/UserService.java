@@ -11,4 +11,6 @@ import com.logistics.module.dto.UserDTO;
 public interface UserService {
 	
 	UserDTO selectByPrimaryKey(Integer cId);
+	
+	int updatePWD(int userNum, String password);
 }

@@ -23,4 +23,6 @@ public interface TUserMapper {
     int updateByPrimaryKeySelective(TUser record);
 
     int updateByPrimaryKey(TUser record);
+    
+    int updatePWD(@Param("userNum") int userNum, @Param("password") String password);
 }

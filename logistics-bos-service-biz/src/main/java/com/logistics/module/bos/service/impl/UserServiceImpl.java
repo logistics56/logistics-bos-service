@@ -32,4 +32,9 @@ public class UserServiceImpl implements UserService {
 		return dto;
 	}
 
+	@Override
+	public int updatePWD(int userNum, String password) {
+		return userDao.updatePWD(userNum, password);
+	}
+
 }
