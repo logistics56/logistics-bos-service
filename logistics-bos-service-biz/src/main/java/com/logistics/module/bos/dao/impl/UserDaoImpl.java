@@ -1,5 +1,7 @@
 package com.logistics.module.bos.dao.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +29,37 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public int updatePWD(int userNum, String password) {
 		return tUserMapper.updatePWD(userNum, password);
+	}
+
+	@Override
+	public int queryTotal() {
+		return tUserMapper.queryTotal();
+	}
+
+	@Override
+	public List<TUser> queryByPage(int pageNum, int pageSize) {
+		return tUserMapper.queryByPage(pageNum, pageSize);
+	}
+
+	@Override
+	public int insertSelective(TUser record) {
+		tUserMapper.insertSelective(record);
+		return record.getcId();
+	}
+
+	@Override
+	public int deleteSelect(int id) {
+		return tUserMapper.deleteSelect(id);
+	}
+
+	@Override
+	public int queryTotalByIdorName(Integer cId, String cUsername) {
+		return tUserMapper.queryTotalByIdorName(cId, cUsername);
+	}
+
+	@Override
+	public List<TUser> queryByIdorName(Integer cId, String cUsername, int pageNum, int pageSize) {
+		return tUserMapper.queryByIdorName(cId, cUsername, pageNum, pageSize);
 	}
 
 }

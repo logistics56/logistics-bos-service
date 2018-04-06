@@ -6,4 +6,40 @@ update t_user
 set C_PASSWORD = #{password}
 where C_ID = #{userNum}
 </update>
+
+<select id="queryTotal" resultType="java.lang.Integer">
+  select count(*) from t_user
+  </select>
+  <select id="queryByPage" resultMap="BaseResultMap" parameterType="map">
+  select <include refid="Base_Column_List" />
+  from t_user
+  limit #{pageNum},#{pageSize}
+  </select>
+  <delete id="deleteSelect" parameterType="map">
+  delete  FROM t_user where C_ID = #{id}
+  </delete>
+ 
+<select id="queryTotalByIdorName" resultType="java.lang.Integer" parameterType="map">
+  select count(*) from t_user
+  where 1=1 
+  <if test="cId != null">
+   and  C_ID = #{cId}
+  </if>
+  <if test="cUsername != null">
+   and C_USERNAME = #{cUsername}
+  </if>
+ </select>
+  
+<select id="queryByIdorName" resultMap="BaseResultMap" parameterType="map">
+  select <include refid="Base_Column_List" />
+  from t_user
+  where 1=1 
+  <if test="cId != null">
+   and  C_ID = #{cId}
+  </if>
+  <if test="cUsername != null">
+   and C_USERNAME = #{cUsername}
+  </if>
+   limit #{pageNum},#{pageSize}
+  </select>
 </mapper>

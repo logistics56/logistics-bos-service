@@ -11,11 +11,9 @@ import org.springframework.util.CollectionUtils;
 import com.logistics.module.bos.dao.PermissionDao;
 import com.logistics.module.bos.dao.RolePermissionDao;
 import com.logistics.module.bos.dao.UserRoleDao;
-import com.logistics.module.bos.model.TMenu;
 import com.logistics.module.bos.model.TPermission;
 import com.logistics.module.bos.model.TRolePermissionKey;
 import com.logistics.module.bos.model.TUserRoleKey;
-import com.logistics.module.dto.MenuDTO;
 import com.logistics.module.dto.PermissionDTO;
 import com.logistics.module.service.PermissionService;
 

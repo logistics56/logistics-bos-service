@@ -13,5 +13,11 @@ import com.logistics.module.bos.model.TUserRoleKey;
 public interface UserRoleDao {
 	
 	List<TUserRoleKey> selectByUserId(int userId);
+	
+	int insertSelective(TUserRoleKey record);
+	
+    int deleteByRoleId(int roleId);
+    
+    int deleteByUserId(int userId);
 
 }

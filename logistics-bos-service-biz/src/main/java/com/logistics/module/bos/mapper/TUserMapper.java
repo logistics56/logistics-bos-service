@@ -25,4 +25,14 @@ public interface TUserMapper {
     int updateByPrimaryKey(TUser record);
     
     int updatePWD(@Param("userNum") int userNum, @Param("password") String password);
+    
+    int queryTotal();
+    
+    List<TUser> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    int deleteSelect(@Param("id") int id);
+    
+    int queryTotalByIdorName(@Param("cId") Integer cId, @Param("cUsername") String cUsername);
+    
+    List<TUser> queryByIdorName(@Param("cId") Integer cId, @Param("cUsername") String cUsername, @Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
 }

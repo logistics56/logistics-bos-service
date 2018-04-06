@@ -26,4 +26,19 @@ public class UserRoleDaoImpl implements UserRoleDao {
 		return tUserRoleMapper.selectByUserId(userId);
 	}
 
+	@Override
+	public int insertSelective(TUserRoleKey record) {
+		return tUserRoleMapper.insertSelective(record);
+	}
+
+	@Override
+	public int deleteByRoleId(int roleId) {
+		return tUserRoleMapper.deleteByRoleId(roleId);
+	}
+
+	@Override
+	public int deleteByUserId(int userId) {
+		return tUserRoleMapper.deleteByUserId(userId);
+	}
+
 }
