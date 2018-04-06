@@ -51,4 +51,9 @@ public class MenuDaoImpl implements MenuDao {
 		return tMenuMapper.deleteSelect(id);
 	}
 
+	@Override
+	public TMenu selectByPrimaryKey(Integer cId) {
+		return tMenuMapper.selectByPrimaryKey(cId);
+	}
+
 }

@@ -1,5 +1,7 @@
 package com.logistics.module.bos.dao;
 
+import java.util.List;
+
 import com.logistics.module.bos.model.TRoleMenuKey;
 
 /**
@@ -11,6 +13,8 @@ import com.logistics.module.bos.model.TRoleMenuKey;
 public interface RoleMenuDao {
 	
     int insertSelective(TRoleMenuKey record);
+    
+    List<TRoleMenuKey> selectByRoleId(int roleId);
     
     int deleteByRoleId(int roleId);
     

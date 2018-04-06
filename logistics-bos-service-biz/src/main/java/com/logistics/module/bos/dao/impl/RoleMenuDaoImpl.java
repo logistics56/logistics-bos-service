@@ -1,5 +1,7 @@
 package com.logistics.module.bos.dao.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,6 +34,11 @@ public class RoleMenuDaoImpl implements RoleMenuDao {
 	@Override
 	public int deleteByMenuId(int menuId) {
 		return tRoleMenuMapper.deleteByMenuId(menuId);
+	}
+
+	@Override
+	public List<TRoleMenuKey> selectByRoleId(int roleId) {
+		return tRoleMenuMapper.selectByRoleId(roleId);
 	}
 
 }

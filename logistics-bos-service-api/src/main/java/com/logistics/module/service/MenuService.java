@@ -11,6 +11,8 @@ import com.logistics.module.dto.MenuDTO;
 * 
 */
 public interface MenuService {
+	public List<MenuDTO> findByUserId(int userId);
+	
 	/**
 	 * 查询收派标准的数据总个数
 	 * @return

@@ -9,7 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.logistics.module.bos.dao.MenuDao;
+import com.logistics.module.bos.dao.RoleMenuDao;
+import com.logistics.module.bos.dao.UserDao;
+import com.logistics.module.bos.dao.UserRoleDao;
 import com.logistics.module.bos.model.TMenu;
+import com.logistics.module.bos.model.TRoleMenuKey;
+import com.logistics.module.bos.model.TUser;
+import com.logistics.module.bos.model.TUserRoleKey;
 import com.logistics.module.dto.MenuDTO;
 import com.logistics.module.service.MenuService;
 
@@ -24,6 +30,51 @@ public class MenuServiceImpl implements MenuService {
 	
 	@Autowired
 	MenuDao menuDao;
+	
+	@Autowired
+	UserDao userDao;
+	
+	@Autowired
+	UserRoleDao userRoleDao;
+	
+	@Autowired
+	RoleMenuDao roleMenuDao;
+	
+	@Override
+	public List<MenuDTO> findByUserId(int userId) {
+		
+		List<MenuDTO> results = new ArrayList<>();
+		TUser user = userDao.selectByPrimaryKey(userId);
+		if(user != null){
+			if(user.getcStation().equals("1")){
+				List<TMenu> menus = menuDao.queryAll();
+				if(!CollectionUtils.isEmpty(menus)){
+					results = convertPoToDto(menus);
+				}
+			}else{
+				List<TUserRoleKey> userRoles = userRoleDao.selectByUserId(userId);
+				if(CollectionUtils.isEmpty(userRoles)){
+					return null;
+				}else{
+					for (TUserRoleKey userRole : userRoles) {
+						List<TRoleMenuKey> roleMenus = roleMenuDao.selectByRoleId(userRole.getcRoleId());
+						if(!CollectionUtils.isEmpty(roleMenus)){
+							for (TRoleMenuKey roleMenu : roleMenus) {
+								TMenu menu = menuDao.selectByPrimaryKey(roleMenu.getcMenuId());
+								if(menu != null){
+									MenuDTO dto = new MenuDTO();
+									BeanUtils.copyProperties(menu, dto);
+									results.add(dto);
+								}
+							}
+						}
+						
+					}
+				}
+			}
+		}
+		return results;
+	}
 
 	@Override
 	public int queryTotal() {

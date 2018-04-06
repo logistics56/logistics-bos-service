@@ -10,9 +10,11 @@ import org.springframework.util.CollectionUtils;
 
 import com.logistics.module.bos.dao.PermissionDao;
 import com.logistics.module.bos.dao.RolePermissionDao;
+import com.logistics.module.bos.dao.UserDao;
 import com.logistics.module.bos.dao.UserRoleDao;
 import com.logistics.module.bos.model.TPermission;
 import com.logistics.module.bos.model.TRolePermissionKey;
+import com.logistics.module.bos.model.TUser;
 import com.logistics.module.bos.model.TUserRoleKey;
 import com.logistics.module.dto.PermissionDTO;
 import com.logistics.module.service.PermissionService;
@@ -34,34 +36,40 @@ public class PermissionServiceImpl implements PermissionService {
 	
 	@Autowired
 	PermissionDao permissionDao;
+	
+	@Autowired
+	UserDao userDao;
 
 	@Override
 	public List<PermissionDTO> findByUserId(int userId) {
 		
 		List<PermissionDTO> results = new ArrayList<>();
-		if(userId == 1001){
-			List<TPermission> permissions = permissionDao.queryAll();
-			if(!CollectionUtils.isEmpty(permissions)){
-				results = convertPoToDto(permissions);
-			}
-		}else{
-			List<TUserRoleKey> userRoles = userRoleDao.selectByUserId(userId);
-			if(CollectionUtils.isEmpty(userRoles)){
-				return null;
+		TUser user = userDao.selectByPrimaryKey(userId);
+		if(user != null){
+			if(user.getcStation().equals("1")){
+				List<TPermission> permissions = permissionDao.queryAll();
+				if(!CollectionUtils.isEmpty(permissions)){
+					results = convertPoToDto(permissions);
+				}
 			}else{
-				for (TUserRoleKey userRole : userRoles) {
-					List<TRolePermissionKey> rolePermissions = rolePermissionDao.selectByRoleId(userRole.getcRoleId());
-					if(!CollectionUtils.isEmpty(userRoles)){
-						for (TRolePermissionKey rolePermission : rolePermissions) {
-							TPermission permission = permissionDao.selectByPrimaryKey(rolePermission.getcPermissionId());
-							if(permission != null){
-								PermissionDTO dto = new PermissionDTO();
-								BeanUtils.copyProperties(permission, dto);
-								results.add(dto);
+				List<TUserRoleKey> userRoles = userRoleDao.selectByUserId(userId);
+				if(CollectionUtils.isEmpty(userRoles)){
+					return null;
+				}else{
+					for (TUserRoleKey userRole : userRoles) {
+						List<TRolePermissionKey> rolePermissions = rolePermissionDao.selectByRoleId(userRole.getcRoleId());
+						if(!CollectionUtils.isEmpty(rolePermissions)){
+							for (TRolePermissionKey rolePermission : rolePermissions) {
+								TPermission permission = permissionDao.selectByPrimaryKey(rolePermission.getcPermissionId());
+								if(permission != null){
+									PermissionDTO dto = new PermissionDTO();
+									BeanUtils.copyProperties(permission, dto);
+									results.add(dto);
+								}
 							}
 						}
+						
 					}
-					
 				}
 			}
 		}

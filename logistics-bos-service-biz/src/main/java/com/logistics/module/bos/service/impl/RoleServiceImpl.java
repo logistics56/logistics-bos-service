@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.logistics.module.bos.dao.RoleDao;
+import com.logistics.module.bos.dao.UserDao;
 import com.logistics.module.bos.dao.UserRoleDao;
 import com.logistics.module.bos.model.TRole;
+import com.logistics.module.bos.model.TUser;
 import com.logistics.module.bos.model.TUserRoleKey;
 import com.logistics.module.dto.RoleDTO;
 import com.logistics.module.service.RoleService;
@@ -29,29 +31,35 @@ public class RoleServiceImpl implements RoleService {
 	
 	@Autowired
 	UserRoleDao userRoleDao;
+	
+	@Autowired
+	UserDao userDao;
 
 	@Override
 	public List<RoleDTO> findByUserId(int userId) {
 		
 		List<RoleDTO> results = new ArrayList<>();
-		if(userId == 1001){//管理员查询所有
-			List<TRole> roles = roleDao.queryAll();
-			if(!CollectionUtils.isEmpty(roles)){
-				results = convertPoToDto(roles);
-			}
-		}else{
-			List<TUserRoleKey> userRoles = userRoleDao.selectByUserId(userId);
-			if(CollectionUtils.isEmpty(userRoles)){
-				return null;
+		TUser user = userDao.selectByPrimaryKey(userId);
+		if(user != null){
+			if(user.getcStation().equals("1")){//管理员查询所有
+				List<TRole> roles = roleDao.queryAll();
+				if(!CollectionUtils.isEmpty(roles)){
+					results = convertPoToDto(roles);
+				}
 			}else{
-				for (TUserRoleKey userRole : userRoles) {
-					TRole role = roleDao.selectByPrimaryKey(userRole.getcRoleId());
-					if(role != null){
-						RoleDTO roleDto = new RoleDTO();
-						BeanUtils.copyProperties(role, roleDto);
-						results.add(roleDto);
+				List<TUserRoleKey> userRoles = userRoleDao.selectByUserId(userId);
+				if(CollectionUtils.isEmpty(userRoles)){
+					return null;
+				}else{
+					for (TUserRoleKey userRole : userRoles) {
+						TRole role = roleDao.selectByPrimaryKey(userRole.getcRoleId());
+						if(role != null){
+							RoleDTO roleDto = new RoleDTO();
+							BeanUtils.copyProperties(role, roleDto);
+							results.add(roleDto);
+						}
+						
 					}
-					
 				}
 			}
 		}

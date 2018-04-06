@@ -32,4 +32,8 @@ public interface MenuDao {
     List<TMenu> queryAll();
     
     int deleteSelect(int id);
+    
+    TMenu selectByPrimaryKey(Integer cId);
+    
+    
 }
