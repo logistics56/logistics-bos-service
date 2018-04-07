@@ -37,4 +37,6 @@ public interface UserService {
     int queryTotalByIdorName(Integer cId, String cUsername);
     
     List<UserDTO> queryByIdorName(Integer cId, String cUsername, int pageNum, int pageSize);
+    
+    int updateByPrimaryKeySelective(UserDTO record);
 }

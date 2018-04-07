@@ -37,4 +37,6 @@ public interface UserDao {
     int queryTotalByIdorName(Integer cId, String cUsername);
     
     List<TUser> queryByIdorName(Integer cId, String cUsername, int pageNum, int pageSize);
+    
+    int updateByPrimaryKeySelective(TUser record);
 }

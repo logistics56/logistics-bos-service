@@ -90,4 +90,11 @@ public class UserServiceImpl implements UserService {
 		return convert;
 	}
 
+	@Override
+	public int updateByPrimaryKeySelective(UserDTO record) {
+		TUser user = new TUser();
+		BeanUtils.copyProperties(record, user);
+		return userDao.updateByPrimaryKeySelective(user);
+	}
+
 }

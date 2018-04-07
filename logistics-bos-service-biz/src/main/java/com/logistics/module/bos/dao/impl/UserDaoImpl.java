@@ -62,4 +62,9 @@ public class UserDaoImpl implements UserDao {
 		return tUserMapper.queryByIdorName(cId, cUsername, pageNum, pageSize);
 	}
 
+	@Override
+	public int updateByPrimaryKeySelective(TUser record) {
+		return tUserMapper.updateByPrimaryKeySelective(record);
+	}
+
 }

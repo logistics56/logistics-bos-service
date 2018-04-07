@@ -32,7 +32,7 @@ public interface TCourierMapper {
     
     TCourier queryByNum(@Param("num") String num);
     
-    int deleteData(@Param("id") int id);
+    int deleteData(@Param("id") String id);
     
     List<TCourier> queryByFixedAreaId(@Param("fixedAreaId") String fixedAreaId);
     

@@ -53,7 +53,7 @@ public class CourierDaoImpl implements CourierDao {
 	}
 
 	@Override
-	public int deleteData(int id) {
+	public int deleteData(String id) {
 		return tCourierMapper.deleteData(id);
 	}
 	

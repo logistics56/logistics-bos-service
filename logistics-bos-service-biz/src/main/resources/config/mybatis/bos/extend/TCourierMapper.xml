@@ -16,7 +16,7 @@
   <update id="deleteData"  parameterType="map">
   update t_courier
   set C_DELTAG =1
-  where C_ID = #{id}
+  where C_COURIER_NUM = #{id}
   </update>
   <select id="queryByNum" resultMap="BaseResultMap" parameterType="map">
   select <include refid="Base_Column_List" />

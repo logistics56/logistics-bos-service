@@ -33,7 +33,7 @@ public interface CourierService {
     
     CourierDTO queryByNum(String num);
     
-    int deleteData(int id);
+    int deleteData(String id);
     
     List<CourierDTO> queryByFixedAreaId(String fixedAreaId);
     

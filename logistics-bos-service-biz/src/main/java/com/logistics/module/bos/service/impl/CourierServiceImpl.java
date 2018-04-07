@@ -81,7 +81,7 @@ public class CourierServiceImpl implements CourierService {
 	}
 
 	@Override
-	public int deleteData(int id) {
+	public int deleteData(String id) {
 		return courierDao.deleteData(id);
 	}
 
