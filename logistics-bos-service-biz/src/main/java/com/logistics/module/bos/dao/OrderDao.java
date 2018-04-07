@@ -23,5 +23,7 @@ public interface OrderDao {
     List<TOrder> queryDisRecAddress(String sendMobile);
     
     List<TOrder> queryByTelephoneAndStatus(String sendMobile, String status);
+    
+    TOrder selectByPrimaryKey(Integer cId);
 
 }

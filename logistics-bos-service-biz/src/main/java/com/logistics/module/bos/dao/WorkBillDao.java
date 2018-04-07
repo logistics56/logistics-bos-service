@@ -1,5 +1,8 @@
 package com.logistics.module.bos.dao;
 
+import java.util.Date;
+import java.util.List;
+
 import com.logistics.module.bos.model.TWorkBill;
 
 /**
@@ -11,5 +14,13 @@ import com.logistics.module.bos.model.TWorkBill;
 public interface WorkBillDao {
 	
 	int insertSelective(TWorkBill record);
+	
+    int queryNoReceiveTotal(Date date);
+    
+    List<TWorkBill> queryNoReceiveByPage(int pageNum, int pageSize, Date date);
+    
+    int queryNoReceiveTotalByCourierId(int courierId, Date date);
+    
+    List<TWorkBill> queryNoReceiveByPageByCourierId(int courierId, int pageNum, int pageSize, Date date);
 
 }

@@ -102,4 +102,15 @@ public class CourierServiceImpl implements CourierService {
 		return courierDao.queryTotalByFixedAreaId(fixedAreaId);
 	}
 
+	@Override
+	public CourierDTO selectByPrimaryKey(Integer cId) {
+		TCourier po = courierDao.selectByPrimaryKey(cId);
+		if(po == null){
+			return null;
+		}
+		CourierDTO dto = new CourierDTO();
+		BeanUtils.copyProperties(po, dto);
+		return dto;
+	}
+
 }

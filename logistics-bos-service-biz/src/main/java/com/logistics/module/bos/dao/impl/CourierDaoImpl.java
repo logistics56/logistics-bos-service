@@ -72,4 +72,9 @@ public class CourierDaoImpl implements CourierDao {
 		return tCourierMapper.queryTotalByFixedAreaId(fixedAreaId);
 	}
 
+	@Override
+	public TCourier selectByPrimaryKey(Integer cId) {
+		return tCourierMapper.selectByPrimaryKey(cId);
+	}
+
 }

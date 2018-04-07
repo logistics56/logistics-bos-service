@@ -40,4 +40,6 @@ public interface CourierService {
 	int updateFixedAreaId(String fixedAreaId, int id, int takeTimeId);
 	
     int queryTotalByFixedAreaId(String fixedAreaId);
+    
+    CourierDTO selectByPrimaryKey(Integer cId);
 }

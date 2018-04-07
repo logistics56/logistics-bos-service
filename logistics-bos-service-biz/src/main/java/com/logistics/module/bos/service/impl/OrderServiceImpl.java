@@ -90,4 +90,15 @@ public class OrderServiceImpl implements OrderService {
 		return list;
 	}
 
+	@Override
+	public OrderDTO selectByPrimaryKey(Integer cId) {
+		TOrder po = orderDao.selectByPrimaryKey(cId);
+		if(po == null){
+			return null;
+		}
+		OrderDTO dto = new OrderDTO();
+		BeanUtils.copyProperties(po, dto);
+		return dto;
+	}
+
 }

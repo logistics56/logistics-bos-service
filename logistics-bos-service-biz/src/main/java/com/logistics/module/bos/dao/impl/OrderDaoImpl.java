@@ -46,4 +46,9 @@ public class OrderDaoImpl implements OrderDao {
 		return tOrderMapper.queryByTelephoneAndStatus(sendMobile, status);
 	}
 
+	@Override
+	public TOrder selectByPrimaryKey(Integer cId) {
+		return tOrderMapper.selectByPrimaryKey(cId);
+	}
+
 }

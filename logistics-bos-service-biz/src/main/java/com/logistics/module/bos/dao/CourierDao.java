@@ -40,4 +40,6 @@ public interface CourierDao {
     int updateFixedAreaId(String fixedAreaId, int id, int takeTimeId);
     
     int queryTotalByFixedAreaId(String fixedAreaId);
+    
+    TCourier selectByPrimaryKey(Integer cId);
 }

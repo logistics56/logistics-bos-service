@@ -1,8 +1,13 @@
 package com.logistics.module.bos.service.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import com.logistics.module.bos.dao.WorkBillDao;
 import com.logistics.module.bos.model.TWorkBill;
@@ -29,6 +34,43 @@ public class WorkBillServiceImpl implements WorkBillService {
 		TWorkBill po = new TWorkBill();
 		BeanUtils.copyProperties(workBill, po);
 		return workBillDao.insertSelective(po);
+	}
+
+	@Override
+	public int queryNoReceiveTotal(Date date) {
+		return workBillDao.queryNoReceiveTotal(date);
+	}
+
+	@Override
+	public List<WorkBillDTO> queryNoReceiveByPage(int pageNum, int pageSize, Date date) {
+		List<TWorkBill> results = workBillDao.queryNoReceiveByPage(pageNum, pageSize, date);
+		List<WorkBillDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+
+	@Override
+	public int queryNoReceiveTotalByCourierId(int courierId, Date date) {
+		return workBillDao.queryNoReceiveTotalByCourierId(courierId, date);
+	}
+
+	@Override
+	public List<WorkBillDTO> queryNoReceiveByPageByCourierId(int courierId, int pageNum, int pageSize, Date date) {
+		List<TWorkBill> results = workBillDao.queryNoReceiveByPageByCourierId(courierId, pageNum, pageSize, date);
+		List<WorkBillDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+	
+	private List<WorkBillDTO> convertPoToDto(List<TWorkBill> list) {
+		if (CollectionUtils.isEmpty(list)) {
+			return null;
+		}
+		List<WorkBillDTO> targetList = new ArrayList<WorkBillDTO>();
+		for (TWorkBill po : list) {
+			WorkBillDTO dto = new WorkBillDTO();
+			BeanUtils.copyProperties(po, dto);
+			targetList.add(dto);
+		}
+		return targetList;
 	}
 
 }

@@ -1,5 +1,8 @@
 package com.logistics.module.service;
 
+import java.util.Date;
+import java.util.List;
+
 import com.logistics.module.dto.WorkBillDTO;
 
 /**
@@ -11,4 +14,12 @@ import com.logistics.module.dto.WorkBillDTO;
 public interface WorkBillService {
 	
 	int insertSelective(WorkBillDTO workBill);
+	
+    int queryNoReceiveTotal(Date date);
+    
+    List<WorkBillDTO> queryNoReceiveByPage(int pageNum, int pageSize, Date date);
+    
+    int queryNoReceiveTotalByCourierId(int courierId, Date date);
+    
+    List<WorkBillDTO> queryNoReceiveByPageByCourierId(int courierId, int pageNum, int pageSize, Date date);
 }
