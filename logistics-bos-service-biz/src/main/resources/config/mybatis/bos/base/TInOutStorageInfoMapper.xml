@@ -8,6 +8,7 @@
     <result column="C_OPERATION" property="cOperation" jdbcType="VARCHAR" />
     <result column="C_TRANSIT_INFO_ID" property="cTransitInfoId" jdbcType="INTEGER" />
     <result column="C_IN_OUT_INDEX" property="cInOutIndex" jdbcType="INTEGER" />
+    <result column="C_CREATE_TIME" property="cCreateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    C_ID, C_ADDRESS, C_DESCRIPTION, C_OPERATION, C_TRANSIT_INFO_ID, C_IN_OUT_INDEX
+    C_ID, C_ADDRESS, C_DESCRIPTION, C_OPERATION, C_TRANSIT_INFO_ID, C_IN_OUT_INDEX, C_CREATE_TIME
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.logistics.module.bos.model.TInOutStorageInfoExample" >
     select
@@ -92,11 +93,11 @@
   </select>
   <insert id="insert" parameterType="com.logistics.module.bos.model.TInOutStorageInfo" >
     insert into t_in_out_storage_info (C_ID, C_ADDRESS, C_DESCRIPTION, 
-      C_OPERATION, C_TRANSIT_INFO_ID, C_IN_OUT_INDEX
-      )
+      C_OPERATION, C_TRANSIT_INFO_ID, C_IN_OUT_INDEX, 
+      C_CREATE_TIME)
     values (#{cId,jdbcType=INTEGER}, #{cAddress,jdbcType=VARCHAR}, #{cDescription,jdbcType=VARCHAR}, 
-      #{cOperation,jdbcType=VARCHAR}, #{cTransitInfoId,jdbcType=INTEGER}, #{cInOutIndex,jdbcType=INTEGER}
-      )
+      #{cOperation,jdbcType=VARCHAR}, #{cTransitInfoId,jdbcType=INTEGER}, #{cInOutIndex,jdbcType=INTEGER}, 
+      #{cCreateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.logistics.module.bos.model.TInOutStorageInfo" >
     insert into t_in_out_storage_info
@@ -119,6 +120,9 @@
       <if test="cInOutIndex != null" >
         C_IN_OUT_INDEX,
       </if>
+      <if test="cCreateTime != null" >
+        C_CREATE_TIME,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="cId != null" >
@@ -138,6 +142,9 @@
       </if>
       <if test="cInOutIndex != null" >
         #{cInOutIndex,jdbcType=INTEGER},
+      </if>
+      <if test="cCreateTime != null" >
+        #{cCreateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -168,6 +175,9 @@
       <if test="record.cInOutIndex != null" >
         C_IN_OUT_INDEX = #{record.cInOutIndex,jdbcType=INTEGER},
       </if>
+      <if test="record.cCreateTime != null" >
+        C_CREATE_TIME = #{record.cCreateTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -180,7 +190,8 @@
       C_DESCRIPTION = #{record.cDescription,jdbcType=VARCHAR},
       C_OPERATION = #{record.cOperation,jdbcType=VARCHAR},
       C_TRANSIT_INFO_ID = #{record.cTransitInfoId,jdbcType=INTEGER},
-      C_IN_OUT_INDEX = #{record.cInOutIndex,jdbcType=INTEGER}
+      C_IN_OUT_INDEX = #{record.cInOutIndex,jdbcType=INTEGER},
+      C_CREATE_TIME = #{record.cCreateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -203,6 +214,9 @@
       <if test="cInOutIndex != null" >
         C_IN_OUT_INDEX = #{cInOutIndex,jdbcType=INTEGER},
       </if>
+      <if test="cCreateTime != null" >
+        C_CREATE_TIME = #{cCreateTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where C_ID = #{cId,jdbcType=INTEGER}
   </update>
@@ -212,7 +226,8 @@
       C_DESCRIPTION = #{cDescription,jdbcType=VARCHAR},
       C_OPERATION = #{cOperation,jdbcType=VARCHAR},
       C_TRANSIT_INFO_ID = #{cTransitInfoId,jdbcType=INTEGER},
-      C_IN_OUT_INDEX = #{cInOutIndex,jdbcType=INTEGER}
+      C_IN_OUT_INDEX = #{cInOutIndex,jdbcType=INTEGER},
+      C_CREATE_TIME = #{cCreateTime,jdbcType=TIMESTAMP}
     where C_ID = #{cId,jdbcType=INTEGER}
   </update>
 </mapper>

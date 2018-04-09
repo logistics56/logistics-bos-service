@@ -23,4 +23,6 @@ public interface OrderService {
     List<List<OrderDTO>> queryAllStatus(String sendMobile);
     
     OrderDTO selectByPrimaryKey(Integer cId);
+    
+    int updateStatusById(String ststus, int id);
 }

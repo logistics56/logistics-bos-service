@@ -26,4 +26,9 @@
  WHERE C_SEND_MOBILE = #{sendMobile} and C_STATUS = #{status}
  order by C_ORDER_TIME desc
  </select>
+ <update id="updateStatusById" parameterType="map">
+ update t_order
+ set C_STATUS = #{ststus}
+ where C_ID = #{id}
+ </update>
 </mapper>

@@ -1,8 +1,14 @@
-package com.logistics.module.bos.model;
+package com.logistics.module.dto;
 
 import java.io.Serializable;
 
-public class TWayBill implements Serializable {
+/**
+*
+* @author 李振        E-mail:lizhn95@163.com
+* @version 创建时间：2018年4月7日 下午8:14:58
+* 
+*/
+public class WayBillDTO implements Serializable{
     /**
      * 主键
      */

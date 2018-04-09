@@ -101,4 +101,9 @@ public class OrderServiceImpl implements OrderService {
 		return dto;
 	}
 
+	@Override
+	public int updateStatusById(String ststus, int id) {
+		return orderDao.updateStatusById(ststus, id);
+	}
+
 }

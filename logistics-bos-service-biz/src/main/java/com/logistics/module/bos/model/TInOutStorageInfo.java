@@ -1,6 +1,7 @@
 package com.logistics.module.bos.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class TInOutStorageInfo implements Serializable {
     /**
@@ -32,6 +33,11 @@ public class TInOutStorageInfo implements Serializable {
      * 排序
      */
     private Integer cInOutIndex;
+
+    /**
+     * 时间
+     */
+    private Date cCreateTime;
 
     private static final long serialVersionUID = 1L;
 
@@ -83,6 +89,14 @@ public class TInOutStorageInfo implements Serializable {
         this.cInOutIndex = cInOutIndex;
     }
 
+    public Date getcCreateTime() {
+        return cCreateTime;
+    }
+
+    public void setcCreateTime(Date cCreateTime) {
+        this.cCreateTime = cCreateTime;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -95,6 +109,7 @@ public class TInOutStorageInfo implements Serializable {
         sb.append(", cOperation=").append(cOperation);
         sb.append(", cTransitInfoId=").append(cTransitInfoId);
         sb.append(", cInOutIndex=").append(cInOutIndex);
+        sb.append(", cCreateTime=").append(cCreateTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

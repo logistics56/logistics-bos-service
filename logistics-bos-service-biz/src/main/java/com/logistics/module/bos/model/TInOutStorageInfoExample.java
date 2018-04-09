@@ -1,6 +1,7 @@
 package com.logistics.module.bos.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TInOutStorageInfoExample {
@@ -491,6 +492,66 @@ public class TInOutStorageInfoExample {
 
         public Criteria andCInOutIndexNotBetween(Integer value1, Integer value2) {
             addCriterion("C_IN_OUT_INDEX not between", value1, value2, "cInOutIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreateTimeIsNull() {
+            addCriterion("C_CREATE_TIME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreateTimeIsNotNull() {
+            addCriterion("C_CREATE_TIME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreateTimeEqualTo(Date value) {
+            addCriterion("C_CREATE_TIME =", value, "cCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreateTimeNotEqualTo(Date value) {
+            addCriterion("C_CREATE_TIME <>", value, "cCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreateTimeGreaterThan(Date value) {
+            addCriterion("C_CREATE_TIME >", value, "cCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("C_CREATE_TIME >=", value, "cCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreateTimeLessThan(Date value) {
+            addCriterion("C_CREATE_TIME <", value, "cCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("C_CREATE_TIME <=", value, "cCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreateTimeIn(List<Date> values) {
+            addCriterion("C_CREATE_TIME in", values, "cCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreateTimeNotIn(List<Date> values) {
+            addCriterion("C_CREATE_TIME not in", values, "cCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreateTimeBetween(Date value1, Date value2) {
+            addCriterion("C_CREATE_TIME between", value1, value2, "cCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("C_CREATE_TIME not between", value1, value2, "cCreateTime");
             return (Criteria) this;
         }
     }

@@ -31,4 +31,6 @@ public interface TOrderMapper {
     List<TOrder> queryDisRecAddress(@Param("sendMobile") String sendMobile);
     
     List<TOrder> queryByTelephoneAndStatus(@Param("sendMobile") String sendMobile, @Param("status") String status);
+    
+    int updateStatusById(@Param("ststus") String ststus, @Param("id") int id);
 }

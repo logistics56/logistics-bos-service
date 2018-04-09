@@ -51,4 +51,9 @@ public class OrderDaoImpl implements OrderDao {
 		return tOrderMapper.selectByPrimaryKey(cId);
 	}
 
+	@Override
+	public int updateStatusById(String ststus, int id) {
+		return tOrderMapper.updateStatusById(ststus, id);
+	}
+
 }
