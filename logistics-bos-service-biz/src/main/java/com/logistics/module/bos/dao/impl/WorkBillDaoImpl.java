@@ -47,4 +47,9 @@ public class WorkBillDaoImpl implements WorkBillDao {
 		return tWorkBillMapper.queryNoReceiveByPageByCourierId(courierId, pageNum, pageSize, date);
 	}
 
+	@Override
+	public int updateState(int id) {
+		return tWorkBillMapper.updateState(id);
+	}
+
 }

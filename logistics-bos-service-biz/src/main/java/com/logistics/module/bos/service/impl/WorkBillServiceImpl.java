@@ -73,4 +73,9 @@ public class WorkBillServiceImpl implements WorkBillService {
 		return targetList;
 	}
 
+	@Override
+	public int updateState(int id) {
+		return workBillDao.updateState(id);
+	}
+
 }

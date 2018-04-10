@@ -34,4 +34,9 @@
   </if>
   limit #{pageNum},#{pageSize}
   </select>
+  <update id="updateState" parameterType="map">
+  update t_work_bill
+  set C_PICKSTATE = 1
+  where C_ID = #{id}
+  </update>
 </mapper>

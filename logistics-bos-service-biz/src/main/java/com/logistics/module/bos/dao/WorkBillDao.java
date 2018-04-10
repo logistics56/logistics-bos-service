@@ -22,5 +22,7 @@ public interface WorkBillDao {
     int queryNoReceiveTotalByCourierId(int courierId, Date date);
     
     List<TWorkBill> queryNoReceiveByPageByCourierId(int courierId, int pageNum, int pageSize, Date date);
+    
+    int updateState(int id);
 
 }
