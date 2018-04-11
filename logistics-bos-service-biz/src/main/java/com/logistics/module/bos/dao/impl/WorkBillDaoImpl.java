@@ -52,4 +52,9 @@ public class WorkBillDaoImpl implements WorkBillDao {
 		return tWorkBillMapper.updateState(id);
 	}
 
+	@Override
+	public TWorkBill queryByOrderId(int orderId) {
+		return tWorkBillMapper.queryByOrderId(orderId);
+	}
+
 }

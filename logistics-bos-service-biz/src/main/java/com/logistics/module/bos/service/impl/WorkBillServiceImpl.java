@@ -78,4 +78,15 @@ public class WorkBillServiceImpl implements WorkBillService {
 		return workBillDao.updateState(id);
 	}
 
+	@Override
+	public WorkBillDTO queryByOrderId(int orderId) {
+		TWorkBill workBill = workBillDao.queryByOrderId(orderId);
+		if(workBill == null){
+			return null;
+		}
+		WorkBillDTO dto = new WorkBillDTO();
+		BeanUtils.copyProperties(workBill, dto);
+		return dto;
+	}
+
 }

@@ -35,4 +35,6 @@ public interface TWorkBillMapper {
     List<TWorkBill> queryNoReceiveByPageByCourierId(@Param("courierId") int courierId, @Param("pageNum") int pageNum, @Param("pageSize") int pageSize, @Param("date") Date date);
 
     int updateState(@Param("id") int id);
+    
+    TWorkBill queryByOrderId(@Param("orderId") int orderId);
 }

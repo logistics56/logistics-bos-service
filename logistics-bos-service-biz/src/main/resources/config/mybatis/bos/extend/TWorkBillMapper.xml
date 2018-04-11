@@ -39,4 +39,9 @@
   set C_PICKSTATE = 1
   where C_ID = #{id}
   </update>
+<select id="queryByOrderId" resultMap="BaseResultMap" parameterType="map">
+  select <include refid="Base_Column_List" />
+  from t_work_bill
+  where C_ORDER_ID = #{orderId}
+</select>
 </mapper>
