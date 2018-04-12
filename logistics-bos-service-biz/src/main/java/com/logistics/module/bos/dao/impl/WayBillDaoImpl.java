@@ -1,5 +1,7 @@
 package com.logistics.module.bos.dao.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,16 @@ public class WayBillDaoImpl implements WayBillDao {
 	@Override
 	public int insertSelective(TWayBill record) {
 		return tWayBillMapper.insertSelective(record);
+	}
+
+	@Override
+	public int queryTotal() {
+		return tWayBillMapper.queryTotal();
+	}
+
+	@Override
+	public List<TWayBill> queryByPage(int pageNum, int pageSize) {
+		return tWayBillMapper.queryByPage(pageNum, pageSize);
 	}
 
 }

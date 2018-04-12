@@ -1,5 +1,7 @@
 package com.logistics.module.service;
 
+import java.util.List;
+
 import com.logistics.module.dto.WayBillDTO;
 
 /**
@@ -11,5 +13,19 @@ import com.logistics.module.dto.WayBillDTO;
 public interface WayBillService {
 	
 	int insertSelective(WayBillDTO record);
+	
+	/**
+	 * 查询收派标准的数据总个数
+	 * @return
+	 */
+    int queryTotal();
+    
+    /**
+     * 按页查询数据
+     * @param pageNum   当前页起始位置
+     * @param pageSize  每页数据量
+     * @return
+     */
+    List<WayBillDTO> queryByPage(int pageNum, int pageSize);
 
 }

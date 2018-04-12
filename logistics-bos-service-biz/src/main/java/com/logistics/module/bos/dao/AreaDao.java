@@ -2,8 +2,6 @@ package com.logistics.module.bos.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.logistics.module.bos.model.TArea;
 
 /**

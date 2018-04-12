@@ -29,4 +29,8 @@ public interface TWayBillMapper {
     int updateByPrimaryKeyWithBLOBs(TWayBill record);
 
     int updateByPrimaryKey(TWayBill record);
+    
+    int queryTotal();
+    
+    List<TWayBill> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
 }

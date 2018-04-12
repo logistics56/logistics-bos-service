@@ -1,5 +1,7 @@
 package com.logistics.module.bos.dao;
 
+import java.util.List;
+
 import com.logistics.module.bos.model.TWayBill;
 
 /**
@@ -11,5 +13,19 @@ import com.logistics.module.bos.model.TWayBill;
 public interface WayBillDao {
 	
 	int insertSelective(TWayBill record);
+	
+	/**
+	 * 查询收派标准的数据总个数
+	 * @return
+	 */
+    int queryTotal();
+    
+    /**
+     * 按页查询数据
+     * @param pageNum   当前页起始位置
+     * @param pageSize  每页数据量
+     * @return
+     */
+    List<TWayBill> queryByPage(int pageNum, int pageSize);
 
 }
