@@ -27,13 +27,23 @@ public class WayBillDaoImpl implements WayBillDao {
 	}
 
 	@Override
-	public int queryTotal() {
-		return tWayBillMapper.queryTotal();
+	public int queryTotal(String orderNum, String sendAddress, String recAddress, String sendProNum, Integer signStatus) {
+		return tWayBillMapper.queryTotal(orderNum, sendAddress, recAddress, sendProNum, signStatus);
 	}
 
 	@Override
-	public List<TWayBill> queryByPage(int pageNum, int pageSize) {
-		return tWayBillMapper.queryByPage(pageNum, pageSize);
+	public List<TWayBill> queryByPage(String orderNum, String sendAddress, String recAddress, String sendProNum, Integer signStatus, int pageNum, int pageSize) {
+		return tWayBillMapper.queryByPage(orderNum, sendAddress, recAddress, sendProNum, signStatus, pageNum, pageSize);
+	}
+
+	@Override
+	public TWayBill queryByOrderId(int orderId) {
+		return tWayBillMapper.queryByOrderId(orderId);
+	}
+
+	@Override
+	public int updateSignStatus(int id, int signStatus) {
+		return tWayBillMapper.updateSignStatus(id, signStatus);
 	}
 
 }

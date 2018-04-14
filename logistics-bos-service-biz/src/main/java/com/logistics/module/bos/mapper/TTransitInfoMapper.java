@@ -23,4 +23,6 @@ public interface TTransitInfoMapper {
     int updateByPrimaryKeySelective(TTransitInfo record);
 
     int updateByPrimaryKey(TTransitInfo record);
+    
+    TTransitInfo queryByWayBillId(@Param("wayBillId") int wayBillId);
 }

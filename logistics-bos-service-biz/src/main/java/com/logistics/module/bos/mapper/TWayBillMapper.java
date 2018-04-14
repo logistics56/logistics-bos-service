@@ -30,7 +30,11 @@ public interface TWayBillMapper {
 
     int updateByPrimaryKey(TWayBill record);
     
-    int queryTotal();
+    int queryTotal(@Param("orderNum") String orderNum, @Param("sendAddress") String sendAddress, @Param("recAddress") String recAddress, @Param("sendProNum") String sendProNum, @Param("signStatus") Integer signStatus);
     
-    List<TWayBill> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    List<TWayBill> queryByPage(@Param("orderNum") String orderNum, @Param("sendAddress") String sendAddress, @Param("recAddress") String recAddress, @Param("sendProNum") String sendProNum, @Param("signStatus") Integer signStatus, @Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    TWayBill queryByOrderId(@Param("orderId") int orderId);
+    
+    int updateSignStatus(@Param("id") int id, @Param("signStatus") int signStatus);
 }

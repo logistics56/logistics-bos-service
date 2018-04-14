@@ -18,7 +18,7 @@ public interface WayBillDao {
 	 * 查询收派标准的数据总个数
 	 * @return
 	 */
-    int queryTotal();
+    int queryTotal(String orderNum, String sendAddress, String recAddress, String sendProNum, Integer signStatus);
     
     /**
      * 按页查询数据
@@ -26,6 +26,10 @@ public interface WayBillDao {
      * @param pageSize  每页数据量
      * @return
      */
-    List<TWayBill> queryByPage(int pageNum, int pageSize);
+    List<TWayBill> queryByPage(String orderNum, String sendAddress, String recAddress, String sendProNum, Integer signStatus, int pageNum, int pageSize);
+    
+    TWayBill queryByOrderId(int orderId);
+    
+    int updateSignStatus(int id, int signStatus);
 
 }

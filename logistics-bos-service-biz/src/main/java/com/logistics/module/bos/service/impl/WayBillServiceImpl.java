@@ -36,13 +36,13 @@ public class WayBillServiceImpl implements WayBillService {
 	}
 
 	@Override
-	public int queryTotal() {
-		return wayBillDao.queryTotal();
+	public int queryTotal(String orderNum, String sendAddress, String recAddress, String sendProNum, Integer signStatus) {
+		return wayBillDao.queryTotal(orderNum, sendAddress, recAddress, sendProNum, signStatus);
 	}
 
 	@Override
-	public List<WayBillDTO> queryByPage(int pageNum, int pageSize) {
-		List<TWayBill> results = wayBillDao.queryByPage(pageNum, pageSize);
+	public List<WayBillDTO> queryByPage(String orderNum, String sendAddress, String recAddress, String sendProNum, Integer signStatus, int pageNum, int pageSize) {
+		List<TWayBill> results = wayBillDao.queryByPage(orderNum, sendAddress, recAddress, sendProNum, signStatus, pageNum, pageSize);
 		List<WayBillDTO> convert = convertPoToDto(results);
 		return convert;
 	}
@@ -58,6 +58,22 @@ public class WayBillServiceImpl implements WayBillService {
 			targetList.add(dto);
 		}
 		return targetList;
+	}
+
+	@Override
+	public WayBillDTO queryByOrderId(int orderId) {
+		TWayBill po = wayBillDao.queryByOrderId(orderId);
+		if(po == null){
+			return null;
+		}
+		WayBillDTO dto = new WayBillDTO();
+		BeanUtils.copyProperties(po, dto);
+		return dto;
+	}
+
+	@Override
+	public int updateSignStatus(int id, int signStatus) {
+		return wayBillDao.updateSignStatus(id, signStatus);
 	}
 
 }

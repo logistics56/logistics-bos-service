@@ -3,10 +3,52 @@
 <mapper namespace="com.logistics.module.bos.mapper.TWayBillMapper" >
  <select id="queryTotal" resultType="java.lang.Integer">
   select count(*) from t_way_bill
+  where 1=1
+  <if test="orderNum != null">
+  and C_WAY_BILL_NUM = #{orderNum}
+  </if>
+  <if test="sendAddress != null">
+  and C_SEND_ADDRESS LIKE concat(concat('%', #{sendAddress}),'%')
+  </if>
+  <if test="recAddress != null">
+  and C_REC_ADDRESS LIKE concat(concat('%', #{recAddress}),'%')
+  </if>
+  <if test="sendProNum != null">
+  and C_SEND_PRO_NUM = #{sendProNum}
+  </if>
+  <if test="signStatus != null">
+  and C_SIGN_STATUS = #{signStatus}
+  </if>
   </select>
   <select id="queryByPage" resultMap="BaseResultMap" parameterType="map">
   select <include refid="Base_Column_List" />
   from t_way_bill
+  where 1=1
+    <if test="orderNum != null">
+  and C_WAY_BILL_NUM = #{orderNum}
+  </if>
+  <if test="sendAddress != null">
+  and C_SEND_ADDRESS LIKE concat(concat('%', #{sendAddress}),'%')
+  </if>
+  <if test="recAddress != null">
+  and C_REC_ADDRESS LIKE concat(concat('%', #{recAddress}),'%')
+  </if>
+  <if test="sendProNum != null">
+  and C_SEND_PRO_NUM = #{sendProNum}
+  </if>
+  <if test="signStatus != 0">
+  and C_SIGN_STATUS = #{signStatus}
+  </if>
   limit #{pageNum},#{pageSize}
   </select>
+  <select id="queryByOrderId" resultMap="BaseResultMap" parameterType="map">
+  select <include refid="Base_Column_List" />
+  from t_way_bill
+  where C_ORDER_ID = #{orderId}
+  </select>
+  <update id="updateSignStatus" parameterType="map">
+  update t_way_bill
+  set C_SIGN_STATUS = #{signStatus}
+  where C_ID = #{id}
+  </update>
 </mapper>
