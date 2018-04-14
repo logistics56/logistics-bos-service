@@ -31,5 +31,7 @@ public interface WayBillService {
     WayBillDTO queryByOrderId(int orderId);
     
     int updateSignStatus(int id, int signStatus);
+    
+    List<WayBillDTO> findWayBills(String orderNum, String sendAddress, String recAddress, String sendProNum, Integer signStatus);
 
 }

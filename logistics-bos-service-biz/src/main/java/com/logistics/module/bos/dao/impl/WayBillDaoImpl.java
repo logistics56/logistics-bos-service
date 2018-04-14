@@ -46,4 +46,10 @@ public class WayBillDaoImpl implements WayBillDao {
 		return tWayBillMapper.updateSignStatus(id, signStatus);
 	}
 
+	@Override
+	public List<TWayBill> findWayBills(String orderNum, String sendAddress, String recAddress, String sendProNum,
+			Integer signStatus) {
+		return tWayBillMapper.findWayBills(orderNum, sendAddress, recAddress, sendProNum, signStatus);
+	}
+
 }

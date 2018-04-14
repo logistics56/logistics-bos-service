@@ -37,4 +37,6 @@ public interface TWayBillMapper {
     TWayBill queryByOrderId(@Param("orderId") int orderId);
     
     int updateSignStatus(@Param("id") int id, @Param("signStatus") int signStatus);
+    
+    List<TWayBill> findWayBills(@Param("orderNum") String orderNum, @Param("sendAddress") String sendAddress, @Param("recAddress") String recAddress, @Param("sendProNum") String sendProNum, @Param("signStatus") Integer signStatus);
 }

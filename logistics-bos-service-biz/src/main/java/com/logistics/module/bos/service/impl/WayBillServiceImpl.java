@@ -76,4 +76,12 @@ public class WayBillServiceImpl implements WayBillService {
 		return wayBillDao.updateSignStatus(id, signStatus);
 	}
 
+	@Override
+	public List<WayBillDTO> findWayBills(String orderNum, String sendAddress, String recAddress, String sendProNum,
+			Integer signStatus) {
+		List<TWayBill> results = wayBillDao.findWayBills(orderNum, sendAddress, recAddress, sendProNum, signStatus);
+		List<WayBillDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+
 }

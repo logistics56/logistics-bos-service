@@ -31,5 +31,7 @@ public interface WayBillDao {
     TWayBill queryByOrderId(int orderId);
     
     int updateSignStatus(int id, int signStatus);
+    
+    List<TWayBill> findWayBills(String orderNum, String sendAddress, String recAddress, String sendProNum, Integer signStatus);
 
 }
