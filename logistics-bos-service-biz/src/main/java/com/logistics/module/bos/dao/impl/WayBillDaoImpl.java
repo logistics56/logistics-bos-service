@@ -52,4 +52,9 @@ public class WayBillDaoImpl implements WayBillDao {
 		return tWayBillMapper.findWayBills(orderNum, sendAddress, recAddress, sendProNum, signStatus);
 	}
 
+	@Override
+	public TWayBill selectByPrimaryKey(Integer cId) {
+		return tWayBillMapper.selectByPrimaryKey(cId);
+	}
+
 }

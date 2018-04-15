@@ -84,4 +84,15 @@ public class WayBillServiceImpl implements WayBillService {
 		return convert;
 	}
 
+	@Override
+	public WayBillDTO selectByPrimaryKey(Integer cId) {
+		TWayBill po = wayBillDao.selectByPrimaryKey(cId);
+		if(po == null){
+			return null;
+		}
+		WayBillDTO dto = new WayBillDTO();
+		BeanUtils.copyProperties(po, dto);
+		return dto;
+	}
+
 }

@@ -40,6 +40,7 @@
 				<entry key="http://service.lizhen.com/logistics-bos-service/userRoleService_1.0.0" value-ref="userRoleService" />
 				<entry key="http://service.lizhen.com/logistics-bos-service/wayBillService_1.0.0" value-ref="wayBillService" />
 				<entry key="http://service.lizhen.com/logistics-bos-service/transitInfoService_1.0.0" value-ref="transitInfoService" />
+				<entry key="http://service.lizhen.com/logistics-bos-service/inOutStorageInfoService_1.0.0" value-ref="inOutStorageInfoService" />
 			</map>
 		</property>
 	</bean>

@@ -33,5 +33,7 @@ public interface WayBillService {
     int updateSignStatus(int id, int signStatus);
     
     List<WayBillDTO> findWayBills(String orderNum, String sendAddress, String recAddress, String sendProNum, Integer signStatus);
+    
+    WayBillDTO selectByPrimaryKey(Integer cId);
 
 }

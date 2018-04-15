@@ -6,4 +6,13 @@ select <include refid="Base_Column_List" />
   from t_transit_info
   where C_WAYBILL_ID = #{wayBillId}
 </select>
+
+  <select id="queryTotal" resultType="java.lang.Integer">
+  select count(*) from t_transit_info
+  </select>
+  <select id="queryByPage" resultMap="BaseResultMap" parameterType="map">
+  select <include refid="Base_Column_List" />
+  from t_transit_info
+  limit #{pageNum},#{pageSize}
+  </select>
 </mapper>

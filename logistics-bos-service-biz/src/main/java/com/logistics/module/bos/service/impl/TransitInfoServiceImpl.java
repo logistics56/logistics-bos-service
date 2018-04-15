@@ -1,8 +1,12 @@
 package com.logistics.module.bos.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import com.logistics.module.bos.dao.TransitInfoDao;
 import com.logistics.module.bos.model.TTransitInfo;
@@ -42,4 +46,27 @@ public class TransitInfoServiceImpl implements TransitInfoService {
 		return dto;
 	}
 
+	@Override
+	public int queryTotal() {
+		return transitInfoDao.queryTotal();
+	}
+
+	@Override
+	public List<TransitInfoDTO> queryByPage(int pageNum, int pageSize) {
+		List<TTransitInfo> results = transitInfoDao.queryByPage(pageNum, pageSize);
+		List<TransitInfoDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+	private List<TransitInfoDTO> convertPoToDto(List<TTransitInfo> list) {
+		if (CollectionUtils.isEmpty(list)) {
+			return null;
+		}
+		List<TransitInfoDTO> targetList = new ArrayList<TransitInfoDTO>();
+		for (TTransitInfo po : list) {
+			TransitInfoDTO dto = new TransitInfoDTO();
+			BeanUtils.copyProperties(po, dto);
+			targetList.add(dto);
+		}
+		return targetList;
+	}
 }

@@ -23,4 +23,6 @@ public interface TInOutStorageInfoMapper {
     int updateByPrimaryKeySelective(TInOutStorageInfo record);
 
     int updateByPrimaryKey(TInOutStorageInfo record);
+    
+    List<TInOutStorageInfo> queryByTransitInfoId(@Param("transitInfoId") int transitInfoId);
 }

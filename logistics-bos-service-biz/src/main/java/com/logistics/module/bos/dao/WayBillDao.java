@@ -33,5 +33,7 @@ public interface WayBillDao {
     int updateSignStatus(int id, int signStatus);
     
     List<TWayBill> findWayBills(String orderNum, String sendAddress, String recAddress, String sendProNum, Integer signStatus);
+    
+    TWayBill selectByPrimaryKey(Integer cId);
 
 }

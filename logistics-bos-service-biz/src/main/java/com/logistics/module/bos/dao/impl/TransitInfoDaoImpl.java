@@ -1,5 +1,7 @@
 package com.logistics.module.bos.dao.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +29,16 @@ public class TransitInfoDaoImpl implements TransitInfoDao {
 	@Override
 	public TTransitInfo queryByWayBillId(int wayBillId) {
 		return tTransitInfoMapper.queryByWayBillId(wayBillId);
+	}
+
+	@Override
+	public int queryTotal() {
+		return tTransitInfoMapper.queryTotal();
+	}
+
+	@Override
+	public List<TTransitInfo> queryByPage(int pageNum, int pageSize) {
+		return tTransitInfoMapper.queryByPage(pageNum, pageSize);
 	}
 
 }
