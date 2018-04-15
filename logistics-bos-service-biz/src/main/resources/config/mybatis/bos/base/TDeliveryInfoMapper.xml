@@ -94,7 +94,7 @@
     values (#{cId,jdbcType=INTEGER}, #{cCourierName,jdbcType=VARCHAR}, #{cCourierNum,jdbcType=VARCHAR}, 
       #{cDescription,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.logistics.module.bos.model.TDeliveryInfo" >
+  <insert id="insertSelective" parameterType="com.logistics.module.bos.model.TDeliveryInfo" useGeneratedKeys="true" keyProperty="cId">
     insert into t_delivery_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="cId != null" >

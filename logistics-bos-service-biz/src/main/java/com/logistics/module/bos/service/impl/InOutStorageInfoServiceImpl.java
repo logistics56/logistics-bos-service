@@ -44,4 +44,14 @@ public class InOutStorageInfoServiceImpl implements InOutStorageInfoService {
 		}
 		return targetList;
 	}
+
+	@Override
+	public int insertSelective(InOutStorageInfoDTO record) {
+		if(record == null){
+			return 0;
+		}
+		TInOutStorageInfo po = new TInOutStorageInfo();
+		BeanUtils.copyProperties(record, po);
+		return inOutStorageInfoDao.insertSelective(po);
+	}
 }

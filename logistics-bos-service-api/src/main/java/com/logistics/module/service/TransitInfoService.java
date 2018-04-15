@@ -29,5 +29,9 @@ public interface TransitInfoService {
      * @return
      */
     List<TransitInfoDTO> queryByPage(int pageNum, int pageSize);
+    
+    int updateByPrimaryKeySelective(TransitInfoDTO record);
+    
+    TransitInfoDTO selectByPrimaryKey(Integer cId);
 
 }

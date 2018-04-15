@@ -98,7 +98,7 @@
       #{cSignName,jdbcType=VARCHAR}, #{cSignTime,jdbcType=TIMESTAMP}, #{cSignType,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.logistics.module.bos.model.TSignInfo" >
+  <insert id="insertSelective" parameterType="com.logistics.module.bos.model.TSignInfo"  useGeneratedKeys="true" keyProperty="cId">
     insert into t_sign_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="cId != null" >

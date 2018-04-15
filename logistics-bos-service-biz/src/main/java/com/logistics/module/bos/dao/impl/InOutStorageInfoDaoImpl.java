@@ -26,4 +26,9 @@ public class InOutStorageInfoDaoImpl implements InOutStorageInfoDao {
 		return tInOutStorageInfoMapper.queryByTransitInfoId(transitInfoId);
 	}
 
+	@Override
+	public int insertSelective(TInOutStorageInfo record) {
+		return tInOutStorageInfoMapper.insertSelective(record);
+	}
+
 }

@@ -69,4 +69,25 @@ public class TransitInfoServiceImpl implements TransitInfoService {
 		}
 		return targetList;
 	}
+
+	@Override
+	public int updateByPrimaryKeySelective(TransitInfoDTO record) {
+		if(record == null){
+			return 0;
+		}
+		TTransitInfo po = new TTransitInfo();
+		BeanUtils.copyProperties(record, po);
+		return transitInfoDao.updateByPrimaryKeySelective(po);
+	}
+
+	@Override
+	public TransitInfoDTO selectByPrimaryKey(Integer cId) {
+		TTransitInfo po = transitInfoDao.selectByPrimaryKey(cId);
+		if(po == null){
+			return null;
+		}
+		TransitInfoDTO dto = new TransitInfoDTO();
+		BeanUtils.copyProperties(po, dto);
+		return dto;	
+	}
 }

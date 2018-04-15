@@ -13,5 +13,7 @@ import com.logistics.module.bos.model.TInOutStorageInfo;
 public interface InOutStorageInfoDao {
     
     List<TInOutStorageInfo> queryByTransitInfoId(int transitInfoId);
+    
+    int insertSelective(TInOutStorageInfo record);
 
 }

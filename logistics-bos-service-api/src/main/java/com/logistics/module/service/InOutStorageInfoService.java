@@ -13,5 +13,7 @@ import com.logistics.module.dto.InOutStorageInfoDTO;
 public interface InOutStorageInfoService {
 	
     List<InOutStorageInfoDTO> queryByTransitInfoId(int transitInfoId);
+    
+    int insertSelective(InOutStorageInfoDTO record);
 
 }

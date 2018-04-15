@@ -41,4 +41,14 @@ public class TransitInfoDaoImpl implements TransitInfoDao {
 		return tTransitInfoMapper.queryByPage(pageNum, pageSize);
 	}
 
+	@Override
+	public int updateByPrimaryKeySelective(TTransitInfo record) {
+		return tTransitInfoMapper.updateByPrimaryKeySelective(record);
+	}
+
+	@Override
+	public TTransitInfo selectByPrimaryKey(Integer cId) {
+		return tTransitInfoMapper.selectByPrimaryKey(cId);
+	}
+
 }
