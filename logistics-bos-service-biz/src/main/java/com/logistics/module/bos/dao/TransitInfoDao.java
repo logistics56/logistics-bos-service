@@ -20,7 +20,7 @@ public interface TransitInfoDao {
 	 * 查询收派标准的数据总个数
 	 * @return
 	 */
-    int queryTotal();
+    int queryTotal(int transitInfoId);
     
     /**
      * 按页查询数据
@@ -28,7 +28,7 @@ public interface TransitInfoDao {
      * @param pageSize  每页数据量
      * @return
      */
-    List<TTransitInfo> queryByPage(int pageNum, int pageSize);
+    List<TTransitInfo> queryByPage(int transitInfoId, int pageNum, int pageSize);
     
     int updateByPrimaryKeySelective(TTransitInfo record);
     

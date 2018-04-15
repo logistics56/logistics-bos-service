@@ -47,13 +47,13 @@ public class TransitInfoServiceImpl implements TransitInfoService {
 	}
 
 	@Override
-	public int queryTotal() {
-		return transitInfoDao.queryTotal();
+	public int queryTotal(int transitInfoId) {
+		return transitInfoDao.queryTotal(transitInfoId);
 	}
 
 	@Override
-	public List<TransitInfoDTO> queryByPage(int pageNum, int pageSize) {
-		List<TTransitInfo> results = transitInfoDao.queryByPage(pageNum, pageSize);
+	public List<TransitInfoDTO> queryByPage(int transitInfoId, int pageNum, int pageSize) {
+		List<TTransitInfo> results = transitInfoDao.queryByPage(transitInfoId, pageNum, pageSize);
 		List<TransitInfoDTO> convert = convertPoToDto(results);
 		return convert;
 	}

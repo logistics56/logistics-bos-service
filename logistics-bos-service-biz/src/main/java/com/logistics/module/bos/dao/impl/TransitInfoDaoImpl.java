@@ -32,13 +32,13 @@ public class TransitInfoDaoImpl implements TransitInfoDao {
 	}
 
 	@Override
-	public int queryTotal() {
-		return tTransitInfoMapper.queryTotal();
+	public int queryTotal(int transitInfoId) {
+		return tTransitInfoMapper.queryTotal(transitInfoId);
 	}
 
 	@Override
-	public List<TTransitInfo> queryByPage(int pageNum, int pageSize) {
-		return tTransitInfoMapper.queryByPage(pageNum, pageSize);
+	public List<TTransitInfo> queryByPage(int transitInfoId, int pageNum, int pageSize) {
+		return tTransitInfoMapper.queryByPage(transitInfoId, pageNum, pageSize);
 	}
 
 	@Override

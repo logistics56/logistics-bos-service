@@ -26,7 +26,7 @@ public interface TTransitInfoMapper {
     
     TTransitInfo queryByWayBillId(@Param("wayBillId") int wayBillId);
     
-    int queryTotal();
+    int queryTotal(@Param("transitInfoId") int transitInfoId);
     
-    List<TTransitInfo> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    List<TTransitInfo> queryByPage(@Param("transitInfoId") int transitInfoId, @Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
 }

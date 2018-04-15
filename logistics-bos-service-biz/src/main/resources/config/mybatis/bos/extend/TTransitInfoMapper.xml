@@ -9,10 +9,18 @@ select <include refid="Base_Column_List" />
 
   <select id="queryTotal" resultType="java.lang.Integer">
   select count(*) from t_transit_info
+  where 1=1
+  <if test="transitInfoId != 0">
+  and C_ID = #{transitInfoId}
+  </if>
   </select>
   <select id="queryByPage" resultMap="BaseResultMap" parameterType="map">
   select <include refid="Base_Column_List" />
   from t_transit_info
+   where 1=1
+  <if test="transitInfoId != 0">
+  and C_ID = #{transitInfoId}
+  </if>
   limit #{pageNum},#{pageSize}
   </select>
 </mapper>
