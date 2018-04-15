@@ -36,7 +36,7 @@
   </select>
   <update id="updateState" parameterType="map">
   update t_work_bill
-  set C_PICKSTATE = 1
+  set C_PICKSTATE = 1,C_BUILDTIME = now()
   where C_ID = #{id}
   </update>
 <select id="queryByOrderId" resultMap="BaseResultMap" parameterType="map">
