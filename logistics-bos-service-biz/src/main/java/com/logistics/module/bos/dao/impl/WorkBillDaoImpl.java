@@ -57,4 +57,24 @@ public class WorkBillDaoImpl implements WorkBillDao {
 		return tWorkBillMapper.queryByOrderId(orderId);
 	}
 
+	@Override
+	public int queryTotal(int id) {
+		return tWorkBillMapper.queryTotal(id);
+	}
+
+	@Override
+	public List<TWorkBill> queryByPage(int id, int pageNum, int pageSize) {
+		return tWorkBillMapper.queryByPage(id, pageNum, pageSize);
+	}
+
+	@Override
+	public TWorkBill selectByPrimaryKey(Integer cId) {
+		return tWorkBillMapper.selectByPrimaryKey(cId);
+	}
+
+	@Override
+	public int updateCourierId(int courierId, int id) {
+		return tWorkBillMapper.updateCourierId(courierId, id);
+	}
+
 }

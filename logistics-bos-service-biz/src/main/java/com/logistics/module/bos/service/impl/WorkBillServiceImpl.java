@@ -89,4 +89,32 @@ public class WorkBillServiceImpl implements WorkBillService {
 		return dto;
 	}
 
+	@Override
+	public int queryTotal(int id) {
+		return workBillDao.queryTotal(id);
+	}
+
+	@Override
+	public List<WorkBillDTO> queryByPage(int id, int pageNum, int pageSize) {
+		List<TWorkBill> results = workBillDao.queryByPage(id, pageNum, pageSize);
+		List<WorkBillDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+
+	@Override
+	public WorkBillDTO selectByPrimaryKey(Integer cId) {
+		TWorkBill workBill = workBillDao.selectByPrimaryKey(cId);
+		if(workBill == null){
+			return null;
+		}
+		WorkBillDTO dto = new WorkBillDTO();
+		BeanUtils.copyProperties(workBill, dto);
+		return dto;
+	}
+
+	@Override
+	public int updateCourierId(int courierId, int id) {
+		return workBillDao.updateCourierId(courierId, id);
+	}
+
 }

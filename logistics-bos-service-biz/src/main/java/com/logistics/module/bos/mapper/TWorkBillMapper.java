@@ -37,4 +37,10 @@ public interface TWorkBillMapper {
     int updateState(@Param("id") int id);
     
     TWorkBill queryByOrderId(@Param("orderId") int orderId);
+    
+    int queryTotal(@Param("id") int id);
+    
+    List<TWorkBill> queryByPage(@Param("id") int id, @Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    int updateCourierId(@Param("courierId") int courierId, @Param("id") int id);
 }

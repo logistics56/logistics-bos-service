@@ -18,6 +18,26 @@
   limit #{pageNum},#{pageSize}
   </select>
   
+  
+  <select id="queryTotal" resultType="java.lang.Integer">
+  select count(*) from t_work_bill
+  where 1=1
+  <if test="id != 0">
+  and C_ID = #{id}
+  </if>
+  </select>
+  <select id="queryByPage" resultMap="BaseResultMap" parameterType="map">
+  select <include refid="Base_Column_List" />
+  from t_work_bill
+   where 1=1
+  <if test="id != 0">
+  and C_ID = #{id}
+  </if>
+  limit #{pageNum},#{pageSize}
+  </select>
+  
+  
+  
   <select id="queryNoReceiveTotalByCourierId" resultType="java.lang.Integer" parameterType="map">
   select count(*) from t_work_bill 
   where C_PICKSTATE = '0' and C_COURIER = #{courierId}
@@ -44,4 +64,9 @@
   from t_work_bill
   where C_ORDER_ID = #{orderId}
 </select>
+<update id="updateCourierId" parameterType="map">
+update t_work_bill
+set C_COURIER = #{courierId}
+where C_ID = #{id}
+</update>
 </mapper>
