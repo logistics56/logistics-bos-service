@@ -56,4 +56,19 @@ public class OrderDaoImpl implements OrderDao {
 		return tOrderMapper.updateStatusById(ststus, id);
 	}
 
+	@Override
+	public int queryTotal() {
+		return tOrderMapper.queryTotal();
+	}
+
+	@Override
+	public List<TOrder> queryByPage(int pageNum, int pageSize) {
+		return tOrderMapper.queryByPage(pageNum, pageSize);
+	}
+
+	@Override
+	public int updateOrderType(String orderType, int courierId, int id) {
+		return tOrderMapper.updateOrderType(orderType, courierId, id);
+	}
+
 }

@@ -42,4 +42,6 @@ public interface CourierService {
     int queryTotalByFixedAreaId(String fixedAreaId);
     
     CourierDTO selectByPrimaryKey(Integer cId);
+    
+    List<CourierDTO> queryAll();
 }

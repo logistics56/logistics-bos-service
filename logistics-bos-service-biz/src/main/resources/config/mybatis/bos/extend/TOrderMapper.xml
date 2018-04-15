@@ -31,4 +31,20 @@
  set C_STATUS = #{ststus}
  where C_ID = #{id}
  </update>
+ 
+ <select id="queryTotal" resultType="java.lang.Integer">
+  select count(*) from t_order
+  where C_ORDER_TYPE = 0
+  </select>
+  <select id="queryByPage" resultMap="BaseResultMap" parameterType="map">
+  select <include refid="Base_Column_List" />
+  from t_order
+  where C_ORDER_TYPE = 0
+  limit #{pageNum},#{pageSize}
+  </select>
+  <update id="updateOrderType" parameterType="map">
+  update t_order
+  set C_ORDER_TYPE = #{orderType}, C_COURIER_ID = #{courierId}
+  where C_ID = #{id}
+  </update>
 </mapper>

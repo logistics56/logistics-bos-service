@@ -113,4 +113,11 @@ public class CourierServiceImpl implements CourierService {
 		return dto;
 	}
 
+	@Override
+	public List<CourierDTO> queryAll() {
+		List<TCourier> results = courierDao.queryAll();
+		List<CourierDTO> convert = convertPoToDto(results);
+		return convert;
+	}
+
 }

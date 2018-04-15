@@ -77,4 +77,9 @@ public class CourierDaoImpl implements CourierDao {
 		return tCourierMapper.selectByPrimaryKey(cId);
 	}
 
+	@Override
+	public List<TCourier> queryAll() {
+		return tCourierMapper.queryAll();
+	}
+
 }

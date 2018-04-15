@@ -37,4 +37,9 @@
   select count(*) from t_sub_area
   where C_FIXEDAREA_ID = #{fixedAreaId}
   </select>
+  <select id="queryAll" resultMap="BaseResultMap" >
+  select <include refid="Base_Column_List" />
+  from t_courier
+  where C_DELTAG = 0
+  </select>
 </mapper>

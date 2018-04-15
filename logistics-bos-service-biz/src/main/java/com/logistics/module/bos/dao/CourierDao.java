@@ -42,4 +42,6 @@ public interface CourierDao {
     int queryTotalByFixedAreaId(String fixedAreaId);
     
     TCourier selectByPrimaryKey(Integer cId);
+    
+    List<TCourier> queryAll();
 }

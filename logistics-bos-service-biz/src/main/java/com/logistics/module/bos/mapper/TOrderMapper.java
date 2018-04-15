@@ -33,4 +33,10 @@ public interface TOrderMapper {
     List<TOrder> queryByTelephoneAndStatus(@Param("sendMobile") String sendMobile, @Param("status") String status);
     
     int updateStatusById(@Param("ststus") String ststus, @Param("id") int id);
+    
+    int queryTotal();
+    
+    List<TOrder> queryByPage(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+    
+    int updateOrderType(@Param("orderType") String orderType, @Param("courierId") int courierId, @Param("id") int id);
 }

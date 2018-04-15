@@ -106,4 +106,21 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.updateStatusById(ststus, id);
 	}
 
+	@Override
+	public int queryTotal() {
+		return orderDao.queryTotal();
+	}
+
+	@Override
+	public List<OrderDTO> queryByPage(int pageNum, int pageSize) {
+		List<TOrder> results = orderDao.queryByPage(pageNum, pageSize);
+		List<OrderDTO> dtos = convertPoToDto(results);
+		return dtos;
+	}
+
+	@Override
+	public int updateOrderType(String orderType, int courierId, int id) {
+		return orderDao.updateOrderType(orderType, courierId, id);
+	}
+
 }
